@@ -13,7 +13,7 @@ const ICON_INITIAL_STATE_FOR_LIGHT = [5, 1, 33, 1];
 
 let shadowRoot;
 
-class ThemeSwitch extends HTMLElement {
+class ThemeSwitchElement extends HTMLElement {
     constructor() {
         super();
 
@@ -114,7 +114,7 @@ function generateStyle() {
 }
 
 updateTheme();
-window.customElements.define("theme-switch", ThemeSwitch);
+window.customElements.define("theme-switch", ThemeSwitchElement);
 window
     .matchMedia(COLOR_SCHEME_DARK)
     .addEventListener("change", updateTheme);
