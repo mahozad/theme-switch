@@ -5,7 +5,7 @@
 
 </div>
 
-## Web light/dark/auto theme switch button
+## Web light/dark/system theme switch button
 
 This widget toggles between light theme, dark theme, and auto theme (OS theme).
 It works by adding a custom attribute named `data-theme` to the `html` element.
@@ -46,13 +46,13 @@ The element is called `<theme-switch>`. Use it just like you would use a regular
 Provide your colors and values for light/dark themes as CSS variables in the first two rules:
 
 ```css
-/* These are applied for the light theme (or when auto and the system theme is light) */
+/* These are applied for the light theme (or when auto, and the system theme is light) */
 :root {
     --my-page-background-color: #fff;
     --my-icons-color: #000;
 }
 
-/* These are applied for the dark theme (or when auto and the system theme is dark) */
+/* These are applied for the dark theme (or when auto, and the system theme is dark) */
 [data-theme="dark"] {
     --my-page-background-color: #112233;
     --my-icons-color: #efefef;
