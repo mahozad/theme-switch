@@ -39,10 +39,6 @@ class ThemeSwitch extends HTMLElement {
                   </mask>
                 </defs>
                 <g id="visible-content" mask="url(#mask)">
-                  <circle id="circle" r="${iconAttrs.circleRadius}" cx="12" cy="12">
-                    <animate id="core-anim-enlarge" fill="freeze" attributeName="r" to="10" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
-                    <animate id="core-anim-shrink" fill="freeze" attributeName="r" to="5" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
-                  </circle>
                   <g id="rays" opacity="${iconAttrs.raysOpacity}" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round">
                     <animate id="rays-anim-hide" fill="freeze" attributeName="opacity" to="0" dur="100ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
                     <animate id="rays-anim-show" fill="freeze" attributeName="opacity" to="1" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
@@ -56,6 +52,10 @@ class ThemeSwitch extends HTMLElement {
                     <path d="m4 12h-3"/>
                     <path d="m12 20v3"/>
                   </g>
+                  <circle id="circle" r="${iconAttrs.circleRadius}" cx="12" cy="12">
+                    <animate id="core-anim-enlarge" fill="freeze" attributeName="r" to="10" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
+                    <animate id="core-anim-shrink" fill="freeze" attributeName="r" to="5" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
+                  </circle>
                 </g>
               </svg>
             </button>
