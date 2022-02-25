@@ -20,10 +20,11 @@ class ThemeSwitch extends HTMLElement {
         shadowRoot.innerHTML = `
             <!-- Using <button> element allows the element to be focused and makes it more semantic -->
             <button id="theme-switch" onclick="toggleTheme()">
-              <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 24 24" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <mask id="mask">
-                    <rect width="24" height="24" fill="#fff"/>
+                    <!-- Fill the entire viewbox so it is clickable -->
+                    <rect width="100%" height="100%" fill="#fff"/>
                     <circle id="eclipse" r="10" cx="${iconAttrs.eclipseCenterX}" cy="6">
                       <animate id="eclipse-anim-come" fill="freeze" attributeName="cx" to="20" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
                       <animate id="eclipse-anim-go" fill="freeze" attributeName="cx" to="33" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
@@ -64,18 +65,20 @@ class ThemeSwitch extends HTMLElement {
         // See https://css-tricks.com/styling-a-web-component/
         // language=CSS
         style.textContent = `
-            #theme-switch {
-                /*visibility: hidden;*/
-                /*position: absolute;*/
-                padding: 8px;
+            /* :host === the host element of the shadow === <theme-switch> */
+            /* See https://developer.mozilla.org/en-US/docs/Web/CSS/:host */
+            :host {
+                display: flex;
+                width: 24px;
+                height: 24px;
+            }
+
+            button {
+                padding: 0;
                 border: none;
-                inset-inline-start: -56px;
-                inset-block-start: 0;
+                background: transparent;
                 display: flex;
                 cursor: pointer;
-                border-radius: 8px;
-                background: var(--theme-switch-bg-color);
-                box-shadow: #0000002D 0 2px 4px;
             }
 
             /* Only change the color of the core and not rays
