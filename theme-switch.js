@@ -60,6 +60,7 @@ class ThemeSwitch extends HTMLElement {
         // Create some CSS to apply to the shadow DOM
         const style = document.createElement("style");
 
+        // See https://css-tricks.com/styling-a-web-component/
         // language=CSS
         style.textContent = `
             #theme-switch {
