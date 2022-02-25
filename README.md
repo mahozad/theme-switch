@@ -48,7 +48,7 @@ One way is to define [custom CSS properties](https://developer.mozilla.org/en-US
     --my-primary-color: red;
 }
 
-/* Here, we redeclare properties that should be different for the dark theme with new values */
+/* Here, we redeclare properties that should have different values for the dark theme */
 [data-theme="dark"] {
     --my-page-background-color: #112233;
     --my-icons-color: #efefef;
