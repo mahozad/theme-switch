@@ -91,6 +91,8 @@ function generateStyle() {
         display: flex;
         width: ${icon_SIZE}px;
         aspect-ratio: 1 / 1;
+        /* This is for when the element has padding */
+        cursor: pointer;
     }
 
     button {
@@ -98,6 +100,7 @@ function generateStyle() {
         border: none;
         background: transparent;
         display: flex;
+        /* The host element also has its cursor set */
         cursor: pointer;
     }
 
