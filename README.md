@@ -30,7 +30,7 @@ Download the [theme-switch.js](theme-switch.js) file and add it to your HTML hea
 </head>
 ```
 
-Use the switch element just like you would use a regular element (e.g. `div`):
+The element is called `<theme-switch>`. Use it just like you would use a regular element (e.g. `div`):
 
 ```html
 <!-- ... -->
@@ -46,12 +46,13 @@ Use the switch element just like you would use a regular element (e.g. `div`):
 Provide your colors and values for light/dark themes as CSS variables in the first two rules:
 
 ```css
-/* These are applied for the light theme */
+/* These are applied for the light theme (or when auto and the system theme is light) */
 :root {
     --my-page-background-color: #fff;
     --my-icons-color: #000;
 }
 
+/* These are applied for the dark theme (or when auto and the system theme is dark) */
 [data-theme="dark"] {
     --my-page-background-color: #112233;
     --my-icons-color: #efefef;
@@ -62,7 +63,7 @@ html {
 }
 ```
 
-You can also style the switch element however you want, again, just like regular elements:
+You can also style the switch element itself however you want, again, just like regular elements:
 
 ```css
 theme-switch {
