@@ -5,60 +5,56 @@
 
 </div>
 
-## Web light/dark/system theme switch button
+## HTML light/dark/system theme switch button
 
-This widget toggles between light theme, dark theme, and auto theme (OS theme).
-It works by adding a custom attribute named `data-theme` to the `html` element.
+This widget toggles between light theme, dark theme, and automatic theme (OS theme).
+It works by adding a custom attribute named `data-theme` to the `html` element of your page.
 It is up to you to style your page the way you like based on the value of that attribute.
 See below for an example.
 
 It was inspired by [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle)
 and [this YouTube video](https://youtu.be/kZiS1QStIWc).
 
-### Getting started
+### Use in your page
 
-Download the [theme-switch.js](theme-switch.js) file and add it to your HTML head element:
+Download the [theme-switch.js](theme-switch.js) file and reference it at the top of your HTML:
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>My page title</title>
+  <!-- Do not use defer or async attributes -->
   <script src="theme-switch.js"></script>
-  <!-- ... -->
+  <!-- Rest of the styles, scripts, etc. -->
 </head>
 ```
 
 The element is called `<theme-switch>`. Use it just like you would use a regular element (e.g. `div`):
 
 ```html
-<!-- ... -->
-<body>
-<!-- ... -->
-
 <theme-switch></theme-switch>
-
-<!-- ... -->
-</body>
 ```
 
-Provide your colors and values for light/dark themes as CSS variables in the first two rules:
+In your CSS stylesheet, specify your desired styles for light and dark themes.
+One way is to define [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) for your colors, sizes, etc. and redefine them (if needed) with new values for the dark theme:
 
 ```css
-/* These are applied for the light theme (or when auto, and the system theme is light) */
+/* These are applied for the default (light) theme (or when auto, and the system theme is light) */
 :root {
     --my-page-background-color: #fff;
     --my-icons-color: #000;
+    --my-primary-color: red;
 }
 
-/* These are applied for the dark theme (or when auto, and the system theme is dark) */
+/* Here, we redeclare properties that should be different for the dark theme with new values */
 [data-theme="dark"] {
     --my-page-background-color: #112233;
     --my-icons-color: #efefef;
 }
 
-html {
+body {
     background: var(--my-page-background-color);
 }
 ```
@@ -71,8 +67,8 @@ theme-switch {
     padding: 8px;
     background: #888;
     
-    /* There is a special variable called --theme-switch-icon-color
-     * so you can set the icon color of the switch button */
+    /* There is a special property called --theme-switch-icon-color
+     * which you can set, to change the color of the switch icon */
     --theme-switch-icon-color: var(--my-icons-color);
 }
 ```
