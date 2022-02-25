@@ -1,9 +1,20 @@
+let shadowRoot;
+
 class ThemeSwitch extends HTMLElement {
     constructor() {
         super();
 
         // Creates and returns "this.shadowRoot"
-        const shadowRoot = this.attachShadow({mode: "open"});
+        shadowRoot = this.attachShadow({mode: "open"});
+
+        const iconAttrs = {
+            circleRadius: 5,
+            raysOpacity: 1,
+            letterStrokeDashoffset: 1,
+            eclipseCenterX: 33
+        }
+
+        setInitialIcon(iconAttrs);
 
         // See https://stackoverflow.com/q/2305654
         shadowRoot.innerHTML = `
@@ -12,23 +23,23 @@ class ThemeSwitch extends HTMLElement {
                 <defs>
                   <mask id="mask">
                     <rect width="24" height="24" fill="#fff"/>
-                    <circle id="eclipse" r="10" cx="33" cy="6">
+                    <circle id="eclipse" r="10" cx="${iconAttrs.eclipseCenterX}" cy="6">
                       <animate id="eclipse-anim-come" fill="freeze" attributeName="cx" to="20" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
                       <animate id="eclipse-anim-go" fill="freeze" attributeName="cx" to="33" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
                     </circle>
                     <!-- See https://youtu.be/7aobRPg7BXI -->
-                    <path id="letter" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" pathlength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="m8 16.5 4-9 4 9-1-2h-6">
+                    <path id="letter" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" pathlength="1" stroke-dasharray="1 1" stroke-dashoffset="${iconAttrs.letterStrokeDashoffset}" d="m8 16.5 4-9 4 9-1-2h-6">
                       <animate id="letter-anim-show" fill="freeze" attributeName="stroke-dashoffset" to="0" dur="400ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines=".67,.27,.55,.9"/>
                       <animate id="letter-anim-hide" fill="freeze" attributeName="stroke-dashoffset" to="1" dur="15ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
                     </path>
                   </mask>
                 </defs>
                 <g id="visible-content" mask="url(#mask)">
-                  <circle id="circle" r="5" cx="12" cy="12">
+                  <circle id="circle" r="${iconAttrs.circleRadius}" cx="12" cy="12">
                     <animate id="core-anim-enlarge" fill="freeze" attributeName="r" to="10" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
                     <animate id="core-anim-shrink" fill="freeze" attributeName="r" to="5" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
                   </circle>
-                  <g id="rays" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round">
+                  <g id="rays" opacity="${iconAttrs.raysOpacity}" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round">
                     <animate id="rays-anim-hide" fill="freeze" attributeName="opacity" to="0" dur="100ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
                     <animate id="rays-anim-show" fill="freeze" attributeName="opacity" to="1" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
                     <animateTransform id="rays-anim-rotate" attributeName="transform" attributeType="XML" type="rotate" from="-25 12 12" to="0 12 12" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
@@ -95,7 +106,6 @@ const THEME_ATTRIBUTE = "data-theme";
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 
 updateTheme();
-setThemeButtonInitialIcon();
 
 document.addEventListener("DOMContentLoaded", onDocumentReady);
 window.matchMedia(COLOR_SCHEME_QUERY)
@@ -119,19 +129,18 @@ function getSystemTheme() {
 }
 
 function onDocumentReady() {
-    setThemeButtonInitialIcon();
     // NOTE: Setting click listener here sometimes did not work in browsers.
     //  So, the onclick attribute is set on the element in the HTML.
     //  let shadowRoot = document.getElementsByTagName("theme-switch").item(0).shadowRoot;
     //  shadowRoot.getElementById("theme-switch").addEventListener("click", toggleTheme);
 }
 
-function setThemeButtonInitialIcon() {
+function setInitialIcon(iconAttrs) {
     let theme = getUserThemeSelection();
     if (theme === THEME_AUTO) {
-        setThemeButtonIconToAuto();
+        setThemeButtonIconToAuto(iconAttrs);
     } else if (theme === THEME_DARK) {
-        setThemeButtonIconToDark();
+        setThemeButtonIconToDark(iconAttrs);
     } else /* if (theme === THEME_LIGHT) */ {
         // Do nothing and show the icon as is
     }
@@ -154,7 +163,6 @@ function toggleTheme() {
 }
 
 function animateThemeButtonIconToLight() {
-    let shadowRoot = document.getElementsByTagName("theme-switch").item(0).shadowRoot;
     shadowRoot.getElementById("letter-anim-hide").beginElement();
     shadowRoot.getElementById("core-anim-shrink").beginElement();
     shadowRoot.getElementById("rays-anim-show").beginElement();
@@ -162,28 +170,24 @@ function animateThemeButtonIconToLight() {
 }
 
 function animateThemeButtonIconToAuto() {
-    let shadowRoot = document.getElementsByTagName("theme-switch").item(0).shadowRoot;
     shadowRoot.getElementById("eclipse-anim-go").beginElement();
     shadowRoot.getElementById("letter-anim-show").beginElement();
 }
 
 function animateThemeButtonIconToDark() {
-    let shadowRoot = document.getElementsByTagName("theme-switch").item(0).shadowRoot;
     shadowRoot.getElementById("core-anim-enlarge").beginElement();
     shadowRoot.getElementById("rays-anim-hide").beginElement();
     shadowRoot.getElementById("eclipse-anim-come").beginElement();
 }
 
-function setThemeButtonIconToAuto() {
-    let shadowRoot = document.getElementsByTagName("theme-switch").item(0).shadowRoot;
-    shadowRoot.getElementById("circle").setAttribute("r", "10");
-    shadowRoot.getElementById("rays").setAttribute("opacity", "0");
-    shadowRoot.getElementById("letter").setAttribute("stroke-dashoffset", "0");
+function setThemeButtonIconToAuto(iconAttrs) {
+    iconAttrs.circleRadius = 10;
+    iconAttrs.raysOpacity = 0;
+    iconAttrs.letterStrokeDashoffset = 0;
 }
 
-function setThemeButtonIconToDark() {
-    let shadowRoot = document.getElementsByTagName("theme-switch").item(0).shadowRoot;
-    shadowRoot.getElementById("circle").setAttribute("r", "10");
-    shadowRoot.getElementById("rays").setAttribute("opacity", "0");
-    shadowRoot.getElementById("eclipse").setAttribute("cx", "20");
+function setThemeButtonIconToDark(iconAttrs) {
+    iconAttrs.circleRadius = 10;
+    iconAttrs.raysOpacity = 0;
+    iconAttrs.eclipseCenterX = 20;
 }
