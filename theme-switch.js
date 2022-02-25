@@ -1,4 +1,4 @@
-const icon_SIZE = 24 /* px */;
+const ICON_SIZE = 24 /* px */;
 const THEME_KEY = "theme";
 const THEME_AUTO = "auto";
 const THEME_DARK = "dark";
@@ -89,7 +89,7 @@ function generateStyle() {
     /* See https://developer.mozilla.org/en-US/docs/Web/CSS/:host */
     :host {
         display: flex;
-        width: ${icon_SIZE}px;
+        width: ${ICON_SIZE}px;
         aspect-ratio: 1 / 1;
         /* This is for when the element has padding */
         cursor: pointer;
