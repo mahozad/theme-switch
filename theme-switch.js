@@ -20,7 +20,7 @@ class ThemeSwitch extends HTMLElement {
         // See https://stackoverflow.com/q/2305654/8583692
         shadowRoot.innerHTML = `
             <!-- Using <button> element allows the element to be focused and is more semantic -->
-            <button id="theme-switch" onclick="toggleTheme()">
+            <button id="theme-switch">
               <!-- See https://stackoverflow.com/q/34393465/8583692 -->
               <svg viewBox="0 0 24 24" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -60,6 +60,10 @@ class ThemeSwitch extends HTMLElement {
               </svg>
             </button>
         `;
+
+        // Add the click listener to the top-most parent (the custom element itself)
+        // so the padding etc. on the element be also clickable
+        shadowRoot.host.addEventListener("click", toggleTheme);
 
         // Create some CSS to apply to the shadow DOM
         const style = document.createElement("style");
