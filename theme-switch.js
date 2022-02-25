@@ -52,7 +52,7 @@ function generateIcon(circleRadius, raysOpacity, eclipseCenterX, letterOffset) {
               <animate id="eclipse-anim-go" fill="freeze" attributeName="cx" to="33" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
             </circle>
             <!-- See https://youtu.be/7aobRPg7BXI -->
-            <path id="letter" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" pathlength="1" stroke-dasharray="1 1" stroke-dashoffset="${letterOffset}" d="m8 16.5 4-9 4 9-1-2h-6">
+            <path id="letter" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="${letterOffset}" d="m8 16.5 4-9 4 9-1-2h-6">
               <animate id="letter-anim-show" fill="freeze" attributeName="stroke-dashoffset" to="0" dur="400ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines=".67,.27,.55,.9"/>
               <animate id="letter-anim-hide" fill="freeze" attributeName="stroke-dashoffset" to="1" dur="15ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
             </path>
