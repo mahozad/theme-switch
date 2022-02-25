@@ -21,6 +21,7 @@ class ThemeSwitch extends HTMLElement {
         shadowRoot.innerHTML = `
             <!-- Using <button> element allows the element to be focused and makes it more semantic -->
             <button id="theme-switch" onclick="toggleTheme()">
+              <!-- See https://stackoverflow.com/q/34393465/8583692 -->
               <svg viewBox="0 0 24 24" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <mask id="mask">
