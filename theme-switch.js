@@ -1,3 +1,4 @@
+const DEFAULT_SIZE = 24 /* px */;
 let shadowRoot;
 
 class ThemeSwitch extends HTMLElement {
@@ -69,8 +70,8 @@ class ThemeSwitch extends HTMLElement {
             /* See https://developer.mozilla.org/en-US/docs/Web/CSS/:host */
             :host {
                 display: flex;
-                width: 24px;
-                height: 24px;
+                width: ${DEFAULT_SIZE}px;
+                aspect-ratio: 1 / 1;
             }
 
             button {
