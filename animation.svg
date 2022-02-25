@@ -9,7 +9,7 @@
     </mask>
   </defs>
   <g id="visible-content">
-    <g id="rays" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" opacity="1">
+    <g id="rays" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" opacity="1">
       <animate id="rays-anim-hide" fill="freeze" attributeName="opacity" to="0" dur="400ms" begin="3s; eclipse-anim-go.end + 5s" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
       <animate id="rays-anim-show" fill="freeze" attributeName="opacity" to="1" dur="1000ms" begin="eclipse-anim-come.end + 5200ms" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
       <animateTransform id="rays-anim-rotate" attributeName="transform" attributeType="XML" type="rotate" from="-25 12 12" to="0 12 12" dur="1000ms" begin="eclipse-anim-come.end + 5200ms" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
@@ -22,7 +22,7 @@
       <path d="m4 12h-3"/>
       <path d="m12 20v3"/>
     </g>
-    <circle id="circle" r="5" cx="12" cy="12" mask="url(#mask)">
+    <circle id="circle" fill="#111" r="5" cx="12" cy="12" mask="url(#mask)">
       <animate id="core-anim-enlarge" fill="freeze" attributeName="r" to="10" dur="1000ms" begin="3s; eclipse-anim-go.end + 5s" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
       <animate id="core-anim-shrink" fill="freeze" attributeName="r" to="5" dur="1000ms" begin="eclipse-anim-come.end + 5s" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
     </circle>
