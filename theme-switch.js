@@ -18,12 +18,9 @@ class ThemeSwitchElement extends HTMLElement {
     constructor() {
         super();
 
-        // Creates and returns "this.shadowRoot"
-        shadowRoot = this.attachShadow({mode: "open"});
-        const [circleRadius, raysOpacity, eclipseCenterX, letterOffset] = getInitialStateForIcon();
-
         // See https://stackoverflow.com/q/2305654/8583692
-        shadowRoot.innerHTML = generateIcon(circleRadius, raysOpacity, eclipseCenterX, letterOffset);
+        shadowRoot = this.attachShadow({mode: "open"});
+        shadowRoot.innerHTML = generateIcon(...getInitialStateForIcon());
 
         // Add the click listener to the top-most parent (the custom element itself)
         // so the padding etc. on the element be also clickable
