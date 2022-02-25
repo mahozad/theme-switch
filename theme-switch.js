@@ -117,9 +117,8 @@ const THEME_ATTRIBUTE = "data-theme";
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 
 updateTheme();
-
-document.addEventListener("DOMContentLoaded", onDocumentReady);
-window.matchMedia(COLOR_SCHEME_QUERY)
+window
+    .matchMedia(COLOR_SCHEME_QUERY)
     .addEventListener("change", updateTheme);
 
 function updateTheme() {
@@ -137,13 +136,6 @@ function getUserThemeSelection() {
 function getSystemTheme() {
     const isDark = window.matchMedia(COLOR_SCHEME_QUERY).matches;
     return isDark ? THEME_DARK : THEME_LIGHT;
-}
-
-function onDocumentReady() {
-    // NOTE: Setting click listener here sometimes did not work in browsers.
-    //  So, the onclick attribute is set on the element in the HTML.
-    //  let shadowRoot = document.getElementsByTagName("theme-switch").item(0).shadowRoot;
-    //  shadowRoot.getElementById("theme-switch").addEventListener("click", toggleTheme);
 }
 
 function setInitialIcon(iconAttrs) {
