@@ -10,7 +10,8 @@ See the icon for switching themes (located in top right corner) on
 See [this article](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web)
 for implementing dark/light theme on sites.
 
+See [this post](https://stackoverflow.com/q/56300132/8583692) for how to override
+dark/light theme for site.
+
 See [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle) providing
 a custom element for toggling dark/light theme.
-
-
