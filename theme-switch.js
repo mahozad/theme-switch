@@ -45,7 +45,7 @@ function generateIcon(circleRadius, raysOpacity, eclipseCenterX, letterOffset) {
       <svg viewBox="0 0 24 24" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <mask id="mask">
-            <!-- Fill the entire viewbox so it is clickable -->
+            <!-- Fill the entire viewBox as the mask default (show everything) -->
             <rect width="100%" height="100%" fill="#fff"/>
             <circle id="eclipse" r="10" cx="${eclipseCenterX}" cy="6">
               <animate id="eclipse-anim-come" fill="freeze" attributeName="cx" to="20" dur="300ms" begin="indefinite" calcMode="spline" keyTimes="0; 1" keySplines="0.37, 0, 0.63, 1"/>
