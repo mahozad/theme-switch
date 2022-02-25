@@ -17,7 +17,7 @@ class ThemeSwitch extends HTMLElement {
 
         setInitialIcon(iconAttrs);
 
-        // See https://stackoverflow.com/q/2305654
+        // See https://stackoverflow.com/q/2305654/8583692
         shadowRoot.innerHTML = `
             <!-- Using <button> element allows the element to be focused and makes it more semantic -->
             <button id="theme-switch" onclick="toggleTheme()">
