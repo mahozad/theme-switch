@@ -15,10 +15,13 @@ setSystemThemeTo("light");
 
 const main = require("./theme-switch");
 
-test("first test", () => {
-    expect("abc").toEqual("abc");
-    expect("def").toBe("def");
-    expect(main.getSystemTheme()).toEqual("light");
+test(`When system theme is light, getSystemTheme should return "light"`, () => {
+    expect(main.getSystemTheme()).toBe("light");
+});
+
+test(`When system theme is dark, getSystemTheme should return "dark"`, () => {
+    setSystemThemeTo("dark");
+    expect(main.getSystemTheme()).toBe("dark");
 });
 
 console.log(`\u001B[32m✔️\u001B[39m Tests passed`);
