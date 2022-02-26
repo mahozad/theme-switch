@@ -8,9 +8,9 @@ const dom = new JSDOM(
 );
 
 global.window = dom.window;
-global.document = window.document;
-global.HTMLElement = window.HTMLElement;
-global.localStorage = window.localStorage;
+global.document = dom.window.document;
+global.HTMLElement = dom.window.HTMLElement;
+global.localStorage = dom.window.localStorage;
 setSystemThemeTo("light");
 
 const main = require("./theme-switch");
