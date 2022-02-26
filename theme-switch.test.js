@@ -24,6 +24,32 @@ test(`When system theme is dark, getSystemTheme should return "dark"`, () => {
     expect(main.getSystemTheme()).toBe("dark");
 });
 
+test(`For first-time users, getUserThemeSelection should return the default theme`, () => {
+    localStorage.clear();
+    expect(main.getUserThemeSelection()).toBe("light");
+});
+
+test(`For first-time users, getUserThemeSelection should return the default theme irrespective of the system theme`, () => {
+    localStorage.clear();
+    setSystemThemeTo("dark");
+    expect(main.getUserThemeSelection()).toBe("light");
+});
+
+test(`getUserThemeSelection should return "light" when user had previously selected "light"`, () => {
+    localStorage.setItem("theme", "light");
+    expect(main.getUserThemeSelection()).toBe("light");
+});
+
+test(`getUserThemeSelection should return "dark" when user had previously selected "dark"`, () => {
+    localStorage.setItem("theme", "dark");
+    expect(main.getUserThemeSelection()).toBe("dark");
+});
+
+test(`getUserThemeSelection should return "auto" when user had previously selected "auto"`, () => {
+    localStorage.setItem("theme", "auto");
+    expect(main.getUserThemeSelection()).toBe("auto");
+});
+
 console.log(`\u001B[32m✔️\u001B[39m Tests passed`);
 
 // See https://stackoverflow.com/a/53449595/8583692
