@@ -13,7 +13,7 @@ global.HTMLElement = dom.window.HTMLElement;
 global.localStorage = dom.window.localStorage;
 setSystemThemeTo("light");
 
-const main = require("./theme-switch");
+const main = require("theme-switch");
 
 test(`When system theme is light, getSystemTheme should return "light"`, () => {
     expect(main.getSystemTheme()).toBe("light");
@@ -71,8 +71,7 @@ test(`getUserThemeSelection should return "auto" when user had previously select
  * ```
  */
 test(`When user theme is light, toggleTheme should update the theme to dark`, () => {
-    main.__Rewire__("animateThemeButtonIconToDark", function() {});
-
+    main.__Rewire__("animateThemeButtonIconToDark", () => {});
     localStorage.setItem("theme", "light");
     main.toggleTheme();
     expect(main.getUserThemeSelection()).toBe("dark");
