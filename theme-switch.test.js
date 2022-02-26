@@ -77,6 +77,20 @@ test(`When user theme is light, toggleTheme should update the theme to dark`, ()
     expect(main.getUserThemeSelection()).toBe("dark");
 });
 
+test(`When user theme is dark, toggleTheme should update the theme to auto`, () => {
+    main.__Rewire__("animateThemeButtonIconToAuto", () => {});
+    localStorage.setItem("theme", "dark");
+    main.toggleTheme();
+    expect(main.getUserThemeSelection()).toBe("auto");
+});
+
+test(`When user theme is auto, toggleTheme should update the theme to light`, () => {
+    main.__Rewire__("animateThemeButtonIconToLight", () => {});
+    localStorage.setItem("theme", "auto");
+    main.toggleTheme();
+    expect(main.getUserThemeSelection()).toBe("light");
+});
+
 console.log(`\u001B[32m✔️\u001B[39m Tests passed`);
 
 // See https://stackoverflow.com/a/53449595/8583692
