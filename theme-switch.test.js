@@ -31,6 +31,7 @@ const main = require("./theme-switch");
 
 test("first test", () => {
     expect("abc").toEqual("abc");
+    expect("def").toBe("def");
     expect(main.getSystemTheme()).toEqual("light");
 });
 
