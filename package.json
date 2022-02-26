@@ -4,6 +4,7 @@
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "babel-minify": "^0.5.1",
+    "babel-plugin-rewire": "^1.2.0",
     "jest": "^27.5.1",
     "jsdom": "^19.0.0"
   },
