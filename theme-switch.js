@@ -24,7 +24,7 @@
 * Example Node modules:
 *
 * my-calculator.js
-* const PI = 3.14; 
+* const PI = 3.14;
 * function calculate() {}
 * modules.exports.calculate = calculate;
 * modules.exports.PI = PI;
@@ -44,7 +44,8 @@
 * import { calculate, PI } from "my-calculator.js";
 * let perimeter = 2 * PI;
 * let result = calculate();
-* 
+*
+* See https://stackoverflow.com/a/9901097/8583692
 * */
 
 /*
