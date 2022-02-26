@@ -1,3 +1,7 @@
+// NOTE: Do not use this script as module
+//  modules are deferred and we don't want that because
+//  we want the user previous theme selection to be applied as soon as possible.
+
 const ICON_SIZE = 24 /* px */;
 const THEME_KEY = "theme";
 const THEME_AUTO = "auto";
@@ -180,6 +184,7 @@ function animateThemeButtonIconToDark() {
 
 // Export for tests run by npm.
 // See https://stackoverflow.com/q/63752210/8583692
+// and https://stackoverflow.com/a/54680602/8583692
 if (typeof module !== "undefined") {
     module.exports = {
         updateTheme,
