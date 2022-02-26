@@ -6,6 +6,48 @@
 * */
 
 /*
+* There are two types of modules mostly used in JavaScript.
+* One is created by Node.js and is used inside the Node environment
+* and has been available for a long time.
+* Another is the standard native JavaScript modules introduced in ES6.
+*
+* The Node type uses `module.exports` (or simply `exports`) and `require()`
+* to export and import functions, properties, etc.
+* Because these are arbitrary objects and functions created just in Node environment,
+* browsers do not know about `exports` or `require` functions and throw error.
+* If you want to use this type of module in browsers, you should bundle the files
+* (merge all of them into a single JS file which eliminates the need for exports and require)
+* with tools like babel, webpack, etc.
+*
+* ES6 modules use `export` and `import` keywords for the same purpose.
+*
+* Example Node modules:
+*
+* my-calculator.js
+* const PI = 3.14; 
+* function calculate() {}
+* modules.exports.calculate = calculate;
+* modules.exports.PI = PI;
+*
+* main.js
+* const calculator = require("my-calculator");
+* let perimeter = 2 * calculator.PI;
+* let result = calculator.calculate();
+*
+* Example ES6 modules:
+*
+* my-calculator.js
+* const PI = 3.14;
+* export function calculate() {}
+*
+* main.js
+* import { calculate, PI } from "my-calculator.js";
+* let perimeter = 2 * PI;
+* let result = calculate();
+* 
+* */
+
+/*
 * Minify the script either through command line with babel
 * - babel theme-switch.js --presets minify --out-file result.min.js
 * or with babel-minify (also has an alias called minify) which is useful if
