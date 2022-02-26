@@ -1,13 +1,20 @@
-// NOTE: Do not use this script as module
-//  modules are deferred and we don't want that because
-//  we want the user previous theme selection to be applied as soon as possible.
+/*
+* NOTE: Do not use this script as an ES6 module.
+*  ES6 modules are deferred and we don't want that because
+*  we want the user previous theme selection to be applied
+*  as soon as possible (before the page is rendered).
+* */
 
 /*
 * Minify the script either through command line
-* `babel-minify theme-switch.js --out-file result.min.js`
-* ===
-* `minify theme-switch.js --out-file result.min.js`
-* Or automate it with IntelliJ file watcher -> babel or YUI compressor.
+* - babel-minify theme-switch.js --out-file result.min.js`
+* - minify theme-switch.js --out-file result.min.js`
+* Or automate it with IntelliJ file watcher
+* - babel
+*   + program: $ProjectFileDir$\node_modules\.bin\babel
+*   + arguments: $FilePathRelativeToProjectRoot$ --out-file $FileNameWithoutExtension$.min.js --presets minify
+* - UglifyJS
+* - YUI compressor (seems to be deprecated and removed in newer versions of IntelliJ)
 * */
 
 const ICON_SIZE = 24 /* px */;
