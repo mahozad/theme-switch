@@ -2,6 +2,14 @@
 //  modules are deferred and we don't want that because
 //  we want the user previous theme selection to be applied as soon as possible.
 
+/*
+* Minify the script either through command line
+* `babel-minify theme-switch.js --out-file result.min.js`
+* ===
+* `minify theme-switch.js --out-file result.min.js`
+* Or automate it with IntelliJ file watcher -> babel or YUI compressor.
+* */
+
 const ICON_SIZE = 24 /* px */;
 const THEME_KEY = "theme";
 const THEME_AUTO = "auto";
