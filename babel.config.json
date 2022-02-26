@@ -8,18 +8,5 @@
       }
     ]
   ],
-  "plugins": [
-    [
-      "babel-plugin-transform-strip-block",
-      {
-        "requireDirective": false,
-        "identifiers": [
-          {
-            "start": "::RemoveThisBlockStart::",
-            "end": "::RemoveThisBlockEnd::"
-          }
-        ]
-      }
-    ]
-  ]
+  "plugins": []
 }
