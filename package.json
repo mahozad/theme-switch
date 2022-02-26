@@ -12,7 +12,8 @@
   "version": "0.9.0",
   "main": "theme-switch.js",
   "scripts": {
-    "test": "jest --env=node --colors --coverage test"
+    "test": "jest --env=node --colors test",
+    "test-with-coverage": "jest --env=node --colors --coverage test"
   },
   "jest": {
     "verbose": true,
