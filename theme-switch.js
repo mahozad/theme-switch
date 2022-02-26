@@ -245,6 +245,8 @@ function animateThemeButtonIconToDark() {
 // Export for tests run by npm.
 // See https://stackoverflow.com/q/63752210/8583692
 // and https://stackoverflow.com/a/54680602/8583692
+// and https://stackoverflow.com/q/43042889/8583692
+// and https://stackoverflow.com/a/1984728/8583692
 if (typeof module !== "undefined") {
     module.exports = {
         updateTheme,
