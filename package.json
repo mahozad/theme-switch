@@ -1,0 +1,24 @@
+{
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "babel-minify": "^0.5.1",
+    "jest": "^27.5.1",
+    "jsdom": "^19.0.0"
+  },
+  "name": "theme-switch",
+  "description": "A toggle button for websites.",
+  "version": "0.9.0",
+  "main": "theme-switch.js",
+  "scripts": {
+    "test": "jest --env=node --colors --coverage test"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
+  "keywords": [],
+  "author": "Mahdi Hosseinzadeh",
+  "license": "ISC"
+}
