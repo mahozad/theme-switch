@@ -1,0 +1,25 @@
+{
+  "comments": false,
+  "presets": [
+    [
+      "minify",
+      {
+        "mangle": true
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "babel-plugin-transform-strip-block",
+      {
+        "requireDirective": false,
+        "identifiers": [
+          {
+            "start": "::RemoveThisBlockStart::",
+            "end": "::RemoveThisBlockEnd::"
+          }
+        ]
+      }
+    ]
+  ]
+}
