@@ -177,3 +177,18 @@ function animateThemeButtonIconToDark() {
     shadowRoot.getElementById("core-anim-enlarge").beginElement();
     shadowRoot.getElementById("eclipse-anim-come").beginElement();
 }
+
+// Export for tests run by npm.
+// See https://stackoverflow.com/q/63752210/8583692
+if (typeof module !== "undefined") {
+    module.exports = {
+        updateTheme,
+        toggleTheme,
+        getSystemTheme,
+        getUserThemeSelection,
+        getInitialStateForIcon,
+        animateThemeButtonIconToAuto,
+        animateThemeButtonIconToDark,
+        animateThemeButtonIconToLight
+    };
+}
