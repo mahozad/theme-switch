@@ -1,10 +1,11 @@
 const { JSDOM } = require("jsdom");
 
-
 // See https://github.com/chaijs/type-detect/issues/98
 // See https://stackoverflow.com/a/51702674/8583692
-const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`, { url: "http://localhost" });
-// <!DOCTYPE html><html><body></body></html>
+const dom = new JSDOM(
+    `<!DOCTYPE html><html><body></body></html>`,
+    { url: "http://localhost" }
+);
 
 global.window = dom.window;
 global.document = window.document;
@@ -12,7 +13,7 @@ global.HTMLElement = window.HTMLElement;
 global.localStorage = window.localStorage;
 
 // See https://stackoverflow.com/a/53449595/8583692
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
     writable: true,
     value: jest.fn().mockImplementation(query => ({
         matches: false,
@@ -33,4 +34,4 @@ test("first test", () => {
     expect(main.getSystemTheme()).toEqual("light");
 });
 
-console.log(`\u001B[32m✓\u001B[39m Tests passed`);
+console.log(`\u001B[32m✔️\u001B[39m Tests passed`);
