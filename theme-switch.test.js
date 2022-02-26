@@ -50,6 +50,34 @@ test(`getUserThemeSelection should return "auto" when user had previously select
     expect(main.getUserThemeSelection()).toBe("auto");
 });
 
+/**
+ * We cannot mock an internal function of a module with Jest.
+ * Instead, we used babel rewire plugin.
+ * See https://stackoverflow.com/q/51269431/8583692
+ * and https://stackoverflow.com/q/51900413/8583692
+ * and https://github.com/speedskater/babel-plugin-rewire
+ *
+ * If we wanted to mock a regular function, we could have used any of these approaches:
+ *
+ * ```javascript
+ * jest.mock("theme-switch");
+ * jest.spyOn(main, "animateThemeButtonIconToDark").mockImplementation(() => jest.fn());
+ * jest.mock("theme-switch", () => ({
+ *     ...jest.requireActual("theme-switch"),
+ *     animateThemeButtonIconToDark: jest.fn()
+ * }));
+ * main.animateThemeButtonIconToDark.mockImplementation(() => {})
+ * main.animateThemeButtonIconToDark = jest.fn(() => {});
+ * ```
+ */
+test(`When user theme is light, toggleTheme should update the theme to dark`, () => {
+    main.__Rewire__("animateThemeButtonIconToDark", function() {});
+
+    localStorage.setItem("theme", "light");
+    main.toggleTheme();
+    expect(main.getUserThemeSelection()).toBe("dark");
+});
+
 console.log(`\u001B[32m✔️\u001B[39m Tests passed`);
 
 // See https://stackoverflow.com/a/53449595/8583692
