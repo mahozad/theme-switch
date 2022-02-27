@@ -10,6 +10,7 @@ const dom = new JSDOM(`
       <title>Test page</title>
     </head>
     <body>
+      <theme-switch></theme-switch>
     </body>
     </html> 
 `,
