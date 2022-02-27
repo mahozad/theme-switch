@@ -96,8 +96,8 @@ a custom element for toggling dark/light theme.
 ---
 
 TODO:
-  - Try to add the button to [rufus site](https://github.com/pbatard/rufus-web)
-  - Try to add the button to [jest site](https://github.com/facebook/jest)(probably its `docs/` directory. see [this PR](https://github.com/facebook/jest/pull/11021))
-  - Try to add the button to [docusaurus](https://github.com/facebook/docusaurus)
+  - Try to add the library to [rufus site](https://github.com/pbatard/rufus-web)
+  - Try to add the library to [jest site](https://github.com/facebook/jest)(probably its `docs/` directory. see [this PR](https://github.com/facebook/jest/pull/11021))
+  - Try to add the library to [docusaurus](https://github.com/facebook/docusaurus)
   - Try to add the library to [dokka](https://github.com/Kotlin/dokka)
   - Try to add the library to [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
