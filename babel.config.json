@@ -1,10 +1,12 @@
 {
+  "minified": true,
   "comments": false,
   "presets": [
     [
       "minify",
       {
-        "mangle": true
+        "mangle": true,
+        "keepFnName": false
       }
     ]
   ],
