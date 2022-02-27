@@ -52,7 +52,9 @@ test(`getUserThemeSelection should return "auto" when user had previously select
 
 /**
  * We cannot mock an internal function of a module with Jest.
- * Instead, we used babel rewire plugin.
+ * Instead, we used babel rewire plugin
+ * (or rewire-test-env-only plugin so the minified file is not bloated
+ * see https://www.npmjs.com/package/babel-plugin-rewire-test-env-only).
  * See https://stackoverflow.com/q/51269431/8583692
  * and https://stackoverflow.com/q/51900413/8583692
  * and https://github.com/speedskater/babel-plugin-rewire

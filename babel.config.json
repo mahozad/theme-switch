@@ -9,6 +9,6 @@
     ]
   ],
   "plugins": [
-    "rewire"
+    "rewire-test-env-only"
   ]
 }
