@@ -2,9 +2,18 @@ const { JSDOM } = require("jsdom");
 
 // See https://github.com/chaijs/type-detect/issues/98
 // See https://stackoverflow.com/a/51702674/8583692
-const dom = new JSDOM(
-    `<!DOCTYPE html><html lang="en"><body></body></html>`,
-    { url: "http://localhost" }
+const dom = new JSDOM(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Test page</title>
+    </head>
+    <body>
+    </body>
+    </html> 
+`,
+    {url: "http://localhost"}
 );
 
 global.window = dom.window;
