@@ -1,5 +1,8 @@
 const { JSDOM } = require("jsdom");
 
+// TODO: Also test for the following cases:
+//  - No <theme-switch> element
+//  - Duplicate <theme-switch> elements
 // See https://github.com/chaijs/type-detect/issues/98
 // See https://stackoverflow.com/a/51702674/8583692
 const dom = new JSDOM(`
