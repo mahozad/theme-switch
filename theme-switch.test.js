@@ -64,6 +64,10 @@ test(`getUserThemeSelection should return "auto" when user had previously select
 });
 
 /**
+ * NOTE: jsdom doesn't seem to support `beginElement()` function on SVG `animate` element.
+ *  See https://github.com/jsdom/jsdom/issues/3344
+ *  We had ho mock the implementation of some functions to prevent error.
+ *
  * We cannot mock an internal function of a module with Jest.
  * Instead, we used babel rewire plugin
  * (or rewire-test-env-only plugin so the minified file is not bloated
