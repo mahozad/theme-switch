@@ -1,4 +1,9 @@
-const { JSDOM } = require("jsdom");
+const {JSDOM} = require("jsdom");
+const puppeteer = require("puppeteer-core");
+const {readFileSync} = require('fs');
+const {setupJestScreenshot} = require("jest-screenshot");
+
+setupJestScreenshot();
 
 // TODO: Also test for the following cases:
 //  - No <theme-switch> element
@@ -112,7 +117,44 @@ test(`When user theme is auto, toggleTheme should update the theme to light`, ()
     expect(main.getUserThemeSelection()).toBe("light");
 });
 
-console.log(`\u001B[32m✔️\u001B[39m Tests passed`);
+const snapshotFileName = "temp-snapshot-for-test.png";
+
+// See https://stackoverflow.com/a/53299842/8583692
+// Consider Selenium as an alternative to Puppeteer.
+// Selenium doesn't seem to support screenshot testing feature.
+// See https://stackoverflow.com/q/22938045/8583692
+test(`When user stored theme is light, the icon should be sun`, async () => {
+    await takeScreenshot(() => {localStorage.setItem("theme", "light");});
+    const snapshotTakenNow = readFileSync(snapshotFileName);
+    expect(snapshotTakenNow).toMatchImageSnapshot();
+});
+
+async function takeScreenshot(init, action = () => {}) {
+    const browser = await puppeteer.launch({
+            headless: true, // If false, opens the browser UI
+            // channel: "chrome", // this overrides executablePath
+            // Download the required version from https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64
+            // OR C:\\your_workspace\\node_modules\\puppeteer\\.local-chromium\\win64-(version)\\chrome-win\\chrome.exe
+            executablePath: "C:\\Program Files\\Google\\chrome-for-test\\chrome.exe"
+        }
+    );
+
+    const page = await browser.newPage();
+    // See https://stackoverflow.com/a/66530593/8583692
+    await page.evaluateOnNewDocument(init);
+    // page.setContent("<DOCTYPE html><html>...")
+    await page.goto(`file://${__dirname}\\test.html`);
+
+    const element = await page.$("theme-switch");
+    await action(element);
+    // Wait for the element animation to finish
+    await page.waitForTimeout(1000);
+
+    await element.screenshot({path: snapshotFileName});
+    await browser.close();
+}
+
+// console.log(`\u001B[32m✔️\u001B[39m Tests passed`);
 
 // See https://stackoverflow.com/a/53449595/8583692
 // and https://stackoverflow.com/a/57180950/8583692

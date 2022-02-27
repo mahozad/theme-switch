@@ -5,8 +5,11 @@
     "@babel/preset-env": "^7.16.11",
     "babel-minify": "^0.5.1",
     "babel-plugin-rewire-test-env-only": "^1.0.0",
+    "jsdom": "^19.0.0",
     "jest": "^27.5.1",
-    "jsdom": "^19.0.0"
+    "jest-puppeteer": "^6.1.0",
+    "jest-screenshot": "^0.3.5",
+    "puppeteer-core": "^13.4.0"
   },
   "name": "theme-switch",
   "description": "A toggle button for websites.",
@@ -20,6 +23,7 @@
   },
   "jest": {
     "verbose": true,
+    "preset": "jest-puppeteer",
     "testURL": "http://localhost/"
   },
   "keywords": [],
