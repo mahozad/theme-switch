@@ -1,6 +1,6 @@
 const {JSDOM} = require("jsdom");
 const puppeteer = require("puppeteer-core");
-const {readFileSync} = require('fs');
+const fileSystem = require('fs');
 // See https://stackoverflow.com/a/48952855/8583692
 const {configureToMatchImageSnapshot: configureSnapshots} = require("jest-image-snapshot");
 const toMatchReferenceSnapshot = configureSnapshots({
@@ -130,9 +130,11 @@ describe("Screenshot tests", () => {
     // See https://stackoverflow.com/q/22938045/8583692
     test(`When user stored theme is light, the icon should be sun`, async () => {
         await takeScreenshot(() => {localStorage.setItem("theme", "light");});
-        const snapshotTakenNow = readFileSync(snapshotFileName);
+        const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
     });
+
+    afterAll(() => {fileSystem.rmSync(snapshotFileName);});
 });
 
 async function takeScreenshot(init, action = () => {}) {
