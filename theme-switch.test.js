@@ -134,6 +134,45 @@ describe("Screenshot tests", () => {
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
     });
 
+    test(`When user stored theme is dark, the icon should be moon`, async () => {
+        await takeScreenshot(() => {localStorage.setItem("theme", "dark");});
+        const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
+        expect(snapshotTakenNow).toMatchReferenceSnapshot();
+    });
+
+    test(`When user stored theme is auto, the icon should be auto`, async () => {
+        await takeScreenshot(() => {localStorage.setItem("theme", "auto");});
+        const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
+        expect(snapshotTakenNow).toMatchReferenceSnapshot();
+    });
+
+    test(`When user stored theme is light, clicking the switch should change the icon to moon`, async () => {
+        await takeScreenshot(
+            () => {localStorage.setItem("theme", "light");},
+            element => {element.click();}
+        );
+        const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
+        expect(snapshotTakenNow).toMatchReferenceSnapshot();
+    });
+
+    test(`When user stored theme is dark, clicking the switch should change the icon to auto`, async () => {
+        await takeScreenshot(
+            () => {localStorage.setItem("theme", "dark");},
+            element => {element.click();}
+        );
+        const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
+        expect(snapshotTakenNow).toMatchReferenceSnapshot();
+    });
+
+    test(`When user stored theme is auto, clicking the switch should change the icon to light`, async () => {
+        await takeScreenshot(
+            () => {localStorage.setItem("theme", "auto");},
+            element => {element.click();}
+        );
+        const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
+        expect(snapshotTakenNow).toMatchReferenceSnapshot();
+    });
+
     afterAll(() => {fileSystem.rmSync(snapshotFileName);});
 });
 
