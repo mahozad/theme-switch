@@ -8,7 +8,7 @@
     "jsdom": "^19.0.0",
     "jest": "^27.5.1",
     "jest-puppeteer": "^6.1.0",
-    "jest-screenshot": "^0.3.5",
+    "jest-image-snapshot": "^4.5.1",
     "puppeteer-core": "^13.4.0"
   },
   "name": "theme-switch",

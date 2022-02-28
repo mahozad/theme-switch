@@ -1,9 +1,14 @@
 const {JSDOM} = require("jsdom");
 const puppeteer = require("puppeteer-core");
 const {readFileSync} = require('fs');
-const {setupJestScreenshot} = require("jest-screenshot");
+// See https://stackoverflow.com/a/48952855/8583692
+const {configureToMatchImageSnapshot: configureSnapshots} = require("jest-image-snapshot");
+const toMatchReferenceSnapshot = configureSnapshots({
+    customSnapshotsDir: "snapshots/",
+    customDiffDir: "snapshot-diffs/",
+});
 
-setupJestScreenshot();
+expect.extend({ toMatchReferenceSnapshot });
 
 // TODO: Also test for the following cases:
 //  - No <theme-switch> element
@@ -126,7 +131,7 @@ const snapshotFileName = "temp-snapshot-for-test.png";
 test(`When user stored theme is light, the icon should be sun`, async () => {
     await takeScreenshot(() => {localStorage.setItem("theme", "light");});
     const snapshotTakenNow = readFileSync(snapshotFileName);
-    expect(snapshotTakenNow).toMatchImageSnapshot();
+    expect(snapshotTakenNow).toMatchReferenceSnapshot();
 });
 
 async function takeScreenshot(init, action = () => {}) {
