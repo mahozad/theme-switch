@@ -7,6 +7,7 @@ const toMatchReferenceSnapshot = configureSnapshots({
     customSnapshotsDir: "snapshots/",
     customDiffDir: "snapshot-diffs/",
 });
+const snapshotFileName = "temp-snapshot-for-test.png";
 
 expect.extend({ toMatchReferenceSnapshot });
 
@@ -122,16 +123,16 @@ test(`When user theme is auto, toggleTheme should update the theme to light`, ()
     expect(main.getUserThemeSelection()).toBe("light");
 });
 
-const snapshotFileName = "temp-snapshot-for-test.png";
-
-// See https://stackoverflow.com/a/53299842/8583692
-// Consider Selenium as an alternative to Puppeteer.
-// Selenium doesn't seem to support screenshot testing feature.
-// See https://stackoverflow.com/q/22938045/8583692
-test(`When user stored theme is light, the icon should be sun`, async () => {
-    await takeScreenshot(() => {localStorage.setItem("theme", "light");});
-    const snapshotTakenNow = readFileSync(snapshotFileName);
-    expect(snapshotTakenNow).toMatchReferenceSnapshot();
+describe("Screenshot tests", () => {
+    // See https://stackoverflow.com/a/53299842/8583692
+    // Consider Selenium as an alternative to Puppeteer.
+    // Selenium doesn't seem to support screenshot testing feature.
+    // See https://stackoverflow.com/q/22938045/8583692
+    test(`When user stored theme is light, the icon should be sun`, async () => {
+        await takeScreenshot(() => {localStorage.setItem("theme", "light");});
+        const snapshotTakenNow = readFileSync(snapshotFileName);
+        expect(snapshotTakenNow).toMatchReferenceSnapshot();
+    });
 });
 
 async function takeScreenshot(init, action = () => {}) {
