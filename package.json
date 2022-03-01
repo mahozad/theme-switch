@@ -38,6 +38,10 @@
     "type": "git",
     "url": "https://github.com/mahozad/theme-switch.git"
   },
-  "author": "Mahdi Hosseinzadeh",
+  "author": {
+    "name": "Mahdi Hosseinzadeh",
+    "email": "legacyazd@gmail.com",
+    "url": "https://mahozad.ir"
+  },
   "license": "Apache-2.0"
 }
