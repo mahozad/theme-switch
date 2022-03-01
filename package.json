@@ -38,6 +38,9 @@
     "type": "git",
     "url": "https://github.com/mahozad/theme-switch.git"
   },
+  "bugs": {
+    "url": "https://github.com/mahozad/theme-switch/issues"
+  },
   "author": {
     "name": "Mahdi Hosseinzadeh",
     "email": "legacyazd@gmail.com",
