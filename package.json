@@ -26,6 +26,9 @@
   "version": "0.9.0",
   "description": "A toggle button to switch between light/dark/system theme.",
   "main": "theme-switch.js",
+  "files": [
+    "theme-switch.js"
+  ],
   "keywords": [
     "dark",
     "dark-theme",
