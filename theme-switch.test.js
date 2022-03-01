@@ -46,7 +46,7 @@ global.HTMLElement = dom.window.HTMLElement;
 global.localStorage = dom.window.localStorage;
 setSystemThemeTo("light");
 
-const main = require("theme-switch");
+const main = require("./theme-switch");
 
 test(`When system theme is light, getSystemTheme should return "light"`, () => {
     expect(main.getSystemTheme()).toBe("light");
