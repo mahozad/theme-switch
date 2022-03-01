@@ -26,7 +26,13 @@
   "version": "0.9.0",
   "description": "A toggle button for websites.",
   "main": "theme-switch.js",
-  "keywords": [],
+  "keywords": [
+    "dark",
+    "dark-theme",
+    "theme-toggle",
+    "custom-element",
+    "web-components"
+  ],
   "author": "Mahdi Hosseinzadeh",
   "license": "Apache-2.0"
 }
