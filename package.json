@@ -29,6 +29,8 @@
   "files": [
     "theme-switch.js"
   ],
+  "unpkg": "theme-switch.min.js",
+  "jsdelivr": "theme-switch.min.js",
   "keywords": [
     "dark",
     "dark-theme",
