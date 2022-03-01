@@ -8,6 +8,15 @@ const toMatchReferenceSnapshot = configureSnapshots({
     customDiffDir: "snapshot-diffs/",
 });
 const snapshotFileName = "temp-snapshot-for-test.png";
+/**
+ * See https://stackoverflow.com/q/7163061/8583692
+ * Add a local.json file with the content like this:
+ * {
+ *   "chromiumPath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+ * }
+ * The file is intentionally ignored in VCS.
+ */
+const {chromiumPath} = require("./local.json");
 
 expect.extend({ toMatchReferenceSnapshot });
 
@@ -182,7 +191,7 @@ async function takeScreenshot(init, action = () => {}) {
             // channel: "chrome", // this overrides executablePath
             // Download the required version from https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64
             // OR C:\\your_workspace\\node_modules\\puppeteer\\.local-chromium\\win64-(version)\\chrome-win\\chrome.exe
-            executablePath: "C:\\Program Files\\Google\\chrome-for-test\\chrome.exe"
+            executablePath: chromiumPath
         }
     );
 
