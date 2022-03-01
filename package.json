@@ -33,6 +33,11 @@
     "custom-element",
     "web-components"
   ],
+  "homepage": "https://github.com/mahozad/theme-switch",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahozad/theme-switch.git"
+  },
   "author": "Mahdi Hosseinzadeh",
   "license": "Apache-2.0"
 }
