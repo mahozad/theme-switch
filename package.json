@@ -18,7 +18,8 @@
     "test": "jest --env=node --colors test",
     "test-changed": "jest --env=node --colors --only-changed test",
     "test-continuous": "jest --env=node --colors --watch-all test",
-    "test-with-coverage": "jest --env=node --colors --coverage test"
+    "test-with-coverage": "jest --env=node --colors --coverage test",
+    "lint": "eslint theme-switch.js"
   },
   "jest": {
     "verbose": true,
