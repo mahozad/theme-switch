@@ -20,6 +20,10 @@
   },
   "jest": {
     "verbose": true,
+    "reporters": [
+      "default",
+      ["jest-junit", {"outputName": "test-report.xml"}]
+    ],
     "preset": "jest-puppeteer",
     "testURL": "http://localhost/"
   },
