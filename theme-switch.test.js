@@ -133,6 +133,12 @@ test(`When user theme is auto, toggleTheme should update the theme to light`, ()
 });
 
 describe("Screenshot tests", () => {
+    // Increase the timeout of executing all the test suit from
+    // the default 5000 to a greater value to run fine on CI
+    // Also, set the timeout per test for each individual test
+    // See https://github.com/facebook/jest/issues/5055
+    jest.setTimeout(100_000);
+
     // See https://stackoverflow.com/a/53299842/8583692
     // Consider Selenium as an alternative to Puppeteer.
     // Selenium doesn't seem to support screenshot testing feature.
@@ -141,19 +147,19 @@ describe("Screenshot tests", () => {
         await takeScreenshot(() => {localStorage.setItem("theme", "light");});
         const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
-    });
+    }, 100_000);
 
     test(`When user stored theme is dark, the icon should be moon`, async () => {
         await takeScreenshot(() => {localStorage.setItem("theme", "dark");});
         const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
-    });
+    }, 100_000);
 
     test(`When user stored theme is auto, the icon should be auto`, async () => {
         await takeScreenshot(() => {localStorage.setItem("theme", "auto");});
         const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
-    });
+    }, 100_000);
 
     test(`When user stored theme is light, clicking the switch should change the icon to moon`, async () => {
         await takeScreenshot(
@@ -162,7 +168,7 @@ describe("Screenshot tests", () => {
         );
         const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
-    });
+    }, 100_000);
 
     test(`When user stored theme is dark, clicking the switch should change the icon to auto`, async () => {
         await takeScreenshot(
@@ -171,7 +177,7 @@ describe("Screenshot tests", () => {
         );
         const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
-    });
+    }, 100_000);
 
     test(`When user stored theme is auto, clicking the switch should change the icon to light`, async () => {
         await takeScreenshot(
@@ -180,7 +186,7 @@ describe("Screenshot tests", () => {
         );
         const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
-    });
+    }, 100_000);
 
     afterAll(() => {fileSystem.rmSync(snapshotFileName);});
 });
