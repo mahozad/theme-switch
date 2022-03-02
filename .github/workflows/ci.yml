@@ -54,17 +54,10 @@ jobs:
           directory: ./coverage/
           verbose: true
           fail_ci_if_error: false
-
-#  generate-lint:
-#    name: Create lint report
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout the code
-#        uses: actions/checkout@v2
-#      - name: Run lint
-#        run: ./gradlew :piechart:lintDebug --stacktrace
-#      - name: Upload the html report
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: lint-report
-#          path: piechart/build/reports/lint-results-debug.html
+      - name: Run lint
+        run: npm run lint-html
+      - name: Upload the HTML report
+        uses: actions/upload-artifact@v2
+        with:
+          name: lint-report
+          path: lint.html
