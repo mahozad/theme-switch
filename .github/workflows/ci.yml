@@ -48,7 +48,12 @@ jobs:
           path: coverage/
       - name: Send the report to Codecov
         if: ${{ steps.step1.conclusion == 'success' }}
-        run: bash <(curl -s https://codecov.io/bash) -f "coverage/clover.xml"
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./coverage/clover.xml
+          directory: ./coverage/
+          verbose: true
+          fail_ci_if_error: false
 
 #  generate-lint:
 #    name: Create lint report
