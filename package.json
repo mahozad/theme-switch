@@ -7,6 +7,7 @@
     "babel-plugin-rewire-test-env-only": "^1.0.0",
     "jsdom": "^19.0.0",
     "jest": "^27.5.1",
+    "jest-junit": "^13.0.0",
     "jest-puppeteer": "^6.1.0",
     "jest-image-snapshot": "^4.5.1",
     "puppeteer-core": "^13.4.0"
@@ -47,6 +48,9 @@
   },
   "bugs": {
     "url": "https://github.com/mahozad/theme-switch/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "author": {
     "name": "Mahdi Hosseinzadeh",
