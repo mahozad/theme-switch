@@ -25,7 +25,7 @@ jobs:
           echo "{\"chromiumPath\": \"$(which chromium)\"}" > local.json
       - name: Run the tests (with coverage)
         id: steps-test-run
-        run: ./node_modules/.bin/jest --ci --colors --coverage # OR npm test-with-coverage
+        run: ./node_modules/.bin/jest --ci --colors --coverage # OR npm run test-with-coverage
       - name: Upload the test report
         if: always() # Run even if the previous steps failed
         uses: actions/upload-artifact@v2
