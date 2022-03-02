@@ -9,6 +9,7 @@
     "jest": "^27.5.1",
     "jest-junit": "^13.0.0",
     "jest-puppeteer": "^6.1.0",
+    "jest-html-reporter": "^3.4.2",
     "jest-image-snapshot": "^4.5.1",
     "puppeteer-core": "^13.4.0"
   },
@@ -22,7 +23,8 @@
     "verbose": true,
     "reporters": [
       "default",
-      ["jest-junit", {"outputName": "test-report.xml"}]
+      ["jest-junit", {"outputName": "test-report.xml"}],
+      ["jest-html-reporter", {"pageTitle": "Test Report"}]
     ],
     "preset": "jest-puppeteer",
     "testURL": "http://localhost/"
