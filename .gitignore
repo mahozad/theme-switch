@@ -5,3 +5,4 @@ temp-snapshot-for-test.png
 jest-screenshot-report/
 local.json
 test-report.*
+lint.html
