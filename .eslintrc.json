@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {"ecmaVersion": "latest"},
+    "rules": {
+        "no-tabs": "warn",
+        "camelcase": "warn",
+        "indent": ["warn", 4],
+        "max-len": ["warn", 60],
+        "max-params": ["warn", 3],
+        "quotes": ["warn", "double"],
+        "comma-dangle": ["warn", "never"],
+        "keyword-spacing": ["warn", {"before": true, "after": true}],
+        "spaced-comment": ["warn", "always"],
+        "prefer-arrow-callback": "warn",
+        "semi": ["warn", "always"],
+        "prefer-template": "warn",
+        "prefer-const": "warn"
+    }
+}
