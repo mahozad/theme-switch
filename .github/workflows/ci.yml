@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run-tests:
+    name: Test the project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        id: step1
+        uses: actions/checkout@v3
+      - name: Setup the Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install the package and its dependencies
+        run: npm install
+      - name: Set path to a chromium browser (needed for screenshot tests)
+        # See https://stackoverflow.com/a/57627150/8583692
+        # and https://stackoverflow.com/a/4181721/8583692
+        run: |
+          echo "{\"chromiumPath\": \"$(which chromium)\"}" > local.json
+      - name: Run the tests (with coverage)
+        run: ./node_modules/.bin/jest --ci --colors --coverage # OR npm test-with-coverage
+      - name: Upload the test report
+        if: always() # Run even if the previous steps failed
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-report
+          path: |
+            test-report.xml
+            test-report.html
+      - name: Upload the test coverage report
+        if: ${{ steps.step1.conclusion == 'success' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-coverage-report
+          path: coverage/
+      - name: Download coverage report
+        if: ${{ steps.step1.conclusion == 'success' }}
+        uses: actions/download-artifact@v2
+        with:
+          name: test-coverage-report
+          path: coverage/
+      - name: Send the report to Codecov
+        if: ${{ steps.step1.conclusion == 'success' }}
+        run: bash <(curl -s https://codecov.io/bash) -f "coverage/clover.xml"
+
+#  generate-lint:
+#    name: Create lint report
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout the code
+#        uses: actions/checkout@v2
+#      - name: Run lint
+#        run: ./gradlew :piechart:lintDebug --stacktrace
+#      - name: Upload the html report
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: lint-report
+#          path: piechart/build/reports/lint-results-debug.html
