@@ -56,7 +56,7 @@ jobs:
           fail_ci_if_error: false
       - name: Run lint
         run: npm run lint-html
-      - name: Upload the HTML report
+      - name: Upload the lint HTML report
         uses: actions/upload-artifact@v2
         with:
           name: lint-report
