@@ -102,3 +102,4 @@ TODO:
   - Try to add the library to [docusaurus](https://github.com/facebook/docusaurus)
   - Try to add the library to [dokka](https://github.com/Kotlin/dokka)
   - Try to add the library to [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
+  - See [chrome auto dark feature for android](https://developer.chrome.com/blog/new-in-chrome-98/#autodark-opt-out)
