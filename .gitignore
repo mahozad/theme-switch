@@ -4,4 +4,4 @@ package-lock.json
 temp-snapshot-for-test.png
 jest-screenshot-report/
 local.json
-test-report.xml
+test-report.*
