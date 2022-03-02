@@ -48,7 +48,7 @@ jobs:
 
   merge-into-prod:
     needs: [ run-tests ]
-    name: Rebase (fast forward) the prod branch onto the master
+    name: Rebase (fast forward) the prod branch onto main
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
