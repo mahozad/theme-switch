@@ -38,13 +38,13 @@ jobs:
         if: ${{ steps.steps-test-run.conclusion == 'success' }}
         uses: actions/upload-artifact@v2
         with:
-          name: test-coverage-report
+          name: coverage-report
           path: coverage/
       - name: Download coverage report
         if: ${{ steps.steps-test-run.conclusion == 'success' }}
         uses: actions/download-artifact@v2
         with:
-          name: test-coverage-report
+          name: coverage-report
           path: coverage/
       - name: Send the report to Codecov
         if: ${{ steps.steps-test-run.conclusion == 'success' }}
