@@ -4,8 +4,7 @@
 
 <div align="center">
 
-![Animated icon on light](animation.svg#gh-light-mode-only)
-![Animated icon on dark](animation-on-dark.svg#gh-dark-mode-only)
+![Animated icon](animation.svg)
 
 </div>
 
