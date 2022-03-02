@@ -82,3 +82,20 @@ jobs:
       #   run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - name: Publish the package to GitHub Packages registry # And others registries like npm, if authenticated
         run: npm publish
+
+  create-github-release:
+    needs: [ publish-the-package ]
+    name: Create a new release in the GitHub repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+      - name: Generate the changelog
+        run: kotlin .github/scripts/generate-github-changelog.main.kts
+      - name: Create the release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: changelog.txt
+          files: theme-switch.min.js
