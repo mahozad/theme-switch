@@ -96,6 +96,7 @@ a custom element for toggling dark/light theme.
 ---
 
 TODO:
+  - See [this comprehensive GitHub repo about custom elements](https://github.com/mateusortiz/webcomponents-the-right-way)
   - Try to publish the library in https://www.webcomponents.org/
   - Try to add the library to [rufus site](https://github.com/pbatard/rufus-web)
   - Try to add the library to [jest site](https://github.com/facebook/jest)(probably its `docs/` directory. see [this PR](https://github.com/facebook/jest/pull/11021))
