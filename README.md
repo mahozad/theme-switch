@@ -31,6 +31,25 @@ Download the [theme-switch.js](theme-switch.js) file and reference it at the top
 </head>
 ```
 
+Alternative ways to load the script:
+
+  - Use the latest version:
+    ```html
+    <script src="https://unpkg.com/@mahozad/theme-switch"></script>
+    ```
+    or
+    ```html
+    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch"></script>
+    ```
+  - Use a specific version:
+    ```html
+    <script src="https://unpkg.com/@mahozad/theme-switch@0.9.1"></script>
+    ```
+    or
+    ```html
+    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch@0.9.1"></script>
+    ```
+
 The element is called `<theme-switch>`. Use it just like you would use a regular element (e.g. `div`):
 
 ```html
