@@ -65,6 +65,8 @@
 * - YUI compressor (seems to be deprecated and removed in newer versions of IntelliJ)
 * */
 
+// TODO: extract Jest configuration to a jest.config.js file
+
 /*
 * NOTE: To avoid name collisions if another script declares variables or functions with the same name
 *  as ours (i.e. defining them in the global scope) and browsers complaining about identifiers
