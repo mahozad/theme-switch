@@ -17,7 +17,7 @@
 * browsers do not know about `exports` or `require` functions and throw error.
 * If you want to use this type of module in browsers, you should bundle the files
 * (merge all of them into a single JS file which eliminates the need for exports and require)
-* with tools like babel, webpack, etc.
+* with tools like babel, webpack, rollup, etc.
 *
 * ES6 modules use `export` and `import` keywords for the same purpose.
 *
@@ -77,8 +77,13 @@
 * See
 *   - https://stackoverflow.com/a/32750216/8583692
 *   - https://stackoverflow.com/q/8228281/8583692
-* We could also do something like this library:
+*   - https://stackoverflow.com/q/881515/8583692
+*   - https://stackoverflow.com/q/39388777/8583692
+* We could also do something like these libraries:
 *   - https://github.com/juliangarnier/anime/blob/master/build.js
+*   - https://github.com/mrdoob/three.js/
+*   - https://github.com/moment/moment
+*   - https://github.com/floating-ui/floating-ui
 * */
 
 const ICON_SIZE = 24 /* px */;
