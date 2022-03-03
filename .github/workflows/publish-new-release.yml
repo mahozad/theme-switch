@@ -26,7 +26,7 @@ jobs:
         run: ./node_modules/.bin/jest --ci --colors --coverage
       - name: Upload the test report
         if: always() # Run even if the previous steps failed
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test-report
           path: |
@@ -34,14 +34,14 @@ jobs:
             test-report.html
       - name: Upload the test coverage report
         if: ${{ steps.steps-test-run.conclusion == 'success' }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: coverage-report
           path: coverage/
       - name: Run lint
         run: npm run lint-html
       - name: Upload the lint HTML report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: lint-report
           path: lint.html
