@@ -65,6 +65,20 @@
 * - YUI compressor (seems to be deprecated and removed in newer versions of IntelliJ)
 * */
 
+/*
+* NOTE: To avoid name collisions if another script declares variables or functions with the same name
+*  as ours (i.e. defining them in the global scope) and browsers complaining about identifiers
+*  being redeclared, we wrap all our code in a closure or IEFE (sort of creating a namespace for it).
+* For examples, see these libraries:
+*   - https://github.com/highlightjs/highlight.js/blob/main/src/highlight.js
+*   - https://github.com/jashkenas/underscore/blob/master/underscore.js
+* See
+*   - https://stackoverflow.com/a/32750216/8583692
+*   - https://stackoverflow.com/q/8228281/8583692
+* We could also do something like this library:
+*   - https://github.com/juliangarnier/anime/blob/master/build.js
+* */
+
 const ICON_SIZE = 24 /* px */;
 const THEME_KEY = "theme";
 const THEME_AUTO = "auto";
