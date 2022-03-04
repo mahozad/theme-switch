@@ -77,6 +77,7 @@
 *   - https://github.com/jashkenas/underscore/blob/master/underscore.js
 * See
 *   - https://www.w3schools.com/js/js_scope.asp
+*   - https://github.com/jhnns/rewire/issues/136#issuecomment-380829197
 *   - https://stackoverflow.com/a/32750216/8583692
 *   - https://stackoverflow.com/q/8228281/8583692
 *   - https://stackoverflow.com/q/881515/8583692
