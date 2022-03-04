@@ -1,5 +1,11 @@
 # History of notable changes introduced in each version
 
+## v0.9.2 (2022-03-04)
+#### Bug fixes
+  - Wrap the whole code (minified version) in an IIFE to avoid exposing variables and functions in global scope ([`a659c312`](https://github.com/mahozad/theme-switch/commit/a659c312))
+
+[All commits since version 0.9.1](https://github.com/mahozad/theme-switch/compare/v0.9.1...v0.9.2)
+
 ## v0.9.1 (2022-03-01)
 This version had no changes to the code.
 
