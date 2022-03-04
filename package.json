@@ -59,9 +59,6 @@
   "bugs": {
     "url": "https://github.com/mahozad/theme-switch/issues"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "author": {
     "name": "Mahdi Hosseinzadeh",
     "email": "legacyazd@gmail.com",
