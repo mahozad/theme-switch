@@ -5,7 +5,7 @@ This version had no changes to the code.
 
 [All commits since version 0.9.0](https://github.com/mahozad/theme-switch/compare/v0.9.0...v0.9.1)
 
-## v0.9.0 (2021-08-25)
+## v0.9.0 (2021-03-01)
 This is the first release of the library.
 
 
