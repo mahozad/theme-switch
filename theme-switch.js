@@ -71,7 +71,10 @@
 /*
 * NOTE: To avoid name collisions if another script declares variables or functions with the same name
 *  as ours (i.e. defining them in the global scope) and browsers complaining about identifiers
-*  being redeclared, we wrap all our code in a closure or IEFE (sort of creating a namespace for it).
+*  being redeclared, we wrap all our code in a closure or IIFE (sort of creating a namespace for it).
+*  ES6 now supports block scope as well (simply wrapping the whole code in {}).
+*  I am now using the babel-plugin-iife-wrap plugin to wrap the whole result (minified)
+*  code in an IIFE.
 * For examples, see these libraries:
 *   - https://github.com/highlightjs/highlight.js/blob/main/src/highlight.js
 *   - https://github.com/jashkenas/underscore/blob/master/underscore.js
