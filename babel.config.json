@@ -11,6 +11,7 @@
     ]
   ],
   "plugins": [
-    "rewire-test-env-only"
+    "rewire-test-env-only",
+    "iife-wrap"
   ]
 }
