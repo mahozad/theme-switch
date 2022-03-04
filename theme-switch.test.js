@@ -97,6 +97,7 @@ test(`getUserThemeSelection should return "auto" when user had previously select
  * See https://stackoverflow.com/q/51269431/8583692
  * and https://stackoverflow.com/q/51900413/8583692
  * and https://github.com/speedskater/babel-plugin-rewire
+ * and https://github.com/jhnns/rewire/issues/136#issuecomment-380829197
  *
  * If we wanted to mock a regular function, we could have used any of these approaches:
  *
