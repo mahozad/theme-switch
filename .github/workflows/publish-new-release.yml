@@ -74,13 +74,15 @@ jobs:
       - name: Install the package and its dependencies
         run: npm install
       # See https://sevic.dev/npm-publish-github-actions/
+      # The npm client is able to work with only one registry at a time:
+      # It is not possible to simultaneously use both npmjs.com and GitHub Packages registry.
       - name: Set npm package registry to GitHub Packages
         run: npm config set registry https://npm.pkg.github.com
       - name: Authenticate to GitHub Packages registry
         run: npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
       # - name: Authenticate to npm registry
       #   run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-      - name: Publish the package to GitHub Packages registry # And others registries like npm, if authenticated
+      - name: Publish the package to GitHub Packages registry
         run: npm publish
 
   create-github-release:
