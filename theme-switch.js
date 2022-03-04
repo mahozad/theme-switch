@@ -8,13 +8,13 @@
 /*
 * There are two types of modules mostly used in JavaScript.
 * One is created by Node.js and is used inside the Node environment
-* and has been available for a long time.
+* and has been available for a long time. It is called CommonJS.
 * Another is the standard native JavaScript modules introduced in ES6.
 *
-* The Node type uses `module.exports` (or simply `exports`) and `require()`
-* to export and import functions, properties, etc.
-* Because these are arbitrary objects and functions created just in Node environment,
-* browsers do not know about `exports` or `require` functions and throw error.
+* The Node variant (CommonJS) uses `module.exports` (or simply `exports`) and
+* `require()` to export and import scripts, functions, variables, etc.
+* Browsers do not know about `exports` or `require` functions and throw error
+* because they are objects and functions created just in Node environment and set globally.
 * If you want to use this type of module in browsers, you should bundle the files
 * (merge all of them into a single JS file which eliminates the need for exports and require)
 * with tools like babel, webpack, rollup, etc.
@@ -37,7 +37,7 @@
 * Example ES6 modules:
 *
 * my-calculator.js
-* const PI = 3.14;
+* export const PI = 3.14;
 * export function calculate() {}
 *
 * main.js
@@ -45,7 +45,8 @@
 * let perimeter = 2 * PI;
 * let result = calculate();
 *
-* See https://stackoverflow.com/a/9901097/8583692
+* See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+* and https://stackoverflow.com/a/9901097/8583692
 * */
 
 /*
