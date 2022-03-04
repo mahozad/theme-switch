@@ -76,10 +76,12 @@
 *   - https://github.com/highlightjs/highlight.js/blob/main/src/highlight.js
 *   - https://github.com/jashkenas/underscore/blob/master/underscore.js
 * See
+*   - https://www.w3schools.com/js/js_scope.asp
 *   - https://stackoverflow.com/a/32750216/8583692
 *   - https://stackoverflow.com/q/8228281/8583692
 *   - https://stackoverflow.com/q/881515/8583692
 *   - https://stackoverflow.com/q/39388777/8583692
+*   - https://stackoverflow.com/a/47207686/8583692
 * We could also do something like these libraries:
 *   - https://github.com/juliangarnier/anime/blob/master/build.js
 *   - https://github.com/mrdoob/three.js/
