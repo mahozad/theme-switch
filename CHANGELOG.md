@@ -1,5 +1,11 @@
 # History of notable changes introduced in each version
 
+## v1.1.0-rc (2022-03-06)
+#### Removals
+  - Remove the unnecessary Node.js exports ([`cd296e55`](https://github.com/mahozad/theme-switch/commit/cd296e55))
+
+[All commits since version 0.9.2](https://github.com/mahozad/theme-switch/compare/v0.9.2...v1.0.0-rc)
+
 ## v0.9.2 (2022-03-04)
 #### Bug fixes
   - Wrap the whole code (minified version) in an IIFE to avoid exposing variables and functions in global scope ([`a659c312`](https://github.com/mahozad/theme-switch/commit/a659c312))
