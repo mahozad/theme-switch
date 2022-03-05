@@ -6,3 +6,4 @@ jest-screenshot-report/
 local.json
 test-report.*
 lint.html
+.idea/misc.xml
