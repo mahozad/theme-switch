@@ -10,78 +10,56 @@
 
 ## HTML light/dark/system theme switch button
 
+A [custom HTML element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
+called `<theme-switch>`.
 This widget toggles between light theme, dark theme, and automatic theme (OS theme).
 It works by adding a custom attribute named `data-theme` to the `html` element of your page.
-It is up to you to style your page the way you like based on the value of that attribute.
+You can style your page the way you like based on the value of that attribute.
 See below for an example.
 
-It was inspired by [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle)
-and [this YouTube video](https://youtu.be/kZiS1QStIWc).
+It was inspired by [this YouTube video](https://youtu.be/kZiS1QStIWc)
+and [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle).
 
-### Use in your page
+### Use it in your page
 
-Download the [theme-switch.js](theme-switch.js) file and reference it at the top of your HTML:
+Download the [theme-switch.min.js](theme-switch.min.js) file and reference it at the top of your HTML:
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>My page title</title>
   <!-- Do not use defer or async attributes -->
-  <script src="theme-switch.js"></script>
+  <script src="theme-switch.min.js"></script>
   <!-- Rest of the styles, scripts, etc. -->
 </head>
+<body>
+
+  <theme-switch></theme-switch>
+
+</body>
 ```
 
-Alternative ways to load the script:
+You can also use CDNs instead of downloading the script manually and hosting it yourself:
 
-  - Use the latest version:
+  - Using the latest version:
     ```html
     <script src="https://unpkg.com/@mahozad/theme-switch"></script>
+    <!-- OR -->
+    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch"></script>    
     ```
-    or
+  - Using a specific version:
     ```html
-    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch"></script>
-    ```
-  - Use a specific version:
-    ```html
-    <script src="https://unpkg.com/@mahozad/theme-switch@0.9.1"></script>
-    ```
-    or
-    ```html
-    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch@0.9.1"></script>
+    <script src="https://unpkg.com/@mahozad/theme-switch@0.9.2"></script>
+    <!-- OR -->
+    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch@0.9.2"></script>
     ```
 
-The element is called `<theme-switch>`. Use it just like you would use a regular element (e.g. `div`):
+### Styling the element
 
-```html
-<theme-switch></theme-switch>
-```
-
-In your CSS stylesheet, specify your desired styles for light and dark themes.
-One way is to define [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) for your colors, sizes, etc. and redefine them (if needed) with new values for the dark theme:
-
-```css
-/* These are applied for the default (light) theme (or when auto, and the system theme is light) */
-:root {
-    --my-page-background-color: #fff;
-    --my-icons-color: #000;
-    --my-primary-color: red;
-}
-
-/* Here, we redeclare properties that should have different values for the dark theme */
-[data-theme="dark"] {
-    --my-page-background-color: #112233;
-    --my-icons-color: #efefef;
-}
-
-body {
-    background: var(--my-page-background-color);
-}
-```
-
-You can also style the switch element itself however you want, again, just like regular elements:
+A custom element is no different from HTML built-in elements.  
+Use and style it however you want just like you would use and style a regular element (e.g. a `div`).
 
 ```css
 theme-switch {
@@ -90,8 +68,35 @@ theme-switch {
     background: #888;
     
     /* There is a special property called --theme-switch-icon-color
-     * which you can set, to change the color of the switch icon */
-    --theme-switch-icon-color: var(--my-icons-color);
+     * which you can set, to change the color of the icon in switch */
+    --theme-switch-icon-color: #aabbcc;
+}
+```
+
+### Example styling of a page
+
+In one of your CSS stylesheets, specify your desired styles for light and dark themes.
+One way is to define [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) for your colors, sizes, etc. and redefine them (if needed) with new values for the dark theme:
+
+```css
+/* These are applied for the default (light) theme */
+/* (or when the toggle is auto, and the OS theme is light) */
+:root {
+    --my-page-background-color: #fff;
+    --my-icons-color: #000;
+    --my-primary-color: red;
+}
+
+/* These are applied for the dark theme */
+/* (or when the toggle is auto, and the OS theme is dark) */
+/* If a property has the same value for both light and dark themes, no need to redeclare it here */
+[data-theme="dark"] {
+    --my-page-background-color: #112233;
+    --my-icons-color: #efefef;
+}
+
+body {
+    background: var(--my-page-background-color);
 }
 ```
 
