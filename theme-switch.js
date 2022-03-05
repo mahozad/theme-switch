@@ -276,20 +276,19 @@ function animateThemeButtonIconToDark() {
     shadowRoot.getElementById("eclipse-anim-come").beginElement();
 }
 
-// Export for tests run by npm.
+// Export for tests run by npm (no longer needed; kept for future reference)
 // See https://stackoverflow.com/q/63752210/8583692
 // and https://stackoverflow.com/a/54680602/8583692
 // and https://stackoverflow.com/q/43042889/8583692
 // and https://stackoverflow.com/a/1984728/8583692
-if (typeof module !== "undefined") {
-    module.exports = {
-        updateTheme,
-        toggleTheme,
-        getSystemTheme,
-        getUserThemeSelection,
-        getInitialStateForIcon,
-        animateThemeButtonIconToAuto,
-        animateThemeButtonIconToDark,
-        animateThemeButtonIconToLight
-    };
-}
+// if (typeof module !== "undefined") {
+//     module.exports = {
+//         updateTheme,
+//         toggleTheme,
+//         getSystemTheme,
+//         getInitialStateForIcon,
+//         animateThemeButtonIconToAuto,
+//         animateThemeButtonIconToDark,
+//         animateThemeButtonIconToLight
+//     };
+// }

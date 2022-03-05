@@ -47,40 +47,46 @@ global.localStorage = dom.window.localStorage;
 setSystemThemeTo("light");
 
 const main = require("./theme-switch");
+// Could have instead exported the functions in theme-switch.js
+const mainInternals = {
+    toggleTheme: main.__get__("toggleTheme"),
+    getSystemTheme: main.__get__("getSystemTheme"),
+    getUserThemeSelection: main.__get__("getUserThemeSelection")
+};
 
 test(`When system theme is light, getSystemTheme should return "light"`, () => {
-    expect(main.getSystemTheme()).toBe("light");
+    expect(mainInternals.getSystemTheme()).toBe("light");
 });
 
 test(`When system theme is dark, getSystemTheme should return "dark"`, () => {
     setSystemThemeTo("dark");
-    expect(main.getSystemTheme()).toBe("dark");
+    expect(mainInternals.getSystemTheme()).toBe("dark");
 });
 
 test(`For first-time users, getUserThemeSelection should return the default theme`, () => {
     localStorage.clear();
-    expect(main.getUserThemeSelection()).toBe("light");
+    expect(mainInternals.getUserThemeSelection()).toBe("light");
 });
 
 test(`For first-time users, getUserThemeSelection should return the default theme irrespective of the system theme`, () => {
     localStorage.clear();
     setSystemThemeTo("dark");
-    expect(main.getUserThemeSelection()).toBe("light");
+    expect(mainInternals.getUserThemeSelection()).toBe("light");
 });
 
 test(`getUserThemeSelection should return "light" when user had previously selected "light"`, () => {
     localStorage.setItem("theme", "light");
-    expect(main.getUserThemeSelection()).toBe("light");
+    expect(mainInternals.getUserThemeSelection()).toBe("light");
 });
 
 test(`getUserThemeSelection should return "dark" when user had previously selected "dark"`, () => {
     localStorage.setItem("theme", "dark");
-    expect(main.getUserThemeSelection()).toBe("dark");
+    expect(mainInternals.getUserThemeSelection()).toBe("dark");
 });
 
 test(`getUserThemeSelection should return "auto" when user had previously selected "auto"`, () => {
     localStorage.setItem("theme", "auto");
-    expect(main.getUserThemeSelection()).toBe("auto");
+    expect(mainInternals.getUserThemeSelection()).toBe("auto");
 });
 
 /**
@@ -98,6 +104,7 @@ test(`getUserThemeSelection should return "auto" when user had previously select
  * and https://stackoverflow.com/q/51900413/8583692
  * and https://github.com/speedskater/babel-plugin-rewire
  * and https://github.com/jhnns/rewire/issues/136#issuecomment-380829197
+ * There is also another plugin called rewire.
  *
  * If we wanted to mock a regular function, we could have used any of these approaches:
  *
@@ -115,22 +122,22 @@ test(`getUserThemeSelection should return "auto" when user had previously select
 test(`When user theme is light, toggleTheme should update the theme to dark`, () => {
     main.__Rewire__("animateThemeButtonIconToDark", () => {});
     localStorage.setItem("theme", "light");
-    main.toggleTheme();
-    expect(main.getUserThemeSelection()).toBe("dark");
+    mainInternals.toggleTheme();
+    expect(mainInternals.getUserThemeSelection()).toBe("dark");
 });
 
 test(`When user theme is dark, toggleTheme should update the theme to auto`, () => {
     main.__Rewire__("animateThemeButtonIconToAuto", () => {});
     localStorage.setItem("theme", "dark");
-    main.toggleTheme();
-    expect(main.getUserThemeSelection()).toBe("auto");
+    mainInternals.toggleTheme();
+    expect(mainInternals.getUserThemeSelection()).toBe("auto");
 });
 
 test(`When user theme is auto, toggleTheme should update the theme to light`, () => {
     main.__Rewire__("animateThemeButtonIconToLight", () => {});
     localStorage.setItem("theme", "auto");
-    main.toggleTheme();
-    expect(main.getUserThemeSelection()).toBe("light");
+    mainInternals.toggleTheme();
+    expect(mainInternals.getUserThemeSelection()).toBe("light");
 });
 
 describe("Screenshot tests", () => {
