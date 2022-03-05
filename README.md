@@ -8,9 +8,9 @@
 
 </div>
 
-## HTML light/dark/system theme switch button
+# HTML light/dark/system theme switch button
 
-A [custom HTML element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
+A simple [custom HTML element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
 called `<theme-switch>`.
 This widget toggles between light theme, dark theme, and automatic theme (OS theme).
 It works by adding a custom attribute named `data-theme` to the `html` element of your page.
@@ -20,7 +20,7 @@ See below for an example.
 It was inspired by [this YouTube video](https://youtu.be/kZiS1QStIWc)
 and [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle).
 
-### Use it in your page
+## Use it in your page
 
 Download the [theme-switch.min.js](theme-switch.min.js) file and reference it at the top of your HTML:
 
@@ -56,10 +56,10 @@ You can also use CDNs instead of downloading the script manually and hosting it 
     <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch@0.9.2"></script>
     ```
 
-### Styling the element
+## Style the element
 
 A custom element is no different from HTML built-in elements.  
-Use and style it however you want just like you would use and style a regular element (e.g. a `div`).
+Use and style it however you want just like you would use and style a regular element (e.g. a `div`):
 
 ```css
 theme-switch {
@@ -73,9 +73,9 @@ theme-switch {
 }
 ```
 
-### Example styling of a page
+## Example styling of a page based on the selected theme
 
-In one of your CSS stylesheets, specify your desired styles for light and dark themes.
+In your CSS stylesheet, specify your desired styles for light and dark themes.
 One way is to define [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) for your colors, sizes, etc. and redefine them (if needed) with new values for the dark theme:
 
 ```css
@@ -102,23 +102,17 @@ body {
 
 ---
 
-See [this YouTube video](https://youtu.be/kZiS1QStIWc).
+See [this article](https://css-tricks.com/web-components-are-easier-than-you-think/)
+which is about creating HTML custom elements.
 
-See [this tutorial](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) and
-[this article](https://css-tricks.com/web-components-are-easier-than-you-think/)
-for creating HTML custom elements.
-
-See the icon for switching themes (located in top right corner) on
-[Google Fonts site](https://fonts.google.com/icons)
+See the icon for switching themes (located in the top right corner) on
+[Google Fonts site](https://fonts.google.com/icons).
 
 See [this article](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web)
 for implementing dark/light theme on sites.
 
 See [this post](https://stackoverflow.com/q/56300132/8583692) for how to override
-dark/light theme for site.
-
-See [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle) providing
-a custom element for toggling dark/light theme.
+dark/light theme for a site.
 
 ---
 
