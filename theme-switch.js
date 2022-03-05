@@ -50,7 +50,7 @@
 * */
 
 /*
-* Minify the script either through command line with babel
+* Minify the script either through command line with babel:
 * - babel theme-switch.js --source-maps --out-file result.min.js
 * or with babel-minify (also has an alias called minify) which is useful if
 * you don't already use babel (as a preset) or want to run minification standalone.
@@ -64,6 +64,9 @@
 *   this bug: https://github.com/babel/babel/issues/5261 ("sourceMaps": "inline" works, however)
 * - UglifyJS
 * - YUI compressor (seems to be deprecated and removed in newer versions of IntelliJ)
+*
+* Babel preset-env inserts a semicolon at the start of the minified file.
+* See why: https://stackoverflow.com/q/1873983/8583692
 * */
 
 // TODO: extract Jest configuration to a jest.config.js file
