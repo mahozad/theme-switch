@@ -1,6 +1,7 @@
 {
   "minified": true,
   "comments": false,
+  "sourceMaps": "both",
   "presets": [
     [
       "minify",

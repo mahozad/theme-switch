@@ -51,7 +51,7 @@
 
 /*
 * Minify the script either through command line with babel
-* - babel theme-switch.js --presets minify --source-maps --out-file result.min.js
+* - babel theme-switch.js --source-maps --out-file result.min.js
 * or with babel-minify (also has an alias called minify) which is useful if
 * you don't already use babel (as a preset) or want to run minification standalone.
 * Note that it does not take into account babel.config.json settings.
@@ -59,7 +59,7 @@
 * Or automate it with IntelliJ file watcher
 * - babel
 *   + program: $ProjectFileDir$\node_modules\.bin\babel
-*   + arguments: $FilePathRelativeToProjectRoot$ --out-file $FileNameWithoutExtension$.min.js --presets minify --source-maps
+*   + arguments: $FilePathRelativeToProjectRoot$ --out-file $FileNameWithoutExtension$.min.js --source-maps
 *   Note that setting "sourceMaps": "true" in babel.config.json does not work because of
 *   this bug: https://github.com/babel/babel/issues/5261 ("sourceMaps": "inline" works, however)
 * - UglifyJS
