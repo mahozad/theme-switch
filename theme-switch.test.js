@@ -235,7 +235,7 @@ describe("Screenshot tests", () => {
     afterAll(() => {fileSystem.rmSync(snapshotFileName);});
 });
 
-async function takeScreenshot(init, action = () => {}, pageHTML = "test.html") {
+async function takeScreenshot(init, action = () => {}, pageHTML = "test1.html") {
     const browser = await puppeteer.launch({
             headless: true, // If false, opens the browser UI
             // channel: "chrome", // this overrides executablePath
