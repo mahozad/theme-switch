@@ -25,6 +25,8 @@ expect.extend({ toMatchReferenceSnapshot });
 //  - Duplicate <theme-switch> elements
 // See https://github.com/chaijs/type-detect/issues/98
 // See https://stackoverflow.com/a/51702674/8583692
+// This HTML is used to create window, localstorage, etc. and is used for unit tests.
+// Screenshot tests use their own HTML file.
 const dom = new JSDOM(`
     <!DOCTYPE html>
     <html lang="en">
