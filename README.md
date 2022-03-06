@@ -109,7 +109,7 @@ body {
 From command line, install the library:
 
 ```shell
-npm install @mahozad/theme-switch
+npm install --save @mahozad/theme-switch
 ```
 
 In your *angular.json* file at the root of your project update the `scripts` property like this:
