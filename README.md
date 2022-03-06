@@ -100,6 +100,53 @@ body {
 }
 ```
 
+## Use it in Angular
+
+<details>
+
+<summary>Click to expand</summary>
+
+From command line, install the library:
+
+```shell
+npm install @mahozad/theme-switch
+```
+
+In your *angular.json* file at the root of your project update the `scripts` property like this:
+
+```json
+"scripts": [
+  {
+    "input": "node_modules/@mahozad/theme-switch/theme-switch.min.js",
+    "inject": false,
+    "bundleName": "theme-switch"
+  }
+]
+```
+
+Add the following to your *app.module.ts* file to enable HTML custom elements:
+
+```typescript
+@NgModule({
+    // ...
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+```
+
+In `<head>` of your *index.html* file add the script just as described above:
+
+```html
+<script src="theme-switch.js"></script>
+```
+
+Finally, use the element wherever you want:
+
+```html
+<theme-switch></theme-switch>
+```
+
+</details>
+
 ---
 
 See [this article](https://css-tricks.com/web-components-are-easier-than-you-think/)
