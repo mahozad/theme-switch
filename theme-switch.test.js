@@ -215,7 +215,7 @@ describe("Screenshot tests", () => {
     test(`When user specifies a custom color for switch icon in a CSS rule with low specificity (like html{}), the colors should be applied`, async () => {
         await takeScreenshot(
             () => {localStorage.setItem("theme", "light");},
-            (element) => {},
+            () => {},
             "test2.html"
         );
         const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
@@ -227,11 +227,7 @@ describe("Screenshot tests", () => {
     // and https://stackoverflow.com/q/47144187/8583692
     test(`When user specifies hidden attribute on the element, element should be hidden`, async () => {
         const action = async () => {
-            await takeScreenshot(
-                () => {localStorage.setItem("theme", "light");},
-                () => {},
-                "test3.html"
-            );
+            await takeScreenshot(() => {}, () => {}, "test3.html");
         };
         await expect(action).rejects.toThrowError("Node is either not visible or not an HTMLElement");
     }, 100_000);
