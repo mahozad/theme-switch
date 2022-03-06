@@ -1,5 +1,11 @@
 # History of notable changes introduced in each version
 
+## v1.0.0 (2022-03-06)
+#### Bug fixes
+  - Fix the bug with sun rays color not being affected by the `--theme-switch-icon-color` CSS property ([`c90d7874`](https://github.com/mahozad/theme-switch/commit/c90d7874))
+
+[All commits since version 1.0.0-rc](https://github.com/mahozad/theme-switch/compare/v1.0.0-rc...v1.0.0)
+
 ## v1.0.0-rc (2022-03-06)
 #### Removals
   - Remove the unnecessary Node.js exports ([`cd296e55`](https://github.com/mahozad/theme-switch/commit/cd296e55))
