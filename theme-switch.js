@@ -97,6 +97,7 @@
 * */
 
 const ICON_SIZE = 24 /* px */;
+const ICON_COLOR = "#000";
 const THEME_KEY = "theme";
 const THEME_AUTO = "auto";
 const THEME_DARK = "dark";
@@ -200,9 +201,9 @@ function generateStyle() {
         cursor: pointer;
     }
 
-    #circle { fill: var(--theme-switch-icon-color, #000); }
+    #circle { fill: var(--theme-switch-icon-color, ${ICON_COLOR}); }
 
-    #rays { stroke: var(--theme-switch-icon-color, #000); }
+    #rays { stroke: var(--theme-switch-icon-color, ${ICON_COLOR}); }
     `;
 }
 
