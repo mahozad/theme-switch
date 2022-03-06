@@ -260,8 +260,14 @@ async function takeScreenshot(init, action = () => {}, pageHTML = "test.html") {
     // Wait for the action or element animation to finish
     await page.waitForTimeout(1000);
 
-    await element.screenshot({path: snapshotFileName});
-    await browser.close();
+    try {
+        await element.screenshot({path: snapshotFileName});
+    } finally {
+        // NOTE: This call should be in finally block so if taking screenshot
+        //  threw any error then the browser is closed no matter what to avoid
+        //  the tests not being finished (running forever)
+        await browser.close();
+    }
 }
 
 // console.log(`\u001B[32m✔️\u001B[39m Tests passed`);
