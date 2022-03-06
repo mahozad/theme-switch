@@ -1,10 +1,9 @@
 :root {
-    --theme-switch-icon-color: #030303;
+    --theme-switch-icon-color: #0ff;
     --theme-switch-bg-color: #ff0;
 }
 
 [data-theme="dark"] {
-    --theme-switch-icon-color: #e5e5e5;
     --theme-switch-bg-color: blue;
     background: #141620;
 }
