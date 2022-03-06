@@ -73,6 +73,9 @@ jobs:
           node-version: '16'
       - name: Install the package and its dependencies
         run: npm install
+      - name: Set path to a chromium browser (needed for screenshot tests)
+        run: |
+          echo "{\"chromiumPath\": \"$(which chromium)\"}" > local.json
       # See https://sevic.dev/npm-publish-github-actions/
       # The npm client is able to work with only one registry at a time:
       # It is not possible to simultaneously use both npmjs.com and GitHub Packages registry.
