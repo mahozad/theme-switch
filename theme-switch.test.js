@@ -220,6 +220,20 @@ describe("Screenshot tests", () => {
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
     }, 100_000);
 
+    // Make the element able to be hidden (with CSS property display: none)
+    // See https://developers.google.com/web/fundamentals/web-components/best-practices
+    // and https://stackoverflow.com/q/47144187/8583692
+    test(`When user specifies hidden attribute on the element, element should be hidden`, async () => {
+        const action = async () => {
+            await takeScreenshot(
+                () => {localStorage.setItem("theme", "light");},
+                () => {},
+                "test3.html"
+            );
+        };
+        await expect(action).rejects.toThrowError("Node is either not visible or not an HTMLElement");
+    }, 100_000);
+
     afterAll(() => {fileSystem.rmSync(snapshotFileName);});
 });
 

@@ -191,6 +191,8 @@ function generateStyle() {
         /* This is for when the element has padding */
         cursor: pointer;
     }
+    
+    :host([hidden]) { display: none; }
 
     button {
         padding: 0;
