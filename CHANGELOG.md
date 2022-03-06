@@ -1,6 +1,6 @@
 # History of notable changes introduced in each version
 
-## v1.1.0-rc (2022-03-06)
+## v1.0.0-rc (2022-03-06)
 #### Removals
   - Remove the unnecessary Node.js exports ([`cd296e55`](https://github.com/mahozad/theme-switch/commit/cd296e55))
 
