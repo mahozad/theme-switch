@@ -200,12 +200,9 @@ function generateStyle() {
         cursor: pointer;
     }
 
-    /* Only change the color of the core and not rays */
-    /* as it seems to make a visually better animation */
-    #circle {
-        fill: var(--theme-switch-icon-color);
-        stroke: var(--theme-switch-icon-color);
-    }
+    #circle { fill: var(--theme-switch-icon-color, #000); }
+
+    #rays { stroke: var(--theme-switch-icon-color, #000); }
     `;
 }
 

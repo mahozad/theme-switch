@@ -196,10 +196,34 @@ describe("Screenshot tests", () => {
         expect(snapshotTakenNow).toMatchReferenceSnapshot();
     }, 100_000);
 
+    test(`When user specifies a custom color for switch icon, the colors should be applied`, async () => {
+        await takeScreenshot(
+            () => {localStorage.setItem("theme", "light");},
+            element => {
+                // See https://stackoverflow.com/a/64487791/8583692
+                element.evaluate((el) => {
+                    el.style.setProperty("--theme-switch-icon-color", "#ffe36e");
+                });
+            }
+        );
+        const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
+        expect(snapshotTakenNow).toMatchReferenceSnapshot();
+    }, 100_000);
+
+    test(`When user specifies a custom color for switch icon in a CSS rule with low specificity (like html{}), the colors should be applied`, async () => {
+        await takeScreenshot(
+            () => {localStorage.setItem("theme", "light");},
+            (element) => {},
+            "test2.html"
+        );
+        const snapshotTakenNow = fileSystem.readFileSync(snapshotFileName);
+        expect(snapshotTakenNow).toMatchReferenceSnapshot();
+    }, 100_000);
+
     afterAll(() => {fileSystem.rmSync(snapshotFileName);});
 });
 
-async function takeScreenshot(init, action = () => {}) {
+async function takeScreenshot(init, action = () => {}, pageHTML = "test.html") {
     const browser = await puppeteer.launch({
             headless: true, // If false, opens the browser UI
             // channel: "chrome", // this overrides executablePath
@@ -213,11 +237,11 @@ async function takeScreenshot(init, action = () => {}) {
     // See https://stackoverflow.com/a/66530593/8583692
     await page.evaluateOnNewDocument(init);
     // page.setContent("<DOCTYPE html><html>...")
-    await page.goto(`file://${__dirname}\\test.html`);
+    await page.goto(`file://${__dirname}\\${pageHTML}`);
 
     const element = await page.$("theme-switch");
     await action(element);
-    // Wait for the element animation to finish
+    // Wait for the action or element animation to finish
     await page.waitForTimeout(1000);
 
     await element.screenshot({path: snapshotFileName});
