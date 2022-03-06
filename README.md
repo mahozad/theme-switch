@@ -139,7 +139,7 @@ In `<head>` of your *index.html* file add the script just as described above:
 <script src="theme-switch.js"></script>
 ```
 
-Finally, use the element wherever you want:
+Finally, use the element anywhere you want:
 
 ```html
 <theme-switch></theme-switch>
