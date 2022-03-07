@@ -246,7 +246,7 @@ async function takeScreenshot(init, action = () => {}, pageHTML = "test1.html") 
     const element = await page.$("theme-switch");
     await action(element);
     // Wait for the action or element animation to finish
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(600);
 
     try {
         return await element.screenshot({ path: snapshotFileName });
