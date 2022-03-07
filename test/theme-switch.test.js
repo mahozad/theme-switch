@@ -28,13 +28,7 @@ const snapshotFileName = "temp-snapshot-for-test.png";
 const { chromiumPath } = require("../local.json");
 
 expect.extend({ toMatchReferenceSnapshot });
-
-// TODO: Also test for the following cases:
-//  - No <theme-switch> element
-//  - Duplicate <theme-switch> elements
-
 setSystemThemeTo("light");
-
 const main = require("../theme-switch");
 // Could have instead exported the functions in theme-switch.js
 const mainInternals = {
@@ -229,6 +223,16 @@ describe("Screenshot tests", () => {
             },
             "template-4.html",
             "#container"
+        );
+        expect(screenshot).toMatchReferenceSnapshot();
+    }, 100_000);
+
+    test(`When there are no instances of the element in page, everything should be fine (no errors should be thrown etc.)`, async () => {
+        const screenshot = await takeScreenshot(
+            () => { localStorage.setItem("theme", "light"); },
+            () => {},
+            "template-5.html",
+            "#example"
         );
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
