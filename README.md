@@ -17,6 +17,8 @@ It works by adding a custom attribute named `data-theme` to the `html` element o
 You can style your page the way you like based on the value of that attribute.
 See below for an example.
 
+See the [demo](https://mahozad.ir/theme-switch/).
+
 It was inspired by [this YouTube video](https://youtu.be/kZiS1QStIWc)
 and [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle).
 
