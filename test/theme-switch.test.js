@@ -228,7 +228,12 @@ describe("Screenshot tests", () => {
     afterAll(() => {fileSystem.rmSync(snapshotFileName);});
 });
 
-async function takeScreenshot(init, action = () => {}, pageHTML = "test1.html") {
+async function takeScreenshot(
+    init,
+    action = () => {},
+    pageHTML = "test1.html",
+    targetElementSelector = "theme-switch"
+) {
     const browser = await puppeteer.launch({
             headless: true, // If false, opens the browser UI
             // channel: "chrome", // this overrides executablePath
@@ -244,7 +249,7 @@ async function takeScreenshot(init, action = () => {}, pageHTML = "test1.html") 
     // page.setContent("<DOCTYPE html><html>...")
     await page.goto(`file://${__dirname}\\${pageHTML}`);
 
-    const element = await page.$("theme-switch");
+    const element = await page.$(targetElementSelector);
     await action(page, element);
     // Wait for the action or element animation to finish
     await page.waitForTimeout(600);
