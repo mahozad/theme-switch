@@ -6,8 +6,9 @@
   <script src="../theme-switch.js"></script>
   <style>
     #container {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      gap: 50px;
+      grid-template: 1fr 1fr / 1fr 1fr;
       width: max-content;
     }
 
@@ -19,6 +20,8 @@
 <div id="container">
   <theme-switch id="theme-switch-1"></theme-switch>
   <theme-switch id="theme-switch-2"></theme-switch>
+  <theme-switch id="theme-switch-3"></theme-switch>
+  <theme-switch id="theme-switch-4"></theme-switch>
 </div>
 
 </body>

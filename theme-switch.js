@@ -111,8 +111,12 @@ const ICON_INITIAL_STATE_FOR_AUTO = [10, 0, 33, 0];
 const ICON_INITIAL_STATE_FOR_DARK = [10, 0, 20, 1];
 const ICON_INITIAL_STATE_FOR_LIGHT = [5, 1, 33, 1];
 
+let counter = 0; // See https://stackoverflow.com/a/43116254/8583692
+
 class ThemeSwitchElement extends HTMLElement {
     shadowRoot;
+    themeToggleEvent;
+    identifier = counter++;
 
     constructor() {
         super();
@@ -123,7 +127,25 @@ class ThemeSwitchElement extends HTMLElement {
 
         // Add the click listener to the top-most parent (the custom element itself)
         // so the padding etc. on the element be also clickable
-        this.shadowRoot.host.addEventListener("click", this.toggleTheme);
+        this.shadowRoot.host.addEventListener("click", () => {
+            this.toggleTheme();
+            this.dispatchEvent(this.themeToggleEvent);
+        });
+
+        // If another theme switch in page toggled, update my icon too
+        document.addEventListener("themeToggle", (event) => {
+            if (event.detail !== this.identifier) {
+                this.reflectTheme();
+            }
+        });
+
+        // See https://stackoverflow.com/a/53804106/8583692
+        this.themeToggleEvent = new CustomEvent("themeToggle", {
+            detail: this.identifier,
+            bubbles: true,
+            composed: true,
+            cancelable: false
+        });
 
         // Create some CSS to apply to the shadow DOM
         // See https://css-tricks.com/styling-a-web-component/
@@ -146,6 +168,17 @@ class ThemeSwitchElement extends HTMLElement {
             this.animateThemeButtonIconToDark();
         }
         updateTheme();
+    }
+
+    reflectTheme() {
+        const theme = getUserThemeSelection();
+        if (theme === THEME_AUTO) {
+            this.animateThemeButtonIconToAuto();
+        } else if (theme === THEME_DARK) {
+            this.animateThemeButtonIconToDark();
+        } else /* if (theme === THEME_LIGHT) */ {
+            this.animateThemeButtonIconToLight();
+        }
     }
 
     animateThemeButtonIconToLight() {

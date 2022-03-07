@@ -43,6 +43,7 @@ const dom = new JSDOM(`
 global.window = dom.window;
 global.document = dom.window.document;
 global.HTMLElement = dom.window.HTMLElement;
+global.CustomEvent = dom.window.CustomEvent;
 global.localStorage = dom.window.localStorage;
 setSystemThemeTo("light");
 
@@ -230,12 +231,13 @@ describe("Screenshot tests", () => {
         await expect(action).rejects.toThrowError("Node is either not visible or not an HTMLElement");
     }, 100_000);
 
-    test(`When there are multiple instances of the element in page, clicking on of them should affect only that element`, async () => {
+    test(`When there are multiple instances of the element in page and one of them is toggled, others should be toggled too`, async () => {
         const screenshot = await takeScreenshot(
             () => { localStorage.setItem("theme", "light"); },
             async (page) => {
-                const element = await page.$("#theme-switch-1");
-                element.click();
+                (await page.$("#theme-switch-2")).click();
+                await page.waitForTimeout(600);
+                (await page.$("#theme-switch-3")).click();
             },
             "template-4.html",
             "#container"
