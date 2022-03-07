@@ -16,7 +16,7 @@ const snapshotFileName = "temp-snapshot-for-test.png";
  * }
  * The file is intentionally ignored in VCS.
  */
-const {chromiumPath} = require("./local.json");
+const {chromiumPath} = require("../local.json");
 
 expect.extend({ toMatchReferenceSnapshot });
 
@@ -48,7 +48,7 @@ global.HTMLElement = dom.window.HTMLElement;
 global.localStorage = dom.window.localStorage;
 setSystemThemeTo("light");
 
-const main = require("./theme-switch");
+const main = require("../theme-switch");
 // Could have instead exported the functions in theme-switch.js
 const mainInternals = {
     toggleTheme: main.__get__("toggleTheme"),
