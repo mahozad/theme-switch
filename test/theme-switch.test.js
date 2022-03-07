@@ -1,6 +1,6 @@
 const {JSDOM} = require("jsdom");
 const puppeteer = require("puppeteer-core");
-const fileSystem = require('fs');
+const fileSystem = require("fs");
 // See https://stackoverflow.com/a/48952855/8583692
 const {configureToMatchImageSnapshot: configureSnapshots} = require("jest-image-snapshot");
 const toMatchReferenceSnapshot = configureSnapshots({
