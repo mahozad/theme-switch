@@ -51,8 +51,8 @@ setSystemThemeTo("light");
 const main = require("../theme-switch");
 // Could have instead exported the functions in theme-switch.js
 const mainInternals = {
-    toggleTheme: main.__get__("toggleTheme"),
     getSystemTheme: main.__get__("getSystemTheme"),
+    themeSwitchClass: main.__get__("ThemeSwitchElement"),
     getUserThemeSelection: main.__get__("getUserThemeSelection")
 };
 
@@ -99,8 +99,12 @@ test(`getUserThemeSelection should return "auto" when user had previously select
  *  and https://stackoverflow.com/q/44173754/8583692
  *  We had ho mock the implementation of some functions to prevent error.
  *
- * We cannot mock an internal function of a module with Jest.
- * Instead, we used babel rewire plugin
+ * To mock instance method of a class, override the class prototype with new implementation of the method.
+ * See https://github.com/speedskater/babel-plugin-rewire/issues/45
+ * and https://stackoverflow.com/q/29151528
+ *
+ * To mock an internal function of a module (we cannot mock them with Jest),
+ * we can use babel rewire plugin
  * (or rewire-test-env-only plugin so the minified file is not bloated
  * see https://www.npmjs.com/package/babel-plugin-rewire-test-env-only).
  * See https://stackoverflow.com/q/51269431/8583692
@@ -109,7 +113,7 @@ test(`getUserThemeSelection should return "auto" when user had previously select
  * and https://github.com/jhnns/rewire/issues/136#issuecomment-380829197
  * and https://www.npmtrends.com/babel-plugin-rewire-vs-mock-require-vs-proxyquire-vs-rewire
  *
- * If we wanted to mock a regular function, we could have used any of these approaches:
+ * To mock a regular (global) function, we could have used any of these approaches:
  *
  * ```javascript
  * jest.mock("theme-switch");
@@ -123,23 +127,26 @@ test(`getUserThemeSelection should return "auto" when user had previously select
  * ```
  */
 test(`When user theme is light, toggleTheme should update the theme to dark`, () => {
-    main.__Rewire__("animateThemeButtonIconToDark", () => {});
+    mainInternals.themeSwitchClass.prototype.animateThemeButtonIconToDark = () => {};
+    const instance = new mainInternals.themeSwitchClass();
     localStorage.setItem("theme", "light");
-    mainInternals.toggleTheme();
+    instance.toggleTheme();
     expect(mainInternals.getUserThemeSelection()).toBe("dark");
 });
 
 test(`When user theme is dark, toggleTheme should update the theme to auto`, () => {
-    main.__Rewire__("animateThemeButtonIconToAuto", () => {});
+    mainInternals.themeSwitchClass.prototype.animateThemeButtonIconToAuto = () => {};
+    const instance = new mainInternals.themeSwitchClass();
     localStorage.setItem("theme", "dark");
-    mainInternals.toggleTheme();
+    instance.toggleTheme();
     expect(mainInternals.getUserThemeSelection()).toBe("auto");
 });
 
 test(`When user theme is auto, toggleTheme should update the theme to light`, () => {
-    main.__Rewire__("animateThemeButtonIconToLight", () => {});
+    mainInternals.themeSwitchClass.prototype.animateThemeButtonIconToLight = () => {};
+    const instance = new mainInternals.themeSwitchClass();
     localStorage.setItem("theme", "auto");
-    mainInternals.toggleTheme();
+    instance.toggleTheme();
     expect(mainInternals.getUserThemeSelection()).toBe("light");
 });
 
@@ -223,6 +230,19 @@ describe("Screenshot tests", () => {
             await takeScreenshot(() => {}, () => {}, "test3.html");
         };
         await expect(action).rejects.toThrowError("Node is either not visible or not an HTMLElement");
+    }, 100_000);
+
+    test(`When there are multiple instances of the element in page, clicking on of them should affect only that element`, async () => {
+        const screenshot = await takeScreenshot(
+            () => { localStorage.setItem("theme", "light"); },
+            async (page) => {
+                const element = await page.$("#theme-switch-1");
+                element.click();
+            },
+            "test4.html",
+            "#container"
+        );
+        expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
     afterAll(() => {fileSystem.rmSync(snapshotFileName);});

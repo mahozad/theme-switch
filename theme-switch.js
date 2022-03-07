@@ -111,25 +111,59 @@ const ICON_INITIAL_STATE_FOR_AUTO = [10, 0, 33, 0];
 const ICON_INITIAL_STATE_FOR_DARK = [10, 0, 20, 1];
 const ICON_INITIAL_STATE_FOR_LIGHT = [5, 1, 33, 1];
 
-let shadowRoot;
-
 class ThemeSwitchElement extends HTMLElement {
+    shadowRoot;
+
     constructor() {
         super();
 
         // See https://stackoverflow.com/q/2305654/8583692
-        shadowRoot = this.attachShadow({ mode: "open" });
-        shadowRoot.innerHTML = generateIcon(...getInitialStateForIcon());
+        this.shadowRoot = this.attachShadow({ mode: "open" });
+        this.shadowRoot.innerHTML = generateIcon(...getInitialStateForIcon());
 
         // Add the click listener to the top-most parent (the custom element itself)
         // so the padding etc. on the element be also clickable
-        shadowRoot.host.addEventListener("click", toggleTheme);
+        this.shadowRoot.host.addEventListener("click", this.toggleTheme);
 
         // Create some CSS to apply to the shadow DOM
         // See https://css-tricks.com/styling-a-web-component/
         const style = document.createElement("style");
         style.textContent = generateStyle();
-        shadowRoot.append(style);
+        this.shadowRoot.append(style);
+    }
+
+    // See https://stackoverflow.com/q/48316611
+    toggleTheme() {
+        let theme = getUserThemeSelection();
+        if (theme === THEME_AUTO) {
+            localStorage.setItem(THEME_KEY, THEME_LIGHT);
+            this.animateThemeButtonIconToLight();
+        } else if (theme === THEME_DARK) {
+            localStorage.setItem(THEME_KEY, THEME_AUTO);
+            this.animateThemeButtonIconToAuto();
+        } else /* if (theme === THEME_LIGHT) */ {
+            localStorage.setItem(THEME_KEY, THEME_DARK);
+            this.animateThemeButtonIconToDark();
+        }
+        updateTheme();
+    }
+
+    animateThemeButtonIconToLight() {
+        this.shadowRoot.getElementById("letter-anim-hide").beginElement();
+        this.shadowRoot.getElementById("core-anim-shrink").beginElement();
+        this.shadowRoot.getElementById("rays-anim-rotate").beginElement();
+        this.shadowRoot.getElementById("rays-anim-show").beginElement();
+    }
+
+    animateThemeButtonIconToAuto() {
+        this.shadowRoot.getElementById("eclipse-anim-go").beginElement();
+        this.shadowRoot.getElementById("letter-anim-show").beginElement();
+    }
+
+    animateThemeButtonIconToDark() {
+        this.shadowRoot.getElementById("rays-anim-hide").beginElement();
+        this.shadowRoot.getElementById("core-anim-enlarge").beginElement();
+        this.shadowRoot.getElementById("eclipse-anim-come").beginElement();
     }
 }
 
@@ -240,40 +274,6 @@ function getInitialStateForIcon() {
     } else /* if (theme === THEME_LIGHT) */ {
         return ICON_INITIAL_STATE_FOR_LIGHT;
     }
-}
-
-// See https://stackoverflow.com/q/48316611
-function toggleTheme() {
-    let theme = getUserThemeSelection();
-    if (theme === THEME_AUTO) {
-        localStorage.setItem(THEME_KEY, THEME_LIGHT);
-        animateThemeButtonIconToLight();
-    } else if (theme === THEME_DARK) {
-        localStorage.setItem(THEME_KEY, THEME_AUTO);
-        animateThemeButtonIconToAuto();
-    } else /* if (theme === THEME_LIGHT) */ {
-        localStorage.setItem(THEME_KEY, THEME_DARK);
-        animateThemeButtonIconToDark();
-    }
-    updateTheme();
-}
-
-function animateThemeButtonIconToLight() {
-    shadowRoot.getElementById("letter-anim-hide").beginElement();
-    shadowRoot.getElementById("core-anim-shrink").beginElement();
-    shadowRoot.getElementById("rays-anim-rotate").beginElement();
-    shadowRoot.getElementById("rays-anim-show").beginElement();
-}
-
-function animateThemeButtonIconToAuto() {
-    shadowRoot.getElementById("eclipse-anim-go").beginElement();
-    shadowRoot.getElementById("letter-anim-show").beginElement();
-}
-
-function animateThemeButtonIconToDark() {
-    shadowRoot.getElementById("rays-anim-hide").beginElement();
-    shadowRoot.getElementById("core-anim-enlarge").beginElement();
-    shadowRoot.getElementById("eclipse-anim-come").beginElement();
 }
 
 // Export for tests run by npm (no longer needed; kept for future reference)
