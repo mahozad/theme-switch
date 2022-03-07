@@ -215,7 +215,7 @@ describe("Screenshot tests", () => {
         const screenshot = await takeScreenshot(
             () => {localStorage.setItem("theme", "light");},
             () => {},
-            "test2.html"
+            "template-2.html"
         );
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
@@ -225,7 +225,7 @@ describe("Screenshot tests", () => {
     // and https://stackoverflow.com/q/47144187/8583692
     test(`When user specifies hidden attribute on the element, element should be hidden`, async () => {
         const action = async () => {
-            await takeScreenshot(() => {}, () => {}, "test3.html");
+            await takeScreenshot(() => {}, () => {}, "template-3.html");
         };
         await expect(action).rejects.toThrowError("Node is either not visible or not an HTMLElement");
     }, 100_000);
@@ -237,7 +237,7 @@ describe("Screenshot tests", () => {
                 const element = await page.$("#theme-switch-1");
                 element.click();
             },
-            "test4.html",
+            "template-4.html",
             "#container"
         );
         expect(screenshot).toMatchReferenceSnapshot();
@@ -249,7 +249,7 @@ describe("Screenshot tests", () => {
 async function takeScreenshot(
     init,
     action = () => {},
-    pageHTML = "test1.html",
+    pageHTML = "template-1.html",
     targetElementSelector = "theme-switch"
 ) {
     const browser = await puppeteer.launch({
