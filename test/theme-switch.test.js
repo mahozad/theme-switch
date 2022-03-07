@@ -266,8 +266,6 @@ async function takeScreenshot(init, action = () => {}, pageHTML = "test1.html") 
     }
 }
 
-// console.log(`\u001B[32m✔️\u001B[39m Tests passed`);
-
 // See https://stackoverflow.com/a/53449595/8583692
 // and https://stackoverflow.com/a/57180950/8583692
 function setSystemThemeTo(mode) {
