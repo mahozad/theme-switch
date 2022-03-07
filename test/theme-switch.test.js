@@ -1,11 +1,11 @@
-const {JSDOM} = require("jsdom");
+const { JSDOM } = require("jsdom");
 const puppeteer = require("puppeteer-core");
 const fileSystem = require("fs");
 // See https://stackoverflow.com/a/48952855/8583692
-const {configureToMatchImageSnapshot: configureSnapshots} = require("jest-image-snapshot");
+const { configureToMatchImageSnapshot: configureSnapshots } = require("jest-image-snapshot");
 const toMatchReferenceSnapshot = configureSnapshots({
     customSnapshotsDir: "snapshots/",
-    customDiffDir: "snapshot-diffs/",
+    customDiffDir: "snapshot-diffs/"
 });
 const snapshotFileName = "temp-snapshot-for-test.png";
 /**
@@ -16,7 +16,7 @@ const snapshotFileName = "temp-snapshot-for-test.png";
  * }
  * The file is intentionally ignored in VCS.
  */
-const {chromiumPath} = require("../local.json");
+const { chromiumPath } = require("../local.json");
 
 expect.extend({ toMatchReferenceSnapshot });
 
@@ -39,7 +39,7 @@ const dom = new JSDOM(`
     </body>
     </html> 
 `,
-    {url: "http://localhost"}
+    { url: "http://localhost" }
 );
 
 global.window = dom.window;
@@ -257,7 +257,7 @@ async function takeScreenshot(init, action = () => {}, pageHTML = "test1.html") 
     await page.waitForTimeout(1000);
 
     try {
-        await element.screenshot({path: snapshotFileName});
+        await element.screenshot({ path: snapshotFileName });
     } finally {
         // NOTE: This call should be in finally block so if taking screenshot
         //  threw any error then the browser is closed no matter what to avoid
@@ -280,7 +280,7 @@ function setSystemThemeTo(mode) {
             removeListener: jest.fn(), // Deprecated
             addEventListener: jest.fn(),
             removeEventListener: jest.fn(),
-            dispatchEvent: jest.fn(),
-        })),
+            dispatchEvent: jest.fn()
+        }))
     });
 }

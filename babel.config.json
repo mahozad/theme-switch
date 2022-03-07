@@ -3,7 +3,8 @@
   "comments": false,
   "sourceMaps": "both",
   "presets": [
-    ["@babel/preset-env",
+    [
+      "@babel/preset-env",
       {
         "modules": "auto",
         "targets": {
@@ -17,7 +18,8 @@
     ]
   ],
   "plugins": [
-    ["minify-mangle-names",
+    [
+      "minify-mangle-names",
       {
         "topLevel": false,
         "keepFnName": false,

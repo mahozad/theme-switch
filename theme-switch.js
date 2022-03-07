@@ -118,7 +118,7 @@ class ThemeSwitchElement extends HTMLElement {
         super();
 
         // See https://stackoverflow.com/q/2305654/8583692
-        shadowRoot = this.attachShadow({mode: "open"});
+        shadowRoot = this.attachShadow({ mode: "open" });
         shadowRoot.innerHTML = generateIcon(...getInitialStateForIcon());
 
         // Add the click listener to the top-most parent (the custom element itself)
@@ -185,22 +185,22 @@ function generateStyle() {
     /* :host === the host element of the shadow === <theme-switch> */
     /* See https://developer.mozilla.org/en-US/docs/Web/CSS/:host */
     :host {
-        display: flex;
-        width: ${ICON_SIZE}px;
-        aspect-ratio: 1 / 1;
-        /* This is for when the element has padding */
-        cursor: pointer;
+      display: flex;
+      width: ${ICON_SIZE}px;
+      aspect-ratio: 1 / 1;
+      /* This is for when the element has padding */
+      cursor: pointer;
     }
-    
+
     :host([hidden]) { display: none; }
 
     button {
-        padding: 0;
-        border: none;
-        background: transparent;
-        display: flex;
-        /* The host element also has its cursor set */
-        cursor: pointer;
+      padding: 0;
+      border: none;
+      background: transparent;
+      display: flex;
+      /* The host element also has its cursor set */
+      cursor: pointer;
     }
 
     #circle { fill: var(--theme-switch-icon-color, ${ICON_COLOR}); }

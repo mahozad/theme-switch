@@ -1,17 +1,17 @@
 :root {
-    --theme-switch-icon-color: #0ff;
-    --theme-switch-bg-color: #ff0;
+  --theme-switch-icon-color: #0ff;
+  --theme-switch-bg-color: #ff0;
 }
 
 [data-theme="dark"] {
-    --theme-switch-bg-color: blue;
-    background: #141620;
+  --theme-switch-bg-color: blue;
+  background: #141620;
 }
 
 theme-switch {
-    width: 64px;
-    height: 64px;
-    border-radius: 8px;
-    background: var(--theme-switch-bg-color);
-    box-shadow: #0000002D 0 2px 4px;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  background: var(--theme-switch-bg-color);
+  box-shadow: #0000002d 0 2px 4px;
 }
