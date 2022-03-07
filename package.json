@@ -47,10 +47,14 @@
   "jsdelivr": "theme-switch.min.js",
   "keywords": [
     "dark",
+    "dark-mode",
     "dark-theme",
     "theme-toggle",
+    "theme-toggler",
+    "theme-switch",
+    "theme-switcher",
     "custom-element",
-    "web-components"
+    "web-component"
   ],
   "homepage": "https://mahozad.ir/theme-switch/",
   "repository": {
