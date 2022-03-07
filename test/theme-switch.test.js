@@ -34,9 +34,7 @@ const dom = new JSDOM(`
       <meta charset="UTF-8">
       <title>Test page</title>
     </head>
-    <body>
-      <theme-switch></theme-switch>
-    </body>
+    <body></body>
     </html> 
 `,
     { url: "http://localhost" }
