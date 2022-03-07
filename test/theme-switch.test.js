@@ -57,6 +57,7 @@ const mainInternals = {
 };
 
 test(`When system theme is light, getSystemTheme should return "light"`, () => {
+    setSystemThemeTo("light");
     expect(mainInternals.getSystemTheme()).toBe("light");
 });
 
