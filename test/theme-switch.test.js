@@ -172,7 +172,7 @@ describe("Screenshot tests", () => {
     test(`When user stored theme is light, clicking the switch should change the icon to moon`, async () => {
         const screenshot = await takeScreenshot(
             () => {localStorage.setItem("theme", "light");},
-            element => {element.click();}
+            (page, element) => {element.click();}
         );
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
@@ -180,7 +180,7 @@ describe("Screenshot tests", () => {
     test(`When user stored theme is dark, clicking the switch should change the icon to auto`, async () => {
         const screenshot = await takeScreenshot(
             () => {localStorage.setItem("theme", "dark");},
-            element => {element.click();}
+            (page, element) => {element.click();}
         );
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
@@ -188,7 +188,7 @@ describe("Screenshot tests", () => {
     test(`When user stored theme is auto, clicking the switch should change the icon to light`, async () => {
         const screenshot = await takeScreenshot(
             () => {localStorage.setItem("theme", "auto");},
-            element => {element.click();}
+            (page, element) => {element.click();}
         );
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
@@ -196,7 +196,7 @@ describe("Screenshot tests", () => {
     test(`When user specifies a custom color for switch icon, the colors should be applied`, async () => {
         const screenshot = await takeScreenshot(
             () => {localStorage.setItem("theme", "light");},
-            element => {
+            (page, element) => {
                 // See https://stackoverflow.com/a/64487791/8583692
                 element.evaluate((el) => {
                     el.style.setProperty("--theme-switch-icon-color", "#ffe36e");
@@ -245,7 +245,7 @@ async function takeScreenshot(init, action = () => {}, pageHTML = "test1.html") 
     await page.goto(`file://${__dirname}\\${pageHTML}`);
 
     const element = await page.$("theme-switch");
-    await action(element);
+    await action(page, element);
     // Wait for the action or element animation to finish
     await page.waitForTimeout(600);
 
