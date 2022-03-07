@@ -31,8 +31,8 @@
 *
 * main.js
 * const calculator = require("my-calculator");
-* let perimeter = 2 * calculator.PI;
-* let result = calculator.calculate();
+* const perimeter = 2 * calculator.PI;
+* const result = calculator.calculate();
 *
 * Example ES6 modules:
 *
@@ -42,8 +42,8 @@
 *
 * main.js
 * import { calculate, PI } from "my-calculator.js";
-* let perimeter = 2 * PI;
-* let result = calculate();
+* const perimeter = 2 * PI;
+* const result = calculate();
 *
 * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 * and https://stackoverflow.com/a/9901097/8583692
@@ -134,7 +134,7 @@ class ThemeSwitchElement extends HTMLElement {
 
     // See https://stackoverflow.com/q/48316611
     toggleTheme() {
-        let theme = getUserThemeSelection();
+        const theme = getUserThemeSelection();
         if (theme === THEME_AUTO) {
             localStorage.setItem(THEME_KEY, THEME_LIGHT);
             this.animateThemeButtonIconToLight();
@@ -266,7 +266,7 @@ function getSystemTheme() {
 }
 
 function getInitialStateForIcon() {
-    let theme = getUserThemeSelection();
+    const theme = getUserThemeSelection();
     if (theme === THEME_AUTO) {
         return ICON_INITIAL_STATE_FOR_AUTO;
     } else if (theme === THEME_DARK) {
