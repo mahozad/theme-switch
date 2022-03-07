@@ -1,4 +1,13 @@
-const { JSDOM } = require("jsdom");
+/**
+ * This docblock is required to configure jest environment to jsdom.
+ * See https://jestjs.io/docs/configuration#testenvironment-string
+ *
+ * Another way would be to manually setting up jsdom.
+ * See testing-with-jsdom git branch that does it that way.
+ *
+ * @jest-environment jsdom
+ */
+
 const puppeteer = require("puppeteer-core");
 const fileSystem = require("fs");
 // See https://stackoverflow.com/a/48952855/8583692
@@ -23,28 +32,7 @@ expect.extend({ toMatchReferenceSnapshot });
 // TODO: Also test for the following cases:
 //  - No <theme-switch> element
 //  - Duplicate <theme-switch> elements
-// See https://github.com/chaijs/type-detect/issues/98
-// See https://stackoverflow.com/a/51702674/8583692
-// This HTML is used to create window, localstorage, etc. and is used for unit tests.
-// Screenshot tests use their own HTML file.
-const dom = new JSDOM(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>Test page</title>
-    </head>
-    <body></body>
-    </html> 
-`,
-    { url: "http://localhost" }
-);
 
-global.window = dom.window;
-global.document = dom.window.document;
-global.HTMLElement = dom.window.HTMLElement;
-global.CustomEvent = dom.window.CustomEvent;
-global.localStorage = dom.window.localStorage;
 setSystemThemeTo("light");
 
 const main = require("../theme-switch");
