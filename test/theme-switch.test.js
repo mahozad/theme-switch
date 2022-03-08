@@ -32,6 +32,14 @@ setSystemThemeTo("light");
 const main = require("../theme-switch");
 // See documentations of one of tests about these (called rewiring)
 // (Could have instead exported the functions in theme-switch.js)
+const ELEMENT_NAME = main.__get__("ELEMENT_NAME");
+const CUSTOM_EVENT_NAME = main.__get__("CUSTOM_EVENT_NAME");
+const THEME_KEY = main.__get__("THEME_KEY");
+const THEME_AUTO = main.__get__("THEME_AUTO");
+const THEME_DARK = main.__get__("THEME_DARK");
+const THEME_LIGHT = main.__get__("THEME_LIGHT");
+const THEME_DEFAULT = main.__get__("THEME_DEFAULT");
+const THEME_ATTRIBUTE = main.__get__("THEME_ATTRIBUTE");
 const updateTheme = main.__get__("updateTheme");
 const getSystemTheme = main.__get__("getSystemTheme");
 const themeSwitchClass = main.__get__("ThemeSwitchElement");
@@ -39,44 +47,44 @@ const getUserThemeSelection = main.__get__("getUserThemeSelection");
 const getInitialStateForIcon = main.__get__("getInitialStateForIcon");
 
 test(`When system theme is light, getSystemTheme should return "light"`, () => {
-    setSystemThemeTo("light");
-    expect(getSystemTheme()).toBe("light");
+    setSystemThemeTo(THEME_LIGHT);
+    expect(getSystemTheme()).toBe(THEME_LIGHT);
 });
 
 test(`When system theme is dark, getSystemTheme should return "dark"`, () => {
-    setSystemThemeTo("dark");
-    expect(getSystemTheme()).toBe("dark");
+    setSystemThemeTo(THEME_DARK);
+    expect(getSystemTheme()).toBe(THEME_DARK);
 });
 
 test(`For first-time users, getUserThemeSelection should return the default theme`, () => {
     localStorage.clear();
-    expect(getUserThemeSelection()).toBe("light");
+    expect(getUserThemeSelection()).toBe(THEME_DEFAULT);
 });
 
 test(`For first-time users, getUserThemeSelection should return the default theme irrespective of the system theme`, () => {
     localStorage.clear();
-    setSystemThemeTo("dark");
-    expect(getUserThemeSelection()).toBe("light");
+    setSystemThemeTo(THEME_DARK);
+    expect(getUserThemeSelection()).toBe(THEME_DEFAULT);
 });
 
 test(`getUserThemeSelection should return "light" when user had previously selected "light"`, () => {
-    localStorage.setItem("theme", "light");
-    expect(getUserThemeSelection()).toBe("light");
+    localStorage.setItem(THEME_KEY, THEME_LIGHT);
+    expect(getUserThemeSelection()).toBe(THEME_LIGHT);
 });
 
 test(`getUserThemeSelection should return "dark" when user had previously selected "dark"`, () => {
-    localStorage.setItem("theme", "dark");
-    expect(getUserThemeSelection()).toBe("dark");
+    localStorage.setItem(THEME_KEY, THEME_DARK);
+    expect(getUserThemeSelection()).toBe(THEME_DARK);
 });
 
 test(`getUserThemeSelection should return "auto" when user had previously selected "auto"`, () => {
-    localStorage.setItem("theme", "auto");
-    expect(getUserThemeSelection()).toBe("auto");
+    localStorage.setItem(THEME_KEY, THEME_AUTO);
+    expect(getUserThemeSelection()).toBe(THEME_AUTO);
 });
 
 test(`getUserThemeSelection should return the default theme when the value stored is corrupted`, () => {
-    localStorage.setItem("theme", "sanitizer");
-    expect(getUserThemeSelection()).toBe("light");
+    localStorage.setItem(THEME_KEY, "sanitizer");
+    expect(getUserThemeSelection()).toBe(THEME_DEFAULT);
 });
 
 /**
@@ -118,66 +126,66 @@ test(`getUserThemeSelection should return the default theme when the value store
 test(`When user theme is light, toggleTheme should update the theme to dark`, () => {
     themeSwitchClass.prototype.animateThemeButtonIconToDark = () => {};
     const instance = new themeSwitchClass();
-    instance.toggleTheme("light");
-    expect(getUserThemeSelection()).toBe("dark");
+    instance.toggleTheme(THEME_LIGHT);
+    expect(getUserThemeSelection()).toBe(THEME_DARK);
 });
 
 test(`When user theme is dark, toggleTheme should update the theme to auto`, () => {
     themeSwitchClass.prototype.animateThemeButtonIconToAuto = () => {};
     const instance = new themeSwitchClass();
-    instance.toggleTheme("dark");
-    expect(getUserThemeSelection()).toBe("auto");
+    instance.toggleTheme(THEME_DARK);
+    expect(getUserThemeSelection()).toBe(THEME_AUTO);
 });
 
 test(`When user theme is auto, toggleTheme should update the theme to light`, () => {
     themeSwitchClass.prototype.animateThemeButtonIconToLight = () => {};
     const instance = new themeSwitchClass();
-    instance.toggleTheme("auto");
-    expect(getUserThemeSelection()).toBe("light");
+    instance.toggleTheme(THEME_AUTO);
+    expect(getUserThemeSelection()).toBe(THEME_LIGHT);
 });
 
 test(`When user selected theme is light, updateTheme should update document theme attribute to "light"`, () => {
-    main.__set__("getUserThemeSelection", () => "light");
+    main.__set__("getUserThemeSelection", () => THEME_LIGHT);
     updateTheme();
-    const result = document.documentElement.getAttribute("data-theme");
-    expect(result).toBe("light");
+    const result = document.documentElement.getAttribute(THEME_ATTRIBUTE);
+    expect(result).toBe(THEME_LIGHT);
 });
 
 test(`When user selected theme is dark, updateTheme should update document theme attribute to "dark"`, () => {
-    main.__set__("getUserThemeSelection", () => "dark");
+    main.__set__("getUserThemeSelection", () => THEME_DARK);
     updateTheme();
-    const result = document.documentElement.getAttribute("data-theme");
-    expect(result).toBe("dark");
+    const result = document.documentElement.getAttribute(THEME_ATTRIBUTE);
+    expect(result).toBe(THEME_DARK);
 });
 
 test(`When user selected theme is auto and system theme is light, updateTheme should update document theme attribute to "light"`, () => {
-    main.__set__("getUserThemeSelection", () => "auto");
-    main.__set__("getSystemTheme", () => "light");
+    main.__set__("getUserThemeSelection", () => THEME_AUTO);
+    main.__set__("getSystemTheme", () => THEME_LIGHT);
     updateTheme();
-    const result = document.documentElement.getAttribute("data-theme");
-    expect(result).toBe("light");
+    const result = document.documentElement.getAttribute(THEME_ATTRIBUTE);
+    expect(result).toBe(THEME_LIGHT);
 });
 
 test(`When user selected theme is auto and system theme is dark, updateTheme should update document theme attribute to "dark"`, () => {
-    main.__set__("getUserThemeSelection", () => "auto");
-    main.__set__("getSystemTheme", () => "dark");
+    main.__set__("getUserThemeSelection", () => THEME_AUTO);
+    main.__set__("getSystemTheme", () => THEME_DARK);
     updateTheme();
-    const result = document.documentElement.getAttribute("data-theme");
-    expect(result).toBe("dark");
+    const result = document.documentElement.getAttribute(THEME_ATTRIBUTE);
+    expect(result).toBe(THEME_DARK);
 });
 
 test(`When user selected theme is light, getInitialStateForIcon should return correct values`, () => {
-    main.__set__("getUserThemeSelection", () => "light");
+    main.__set__("getUserThemeSelection", () => THEME_LIGHT);
     expect(getInitialStateForIcon()).toEqual([5, 1, 33, 1]);
 });
 
 test(`When user selected theme is dark, getInitialStateForIcon should return correct values`, () => {
-    main.__set__("getUserThemeSelection", () => "dark");
+    main.__set__("getUserThemeSelection", () => THEME_DARK);
     expect(getInitialStateForIcon()).toEqual([10, 0, 20, 1]);
 });
 
 test(`When user selected theme is auto, getInitialStateForIcon should return correct values`, () => {
-    main.__set__("getUserThemeSelection", () => "auto");
+    main.__set__("getUserThemeSelection", () => THEME_AUTO);
     expect(getInitialStateForIcon()).toEqual([10, 0, 33, 0]);
 });
 
@@ -193,7 +201,7 @@ describe("Screenshot tests", () => {
     // Selenium doesn't seem to support screenshot testing feature.
     // See https://stackoverflow.com/q/22938045/8583692
     test(`When user stored theme is light, the icon should be sun`, async () => {
-        const screenshot = await takeScreenshot(() => {localStorage.setItem("theme", "light");});
+        const screenshot = await takeScreenshot(() => {localStorage.setItem(THEME_KEY, THEME_LIGHT);});
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
@@ -209,7 +217,7 @@ describe("Screenshot tests", () => {
 
     test(`When user stored theme is light, clicking the switch should change the icon to moon`, async () => {
         const screenshot = await takeScreenshot(
-            () => {localStorage.setItem("theme", "light");},
+            () => {localStorage.setItem(THEME_KEY, THEME_LIGHT);},
             (page, element) => {element.click();}
         );
         expect(screenshot).toMatchReferenceSnapshot();
@@ -233,7 +241,7 @@ describe("Screenshot tests", () => {
 
     test(`When user specifies a custom color for switch icon, the colors should be applied`, async () => {
         const screenshot = await takeScreenshot(
-            () => {localStorage.setItem("theme", "light");},
+            () => {localStorage.setItem(THEME_KEY, THEME_LIGHT);},
             (page, element) => {
                 // See https://stackoverflow.com/a/64487791/8583692
                 element.evaluate((el) => {
@@ -246,7 +254,7 @@ describe("Screenshot tests", () => {
 
     test(`When user specifies a custom color for switch icon in a CSS rule with low specificity (like html{}), the colors should be applied`, async () => {
         const screenshot = await takeScreenshot(
-            () => {localStorage.setItem("theme", "light");},
+            () => {localStorage.setItem(THEME_KEY, THEME_LIGHT);},
             () => {},
             "template-2.html"
         );
@@ -265,7 +273,7 @@ describe("Screenshot tests", () => {
 
     test(`When there are multiple instances of the element in page and one of them is toggled, others should be toggled too`, async () => {
         const screenshot = await takeScreenshot(
-            () => { localStorage.setItem("theme", "light"); },
+            () => { localStorage.setItem(THEME_KEY, THEME_LIGHT); },
             async (page) => {
                 (await page.$("#theme-switch-2")).click();
                 await page.waitForTimeout(600);
@@ -279,7 +287,7 @@ describe("Screenshot tests", () => {
 
     test(`When there are no instances of the element in page, everything should be fine (no errors should be thrown etc.)`, async () => {
         const screenshot = await takeScreenshot(
-            () => { localStorage.setItem("theme", "light"); },
+            () => { localStorage.setItem(THEME_KEY, THEME_LIGHT); },
             () => {},
             "template-5.html",
             "#example"
@@ -302,13 +310,13 @@ describe("Screenshot tests", () => {
                 // resolve the outer Promise here, so we can await it outside
                 resolve(event);
             });
-            await addListener(page, "themeToggle");
+            await addListener(page, CUSTOM_EVENT_NAME);
             await page.goto(`file://${__dirname}\\template-1.html`);
-            const element = await page.$("theme-switch");
+            const element = await page.$(ELEMENT_NAME);
             await element.click();
         }), page.waitForTimeout(10_000)]);
         try {
-            expect(result.type).toBe("themeToggle");
+            expect(result.type).toBe(CUSTOM_EVENT_NAME);
         } catch (error) {
             throw new Error(`${error}\nThe error may also have happened because of the timeout, meaning the event was not triggered`);
             // OR  fail("..."); // See https://github.com/facebook/jest/issues/11698
@@ -319,19 +327,19 @@ describe("Screenshot tests", () => {
     }, 100_000);
 
     test(`When the switch is toggled, its event should contain its old and new state`, async () => {
-        localStorage.setItem("theme", "light");
+        localStorage.setItem(THEME_KEY, THEME_LIGHT);
         const browser = await puppeteer.launch({ headless: true, executablePath: chromiumPath });
         const page = await browser.newPage();
         const result = await Promise.race([new Promise(async resolve => {
             await page.exposeFunction("myListener", event => resolve(event));
-            await addListener(page, "themeToggle");
+            await addListener(page, CUSTOM_EVENT_NAME);
             await page.goto(`file://${__dirname}\\template-1.html`);
-            const element = await page.$("theme-switch");
+            const element = await page.$(ELEMENT_NAME);
             await element.click();
         }), page.waitForTimeout(10_000)]);
         try {
-            expect(result.detail.oldState).toBe("light");
-            expect(result.detail.newState).toBe("dark");
+            expect(result.detail.oldState).toBe(THEME_LIGHT);
+            expect(result.detail.newState).toBe(THEME_DARK);
         } catch (error) {
             throw new Error(`${error}\nThe error may also have happened because of the timeout, meaning the event was not triggered`);
         } finally {
@@ -355,7 +363,7 @@ async function takeScreenshot(
     init,
     action = () => {},
     pageHTML = "template-1.html",
-    targetElementSelector = "theme-switch"
+    targetElementSelector = ELEMENT_NAME
 ) {
     const browser = await puppeteer.launch({
         headless: true, // If false, opens the browser UI
