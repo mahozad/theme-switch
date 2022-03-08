@@ -136,6 +136,36 @@ test(`When user theme is auto, toggleTheme should update the theme to light`, ()
     expect(mainInternals.getUserThemeSelection()).toBe("light");
 });
 
+test(`When user selected theme is light, updateTheme should update document theme attribute to "light"`, () => {
+    main.__set__("getUserThemeSelection", () => "light");
+    main.__get__("updateTheme").call();
+    const result = document.documentElement.getAttribute("data-theme");
+    expect(result).toBe("light");
+});
+
+test(`When user selected theme is dark, updateTheme should update document theme attribute to "dark"`, () => {
+    main.__set__("getUserThemeSelection", () => "dark");
+    main.__get__("updateTheme").call();
+    const result = document.documentElement.getAttribute("data-theme");
+    expect(result).toBe("dark");
+});
+
+test(`When user selected theme is auto and system theme is light, updateTheme should update document theme attribute to "light"`, () => {
+    main.__set__("getUserThemeSelection", () => "auto");
+    main.__set__("getSystemTheme", () => "light");
+    main.__get__("updateTheme").call();
+    const result = document.documentElement.getAttribute("data-theme");
+    expect(result).toBe("light");
+});
+
+test(`When user selected theme is auto and system theme is dark, updateTheme should update document theme attribute to "dark"`, () => {
+    main.__set__("getUserThemeSelection", () => "auto");
+    main.__set__("getSystemTheme", () => "dark");
+    main.__get__("updateTheme").call();
+    const result = document.documentElement.getAttribute("data-theme");
+    expect(result).toBe("dark");
+});
+
 describe("Screenshot tests", () => {
     // Increase the timeout of executing all the test suit from
     // the default 5000 to a greater value to run fine on CI
