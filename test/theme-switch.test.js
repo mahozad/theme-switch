@@ -282,7 +282,7 @@ describe("Screenshot tests", () => {
             }
         );
         const page = await browser.newPage();
-        const result = await new Promise(async resolve => {
+        const result = await Promise.race([new Promise(async resolve => {
             // Define a window.myListener function on the page
             await page.exposeFunction("myListener", event => {
                 // resolve the outer Promise here, so we can await it outside
@@ -292,9 +292,15 @@ describe("Screenshot tests", () => {
             await page.goto(`file://${__dirname}\\template-1.html`);
             const element = await page.$("theme-switch");
             await element.click();
-        });
-        expect(result.type).toBe("themeToggle");
-        await browser.close();
+        }), page.waitForTimeout(2_000)]);
+        try {
+            expect(result.type).toBe("themeToggle");
+        } catch (error) {
+            throw new Error("Timeout! Either the custom event was not triggered or was not received.");
+            // OR  fail("..."); // See https://github.com/facebook/jest/issues/11698
+        } finally {
+            await browser.close();
+        }
     }, 100_000);
 
     afterAll(() => {fileSystem.rmSync(snapshotFileName);});
