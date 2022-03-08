@@ -149,6 +149,19 @@ Finally, use the element anywhere you want:
 
 </details>
 
+## Misc
+
+The switch element fires (triggers) a custom event called `themeToggle` every time it is toggled (clicked).
+You can listen and react to it if you want:
+
+```javascript
+document.addEventListener("themeToggle", event => {
+    console.log(`Old theme: ${event.detail.oldState}`);
+    console.log(`New theme: ${event.detail.newState}`);
+    // More operations...
+});
+```
+
 ---
 
 See [this article](https://css-tricks.com/web-components-are-easier-than-you-think/)
