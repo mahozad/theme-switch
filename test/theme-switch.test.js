@@ -307,13 +307,14 @@ describe("Screenshot tests", () => {
             await page.goto(`file://${__dirname}\\template-1.html`);
             const element = await page.$("theme-switch");
             await element.click();
-        }), page.waitForTimeout(2_000)]);
+        }), page.waitForTimeout(10_000)]);
         try {
             expect(result.type).toBe("themeToggle");
         } catch (error) {
             throw new Error(`${error}\nThe error may also have happened because of the timeout, meaning the event was not triggered`);
             // OR  fail("..."); // See https://github.com/facebook/jest/issues/11698
         } finally {
+            await page.waitForTimeout(1_000);
             await browser.close();
         }
     }, 100_000);
@@ -328,13 +329,14 @@ describe("Screenshot tests", () => {
             await page.goto(`file://${__dirname}\\template-1.html`);
             const element = await page.$("theme-switch");
             await element.click();
-        }), page.waitForTimeout(2_000)]);
+        }), page.waitForTimeout(10_000)]);
         try {
             expect(result.detail.oldState).toBe("light");
             expect(result.detail.newState).toBe("dark");
         } catch (error) {
             throw new Error(`${error}\nThe error may also have happened because of the timeout, meaning the event was not triggered`);
         } finally {
+            await page.waitForTimeout(1_000);
             await browser.close();
         }
     }, 100_000);
