@@ -1,18 +1,18 @@
 html {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 300ms ease;
-    background: #fff1a4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 300ms ease;
+  background: #fff1a4;
 }
 
 html[data-theme="dark"] {
-    background: #a8d8ff;
+  background: #a8d8ff;
 }
 
 theme-switch {
-    width: 256px;
-    height: 256px;
+  width: 256px;
+  height: 256px;
 }
