@@ -89,6 +89,8 @@ test(`getUserThemeSelection should return the default theme when the value store
  * To mock instance method of a class, override the class prototype with new implementation of the method.
  * See https://github.com/speedskater/babel-plugin-rewire/issues/45
  * and https://stackoverflow.com/q/29151528
+ * Maybe we can use `call` function to alter the `this` for a method if that is something helpful.
+ * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
  *
  * To mock an internal function of a module (we cannot mock them with Jest),
  * we can use babel rewire plugin
