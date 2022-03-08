@@ -97,6 +97,7 @@
 *   - https://github.com/floating-ui/floating-ui
 * */
 
+const ELEMENT_NAME = "theme-switch";
 const ICON_SIZE = 24 /* px */;
 const ICON_COLOR = "#000";
 const THEME_KEY = "theme";
@@ -281,7 +282,7 @@ function generateStyle() {
 }
 
 updateTheme();
-window.customElements.define("theme-switch", ThemeSwitchElement);
+window.customElements.define(ELEMENT_NAME, ThemeSwitchElement);
 window
     .matchMedia(COLOR_SCHEME_DARK)
     .addEventListener("change", updateTheme);
