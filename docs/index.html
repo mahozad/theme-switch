@@ -4,11 +4,58 @@
   <meta charset="UTF-8">
   <title>Theme switch</title>
   <script src="https://unpkg.com/@mahozad/theme-switch"></script>
+  <script src="scripts.js" type="module"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <theme-switch></theme-switch>
+
+<div id="code-container">
+  <div id="html">
+    <div class="header">HTML</div>
+    <code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Theme switch&lt;/title&gt;
+  &lt;script src=&quot;https://unpkg.com/@mahozad/theme-switch&quot;&gt;&lt;/script&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;theme-switch&gt;&lt;/theme-switch&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code>
+  </div>
+  <div id="css">
+    <div class="header">CSS</div>
+    <code class="language-css">html {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 300ms ease;
+  background: #fff1a4;
+}
+
+html[data-theme="dark"] {
+  background: #a8d8ff;
+}
+
+theme-switch {
+  --theme-switch-icon-color: #121314;
+  width: 256px;
+  height: 256px;
+}</code>
+  </div>
+  <div id="js">
+    <div class="header">JavaScript</div>
+    <code class="language-js">/* No JavaScript code used */</code>
+  </div>
+</div>
 
 </body>
 </html>
