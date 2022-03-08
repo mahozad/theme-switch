@@ -108,7 +108,6 @@ const THEME_DEFAULT = THEME_LIGHT;
 const THEME_ATTRIBUTE = "data-theme";
 const COLOR_SCHEME_DARK = "(prefers-color-scheme: dark)";
 const CUSTOM_EVENT_NAME = "themeToggle";
-
 // circleRadius, raysOpacity, eclipseCenterX, letterOffset
 const ICON_INITIAL_STATE_FOR_AUTO = [10, 0, 33, 0];
 const ICON_INITIAL_STATE_FOR_DARK = [10, 0, 20, 1];
