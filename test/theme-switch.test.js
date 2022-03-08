@@ -116,7 +116,6 @@ test(`getUserThemeSelection should return the default theme when the value store
  * ```
  */
 test(`When user theme is light, toggleTheme should update the theme to dark`, () => {
-    // localStorage.setItem("theme", "light");
     themeSwitchClass.prototype.animateThemeButtonIconToDark = () => {};
     const instance = new themeSwitchClass();
     instance.toggleTheme("light");
