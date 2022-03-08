@@ -147,9 +147,9 @@ class ThemeSwitchElement extends HTMLElement {
         });
 
         // If another theme switch in page toggled, update my icon too
-        document.addEventListener(CUSTOM_EVENT_NAME, (event) => {
+        document.addEventListener(CUSTOM_EVENT_NAME, event => {
             if (event.detail.originId !== this.identifier) {
-                this.reflectTheme();
+                this.adaptToTheme();
             }
         });
 
@@ -175,7 +175,7 @@ class ThemeSwitchElement extends HTMLElement {
         updateTheme();
     }
 
-    reflectTheme() {
+    adaptToTheme() {
         const theme = getUserThemeSelection();
         if (theme === THEME_AUTO) {
             this.animateThemeButtonIconToAuto();

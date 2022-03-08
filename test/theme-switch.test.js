@@ -244,8 +244,8 @@ describe("Screenshot tests", () => {
             () => {localStorage.setItem(THEME_KEY, THEME_LIGHT);},
             (page, element) => {
                 // See https://stackoverflow.com/a/64487791/8583692
-                element.evaluate((el) => {
-                    el.style.setProperty("--theme-switch-icon-color", "#ffe36e");
+                element.evaluate(element => {
+                    element.style.setProperty("--theme-switch-icon-color", "#ffe36e");
                 });
             }
         );
@@ -274,7 +274,7 @@ describe("Screenshot tests", () => {
     test(`When there are multiple instances of the element in page and one of them is toggled, others should be toggled too`, async () => {
         const screenshot = await takeScreenshot(
             () => { localStorage.setItem(THEME_KEY, THEME_LIGHT); },
-            async (page) => {
+            async page => {
                 (await page.$("#theme-switch-2")).click();
                 await page.waitForTimeout(600);
                 (await page.$("#theme-switch-3")).click();
