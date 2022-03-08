@@ -318,18 +318,12 @@ describe("Screenshot tests", () => {
         }
     }, 100_000);
 
-
-    // See https://stackoverflow.com/q/47107465/8583692
-    // and https://github.com/puppeteer/puppeteer/blob/main/examples/custom-event.js
-    test(`When the switch is toggled, it should its event should contain its old and new state`, async () => {
+    test(`When the switch is toggled, its event should contain its old and new state`, async () => {
         localStorage.setItem("theme", "light");
         const browser = await puppeteer.launch({ headless: true, executablePath: chromiumPath });
         const page = await browser.newPage();
         const result = await Promise.race([new Promise(async resolve => {
-            // Define a window.myListener function on the page
-            await page.exposeFunction("myListener", event => {
-                resolve(event);
-            });
+            await page.exposeFunction("myListener", event => resolve(event));
             await addListener(page, "themeToggle");
             await page.goto(`file://${__dirname}\\template-1.html`);
             const element = await page.$("theme-switch");
