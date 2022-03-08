@@ -31,52 +31,53 @@ expect.extend({ toMatchReferenceSnapshot });
 setSystemThemeTo("light");
 const main = require("../theme-switch");
 // Could have instead exported the functions in theme-switch.js
-const mainInternals = {
-    updateTheme: main.__get__("updateTheme"),
-    getSystemTheme: main.__get__("getSystemTheme"),
-    themeSwitchClass: main.__get__("ThemeSwitchElement"),
-    getUserThemeSelection: main.__get__("getUserThemeSelection")
-};
+
+// See documentations of one of tests about these (called rewiring)
+const updateTheme = main.__get__("updateTheme");
+const getSystemTheme = main.__get__("getSystemTheme");
+const themeSwitchClass = main.__get__("ThemeSwitchElement");
+const getUserThemeSelection = main.__get__("getUserThemeSelection");
+const getInitialStateForIcon = main.__get__("getInitialStateForIcon");
 
 test(`When system theme is light, getSystemTheme should return "light"`, () => {
     setSystemThemeTo("light");
-    expect(mainInternals.getSystemTheme()).toBe("light");
+    expect(getSystemTheme()).toBe("light");
 });
 
 test(`When system theme is dark, getSystemTheme should return "dark"`, () => {
     setSystemThemeTo("dark");
-    expect(mainInternals.getSystemTheme()).toBe("dark");
+    expect(getSystemTheme()).toBe("dark");
 });
 
 test(`For first-time users, getUserThemeSelection should return the default theme`, () => {
     localStorage.clear();
-    expect(mainInternals.getUserThemeSelection()).toBe("light");
+    expect(getUserThemeSelection()).toBe("light");
 });
 
 test(`For first-time users, getUserThemeSelection should return the default theme irrespective of the system theme`, () => {
     localStorage.clear();
     setSystemThemeTo("dark");
-    expect(mainInternals.getUserThemeSelection()).toBe("light");
+    expect(getUserThemeSelection()).toBe("light");
 });
 
 test(`getUserThemeSelection should return "light" when user had previously selected "light"`, () => {
     localStorage.setItem("theme", "light");
-    expect(mainInternals.getUserThemeSelection()).toBe("light");
+    expect(getUserThemeSelection()).toBe("light");
 });
 
 test(`getUserThemeSelection should return "dark" when user had previously selected "dark"`, () => {
     localStorage.setItem("theme", "dark");
-    expect(mainInternals.getUserThemeSelection()).toBe("dark");
+    expect(getUserThemeSelection()).toBe("dark");
 });
 
 test(`getUserThemeSelection should return "auto" when user had previously selected "auto"`, () => {
     localStorage.setItem("theme", "auto");
-    expect(mainInternals.getUserThemeSelection()).toBe("auto");
+    expect(getUserThemeSelection()).toBe("auto");
 });
 
 test(`getUserThemeSelection should return the default theme when the value stored is corrupted`, () => {
     localStorage.setItem("theme", "sanitizer");
-    expect(mainInternals.getUserThemeSelection()).toBe("light");
+    expect(getUserThemeSelection()).toBe("light");
 });
 
 /**
@@ -116,39 +117,39 @@ test(`getUserThemeSelection should return the default theme when the value store
  * ```
  */
 test(`When user theme is light, toggleTheme should update the theme to dark`, () => {
-    mainInternals.themeSwitchClass.prototype.animateThemeButtonIconToDark = () => {};
-    const instance = new mainInternals.themeSwitchClass();
     localStorage.setItem("theme", "light");
+    themeSwitchClass.prototype.animateThemeButtonIconToDark = () => {};
+    const instance = new themeSwitchClass();
     instance.toggleTheme();
-    expect(mainInternals.getUserThemeSelection()).toBe("dark");
+    expect(getUserThemeSelection()).toBe("dark");
 });
 
 test(`When user theme is dark, toggleTheme should update the theme to auto`, () => {
-    mainInternals.themeSwitchClass.prototype.animateThemeButtonIconToAuto = () => {};
-    const instance = new mainInternals.themeSwitchClass();
     localStorage.setItem("theme", "dark");
+    themeSwitchClass.prototype.animateThemeButtonIconToAuto = () => {};
+    const instance = new themeSwitchClass();
     instance.toggleTheme();
-    expect(mainInternals.getUserThemeSelection()).toBe("auto");
+    expect(getUserThemeSelection()).toBe("auto");
 });
 
 test(`When user theme is auto, toggleTheme should update the theme to light`, () => {
-    mainInternals.themeSwitchClass.prototype.animateThemeButtonIconToLight = () => {};
-    const instance = new mainInternals.themeSwitchClass();
     localStorage.setItem("theme", "auto");
+    themeSwitchClass.prototype.animateThemeButtonIconToLight = () => {};
+    const instance = new themeSwitchClass();
     instance.toggleTheme();
-    expect(mainInternals.getUserThemeSelection()).toBe("light");
+    expect(getUserThemeSelection()).toBe("light");
 });
 
 test(`When user selected theme is light, updateTheme should update document theme attribute to "light"`, () => {
     main.__set__("getUserThemeSelection", () => "light");
-    main.__get__("updateTheme").call();
+    updateTheme();
     const result = document.documentElement.getAttribute("data-theme");
     expect(result).toBe("light");
 });
 
 test(`When user selected theme is dark, updateTheme should update document theme attribute to "dark"`, () => {
     main.__set__("getUserThemeSelection", () => "dark");
-    main.__get__("updateTheme").call();
+    updateTheme();
     const result = document.documentElement.getAttribute("data-theme");
     expect(result).toBe("dark");
 });
@@ -156,7 +157,7 @@ test(`When user selected theme is dark, updateTheme should update document theme
 test(`When user selected theme is auto and system theme is light, updateTheme should update document theme attribute to "light"`, () => {
     main.__set__("getUserThemeSelection", () => "auto");
     main.__set__("getSystemTheme", () => "light");
-    main.__get__("updateTheme").call();
+    updateTheme();
     const result = document.documentElement.getAttribute("data-theme");
     expect(result).toBe("light");
 });
@@ -164,27 +165,24 @@ test(`When user selected theme is auto and system theme is light, updateTheme sh
 test(`When user selected theme is auto and system theme is dark, updateTheme should update document theme attribute to "dark"`, () => {
     main.__set__("getUserThemeSelection", () => "auto");
     main.__set__("getSystemTheme", () => "dark");
-    main.__get__("updateTheme").call();
+    updateTheme();
     const result = document.documentElement.getAttribute("data-theme");
     expect(result).toBe("dark");
 });
 
 test(`When user selected theme is light, getInitialStateForIcon should return correct values`, () => {
     main.__set__("getUserThemeSelection", () => "light");
-    const result = main.__get__("getInitialStateForIcon").call();
-    expect(result).toEqual([5, 1, 33, 1]);
+    expect(getInitialStateForIcon()).toEqual([5, 1, 33, 1]);
 });
 
 test(`When user selected theme is dark, getInitialStateForIcon should return correct values`, () => {
     main.__set__("getUserThemeSelection", () => "dark");
-    const result = main.__get__("getInitialStateForIcon").call();
-    expect(result).toEqual([10, 0, 20, 1]);
+    expect(getInitialStateForIcon()).toEqual([10, 0, 20, 1]);
 });
 
 test(`When user selected theme is auto, getInitialStateForIcon should return correct values`, () => {
     main.__set__("getUserThemeSelection", () => "auto");
-    const result = main.__get__("getInitialStateForIcon").call();
-    expect(result).toEqual([10, 0, 33, 0]);
+    expect(getInitialStateForIcon()).toEqual([10, 0, 33, 0]);
 });
 
 describe("Screenshot tests", () => {
