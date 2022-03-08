@@ -115,7 +115,6 @@ const ICON_INITIAL_STATE_FOR_LIGHT = [5, 1, 33, 1];
 
 class ThemeSwitchElement extends HTMLElement {
     shadowRoot;
-    themeToggleEvent;
     static counter = 0; // See https://stackoverflow.com/a/43116254/8583692
     identifier = ThemeSwitchElement.counter++;
 
@@ -129,23 +128,28 @@ class ThemeSwitchElement extends HTMLElement {
         // Add the click listener to the top-most parent (the custom element itself)
         // so the padding etc. on the element be also clickable
         this.shadowRoot.host.addEventListener("click", () => {
-            this.toggleTheme();
-            this.dispatchEvent(this.themeToggleEvent);
+            const oldTheme = getUserThemeSelection();
+            this.toggleTheme(oldTheme);
+            const newTheme = getUserThemeSelection();
+            // See https://stackoverflow.com/a/53804106/8583692
+            const event = new CustomEvent("themeToggle", {
+                detail: {
+                    originId: this.identifier,
+                    oldState: oldTheme,
+                    newState: newTheme
+                },
+                bubbles: true,
+                composed: true,
+                cancelable: false
+            });
+            this.dispatchEvent(event);
         });
 
         // If another theme switch in page toggled, update my icon too
         document.addEventListener("themeToggle", (event) => {
-            if (event.detail !== this.identifier) {
+            if (event.detail.originId !== this.identifier) {
                 this.reflectTheme();
             }
-        });
-
-        // See https://stackoverflow.com/a/53804106/8583692
-        this.themeToggleEvent = new CustomEvent("themeToggle", {
-            detail: this.identifier,
-            bubbles: true,
-            composed: true,
-            cancelable: false
         });
 
         // Create some CSS to apply to the shadow DOM
@@ -156,12 +160,11 @@ class ThemeSwitchElement extends HTMLElement {
     }
 
     // See https://stackoverflow.com/q/48316611
-    toggleTheme() {
-        const theme = getUserThemeSelection();
-        if (theme === THEME_AUTO) {
+    toggleTheme(currentTheme) {
+        if (currentTheme === THEME_AUTO) {
             localStorage.setItem(THEME_KEY, THEME_LIGHT);
             this.animateThemeButtonIconToLight();
-        } else if (theme === THEME_DARK) {
+        } else if (currentTheme === THEME_DARK) {
             localStorage.setItem(THEME_KEY, THEME_AUTO);
             this.animateThemeButtonIconToAuto();
         } else /* if (theme === THEME_LIGHT) */ {

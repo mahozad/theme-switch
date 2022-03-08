@@ -117,26 +117,24 @@ test(`getUserThemeSelection should return the default theme when the value store
  * ```
  */
 test(`When user theme is light, toggleTheme should update the theme to dark`, () => {
-    localStorage.setItem("theme", "light");
+    // localStorage.setItem("theme", "light");
     themeSwitchClass.prototype.animateThemeButtonIconToDark = () => {};
     const instance = new themeSwitchClass();
-    instance.toggleTheme();
+    instance.toggleTheme("light");
     expect(getUserThemeSelection()).toBe("dark");
 });
 
 test(`When user theme is dark, toggleTheme should update the theme to auto`, () => {
-    localStorage.setItem("theme", "dark");
     themeSwitchClass.prototype.animateThemeButtonIconToAuto = () => {};
     const instance = new themeSwitchClass();
-    instance.toggleTheme();
+    instance.toggleTheme("dark");
     expect(getUserThemeSelection()).toBe("auto");
 });
 
 test(`When user theme is auto, toggleTheme should update the theme to light`, () => {
-    localStorage.setItem("theme", "auto");
     themeSwitchClass.prototype.animateThemeButtonIconToLight = () => {};
     const instance = new themeSwitchClass();
-    instance.toggleTheme();
+    instance.toggleTheme("auto");
     expect(getUserThemeSelection()).toBe("light");
 });
 
@@ -316,6 +314,33 @@ describe("Screenshot tests", () => {
         } catch (error) {
             throw new Error(`${error}\nThe error may also have happened because of the timeout, meaning the event was not triggered`);
             // OR  fail("..."); // See https://github.com/facebook/jest/issues/11698
+        } finally {
+            await browser.close();
+        }
+    }, 100_000);
+
+
+    // See https://stackoverflow.com/q/47107465/8583692
+    // and https://github.com/puppeteer/puppeteer/blob/main/examples/custom-event.js
+    test(`When the switch is toggled, it should its event should contain its old and new state`, async () => {
+        localStorage.setItem("theme", "light");
+        const browser = await puppeteer.launch({ headless: true, executablePath: chromiumPath });
+        const page = await browser.newPage();
+        const result = await Promise.race([new Promise(async resolve => {
+            // Define a window.myListener function on the page
+            await page.exposeFunction("myListener", event => {
+                resolve(event);
+            });
+            await addListener(page, "themeToggle");
+            await page.goto(`file://${__dirname}\\template-1.html`);
+            const element = await page.$("theme-switch");
+            await element.click();
+        }), page.waitForTimeout(2_000)]);
+        try {
+            expect(result.detail.oldState).toBe("light");
+            expect(result.detail.newState).toBe("dark");
+        } catch (error) {
+            throw new Error(`${error}\nThe error may also have happened because of the timeout, meaning the event was not triggered`);
         } finally {
             await browser.close();
         }
