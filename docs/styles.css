@@ -13,6 +13,7 @@ html[data-theme="dark"] {
 }
 
 theme-switch {
+  --theme-switch-icon-color: #121314;
   width: 256px;
   height: 256px;
 }
