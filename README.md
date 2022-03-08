@@ -53,9 +53,9 @@ You can also use CDNs instead of downloading the script manually and hosting it 
     ```
   - Using a specific version:
     ```html
-    <script src="https://unpkg.com/@mahozad/theme-switch@0.9.2"></script>
+    <script src="https://unpkg.com/@mahozad/theme-switch@1.0.0"></script>
     <!-- OR -->
-    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch@0.9.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch@1.0.0"></script>
     ```
 
 ## Style the element
