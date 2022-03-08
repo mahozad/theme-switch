@@ -107,6 +107,7 @@ const THEME_VALUES = [THEME_AUTO, THEME_DARK, THEME_LIGHT];
 const THEME_DEFAULT = THEME_LIGHT;
 const THEME_ATTRIBUTE = "data-theme";
 const COLOR_SCHEME_DARK = "(prefers-color-scheme: dark)";
+const CUSTOM_EVENT_NAME = "themeToggle";
 
 // circleRadius, raysOpacity, eclipseCenterX, letterOffset
 const ICON_INITIAL_STATE_FOR_AUTO = [10, 0, 33, 0];
@@ -132,7 +133,7 @@ class ThemeSwitchElement extends HTMLElement {
             this.toggleTheme(oldTheme);
             const newTheme = getUserThemeSelection();
             // See https://stackoverflow.com/a/53804106/8583692
-            const event = new CustomEvent("themeToggle", {
+            const event = new CustomEvent(CUSTOM_EVENT_NAME, {
                 detail: {
                     originId: this.identifier,
                     oldState: oldTheme,
@@ -146,7 +147,7 @@ class ThemeSwitchElement extends HTMLElement {
         });
 
         // If another theme switch in page toggled, update my icon too
-        document.addEventListener("themeToggle", (event) => {
+        document.addEventListener(CUSTOM_EVENT_NAME, (event) => {
             if (event.detail.originId !== this.identifier) {
                 this.reflectTheme();
             }
