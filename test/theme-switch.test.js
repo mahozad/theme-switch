@@ -314,11 +314,7 @@ describe("Screenshot tests", () => {
         try {
             expect(result.type).toBe("themeToggle");
         } catch (error) {
-            throw new Error(`Timeout! Either of the following may have happened:
-             - The event was not triggered
-             - The event was not received
-             - The event has been renamed
-             `);
+            throw new Error(`${error}\nThe error may also have happened because of the timeout, meaning the event was not triggered`);
             // OR  fail("..."); // See https://github.com/facebook/jest/issues/11698
         } finally {
             await browser.close();
