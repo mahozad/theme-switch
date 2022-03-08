@@ -26,6 +26,10 @@
         "keepClassName": false
       }
     ],
+    [
+      "transform-remove-console",
+      {"exclude": ["error"]}
+    ],
     "rewire-test-env-only",
     "iife-wrap"
   ]
