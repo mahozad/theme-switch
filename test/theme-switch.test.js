@@ -73,6 +73,11 @@ test(`getUserThemeSelection should return "auto" when user had previously select
     expect(mainInternals.getUserThemeSelection()).toBe("auto");
 });
 
+test(`getUserThemeSelection should return the default theme when the value stored is corrupted`, () => {
+    localStorage.setItem("theme", "sanitizer");
+    expect(mainInternals.getUserThemeSelection()).toBe("light");
+});
+
 /**
  * NOTE: jsdom doesn't seem to support `beginElement()` function on SVG `animate` element.
  *  See https://github.com/jsdom/jsdom/issues/3344

@@ -102,6 +102,7 @@ const THEME_KEY = "theme";
 const THEME_AUTO = "auto";
 const THEME_DARK = "dark";
 const THEME_LIGHT = "light";
+const THEME_VALUES = [THEME_AUTO, THEME_DARK, THEME_LIGHT];
 const THEME_DEFAULT = THEME_LIGHT;
 const THEME_ATTRIBUTE = "data-theme";
 const COLOR_SCHEME_DARK = "(prefers-color-scheme: dark)";
@@ -290,7 +291,7 @@ function updateTheme() {
 
 function getUserThemeSelection() {
     const userSelection = localStorage.getItem(THEME_KEY);
-    return userSelection === null ? THEME_DEFAULT : userSelection;
+    return THEME_VALUES.includes(userSelection) ? userSelection : THEME_DEFAULT;
 }
 
 function getSystemTheme() {
