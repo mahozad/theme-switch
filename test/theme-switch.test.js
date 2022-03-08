@@ -169,6 +169,24 @@ test(`When user selected theme is auto and system theme is dark, updateTheme sho
     expect(result).toBe("dark");
 });
 
+test(`When user selected theme is light, getInitialStateForIcon should return correct values`, () => {
+    main.__set__("getUserThemeSelection", () => "light");
+    const result = main.__get__("getInitialStateForIcon").call();
+    expect(result).toEqual([5, 1, 33, 1]);
+});
+
+test(`When user selected theme is dark, getInitialStateForIcon should return correct values`, () => {
+    main.__set__("getUserThemeSelection", () => "dark");
+    const result = main.__get__("getInitialStateForIcon").call();
+    expect(result).toEqual([10, 0, 20, 1]);
+});
+
+test(`When user selected theme is auto, getInitialStateForIcon should return correct values`, () => {
+    main.__set__("getUserThemeSelection", () => "auto");
+    const result = main.__get__("getInitialStateForIcon").call();
+    expect(result).toEqual([10, 0, 33, 0]);
+});
+
 describe("Screenshot tests", () => {
     // Increase the timeout of executing all the test suit from
     // the default 5000 to a greater value to run fine on CI
