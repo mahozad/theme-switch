@@ -112,12 +112,11 @@ const ICON_INITIAL_STATE_FOR_AUTO = [10, 0, 33, 0];
 const ICON_INITIAL_STATE_FOR_DARK = [10, 0, 20, 1];
 const ICON_INITIAL_STATE_FOR_LIGHT = [5, 1, 33, 1];
 
-let counter = 0; // See https://stackoverflow.com/a/43116254/8583692
-
 class ThemeSwitchElement extends HTMLElement {
     shadowRoot;
     themeToggleEvent;
-    identifier = counter++;
+    static counter = 0; // See https://stackoverflow.com/a/43116254/8583692
+    identifier = ThemeSwitchElement.counter++;
 
     constructor() {
         super();
