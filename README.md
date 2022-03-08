@@ -168,7 +168,7 @@ See [this article](https://css-tricks.com/web-components-are-easier-than-you-thi
 which is about creating HTML custom elements.
 
 See the icon for switching themes (located in the top right corner) on
-[Google Fonts site](https://fonts.google.com/icons).
+[Google Fonts site](https://fonts.google.com/icons). Also see [this site](https://rastikerdar.github.io/vazirmatn).
 
 See [this article](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web)
 for implementing dark/light theme on sites.
