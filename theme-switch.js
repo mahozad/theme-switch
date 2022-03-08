@@ -70,6 +70,7 @@
 * */
 
 // TODO: extract Jest configuration to a jest.config.js file
+// TODO: Add an attribute so the user can define key name stored in localstorage
 
 /*
 * NOTE: To avoid name collisions if another script declares variables or functions with the same name
