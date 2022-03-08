@@ -314,7 +314,7 @@ describe("Screenshot tests", () => {
             throw new Error(`${error}\nThe error may also have happened because of the timeout, meaning the event was not triggered`);
             // OR  fail("..."); // See https://github.com/facebook/jest/issues/11698
         } finally {
-            await page.waitForTimeout(1_000);
+            await page.waitForTimeout(1_000); // To fix a problem for CI
             await browser.close();
         }
     }, 100_000);
@@ -336,7 +336,7 @@ describe("Screenshot tests", () => {
         } catch (error) {
             throw new Error(`${error}\nThe error may also have happened because of the timeout, meaning the event was not triggered`);
         } finally {
-            await page.waitForTimeout(1_000);
+            await page.waitForTimeout(1_000); // To fix a problem for CI
             await browser.close();
         }
     }, 100_000);
