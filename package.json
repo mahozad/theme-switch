@@ -35,7 +35,7 @@
   },
   "name": "@mahozad/theme-switch",
   "version": "1.1.0",
-  "description": "A toggle button to switch between light/dark/system theme.",
+  "description": "Animated toggle button to switch between light/dark/system theme.",
   "main": "theme-switch.js",
   "files": [
     "theme-switch.js",

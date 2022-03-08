@@ -8,7 +8,7 @@
 
 </div>
 
-# HTML light/dark/system theme switch button
+# HTML light/dark/system theme animated switch button
 
 A simple [custom HTML element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
 called `<theme-switch>`.
