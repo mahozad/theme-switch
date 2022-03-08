@@ -32,6 +32,7 @@ setSystemThemeTo("light");
 const main = require("../theme-switch");
 // Could have instead exported the functions in theme-switch.js
 const mainInternals = {
+    updateTheme: main.__get__("updateTheme"),
     getSystemTheme: main.__get__("getSystemTheme"),
     themeSwitchClass: main.__get__("ThemeSwitchElement"),
     getUserThemeSelection: main.__get__("getUserThemeSelection")
@@ -272,8 +273,40 @@ describe("Screenshot tests", () => {
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
+    // See https://stackoverflow.com/q/47107465/8583692
+    // and https://github.com/puppeteer/puppeteer/blob/main/examples/custom-event.js
+    test(`When the switch is toggled, it should trigger a "themeToggle" event`, async () => {
+        const browser = await puppeteer.launch({
+                headless: true, // If false, opens the browser UI
+                executablePath: chromiumPath
+            }
+        );
+        const page = await browser.newPage();
+        const result = await new Promise(async resolve => {
+            // Define a window.myListener function on the page
+            await page.exposeFunction("myListener", event => {
+                // resolve the outer Promise here, so we can await it outside
+                resolve(event);
+            });
+            await addListener(page, "themeToggle");
+            await page.goto(`file://${__dirname}\\template-1.html`);
+            const element = await page.$("theme-switch");
+            await element.click();
+        });
+        expect(result.type).toBe("themeToggle");
+        await browser.close();
+    }, 100_000);
+
     afterAll(() => {fileSystem.rmSync(snapshotFileName);});
 });
+
+function addListener(page, eventType) {
+    return page.evaluateOnNewDocument(type => {
+        document.addEventListener(type, event => {
+            window.myListener({ type, detail: event.detail });
+        });
+    }, eventType);
+}
 
 async function takeScreenshot(
     init,
@@ -282,8 +315,8 @@ async function takeScreenshot(
     targetElementSelector = "theme-switch"
 ) {
     const browser = await puppeteer.launch({
-            headless: true, // If false, opens the browser UI
-            // channel: "chrome", // this overrides executablePath
+        headless: true, // If false, opens the browser UI
+        // channel: "chrome", // this overrides executablePath
             // Download the required version from https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64
             // OR C:\\your_workspace\\node_modules\\puppeteer\\.local-chromium\\win64-(version)\\chrome-win\\chrome.exe
             executablePath: chromiumPath
