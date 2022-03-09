@@ -132,9 +132,7 @@ class ThemeSwitchElement extends HTMLElement {
             const oldTheme = getUserThemeSelection();
             this.toggleTheme(oldTheme);
             const newTheme = getUserThemeSelection();
-            // See https://stackoverflow.com/a/53804106/8583692
-            const event = this.createEvent(oldTheme, newTheme);
-            this.dispatchEvent(event);
+            this.dispatchEvent(this.createEvent(oldTheme, newTheme));
         });
 
         // If another theme switch in page toggled, update my icon too
@@ -151,6 +149,7 @@ class ThemeSwitchElement extends HTMLElement {
         this.shadowRoot.append(style);
     }
 
+    // See https://stackoverflow.com/a/53804106/8583692
     createEvent(oldTheme, newTheme) {
         return new CustomEvent(CUSTOM_EVENT_NAME, {
             detail: {
