@@ -121,32 +121,31 @@ class ThemeSwitchElement extends HTMLElement {
 
     constructor() {
         super();
-
         // See https://stackoverflow.com/q/2305654/8583692
         this.shadowRoot = this.attachShadow({ mode: "open" });
         this.shadowRoot.innerHTML = generateIcon(...getInitialStateForIcon());
-
         // Add the click listener to the top-most parent (the custom element itself)
         // so the padding etc. on the element be also clickable
-        this.shadowRoot.host.addEventListener("click", () => {
-            const oldTheme = getUserThemeSelection();
-            this.toggleTheme(oldTheme);
-            const newTheme = getUserThemeSelection();
-            this.dispatchEvent(this.createEvent(oldTheme, newTheme));
-        });
-
+        this.shadowRoot.host.addEventListener("click", this.onClick);
         // If another theme switch in page toggled, update my icon too
         document.addEventListener(CUSTOM_EVENT_NAME, event => {
             if (event.detail.originId !== this.identifier) {
                 this.adaptToTheme();
             }
         });
-
         // Create some CSS to apply to the shadow DOM
         // See https://css-tricks.com/styling-a-web-component/
         const style = document.createElement("style");
         style.textContent = generateStyle();
         this.shadowRoot.append(style);
+    }
+
+    onClick() {
+        const oldTheme = getUserThemeSelection();
+        this.toggleTheme(oldTheme);
+        const newTheme = getUserThemeSelection();
+        const event = this.createEvent(oldTheme, newTheme);
+        this.dispatchEvent(event);
     }
 
     // See https://stackoverflow.com/a/53804106/8583692
