@@ -164,6 +164,10 @@ document.addEventListener("themeToggle", event => {
 
 ---
 
+## Other 
+
+<details>
+
 See [this article](https://css-tricks.com/web-components-are-easier-than-you-think/)
 which is about creating HTML custom elements.
 
@@ -188,3 +192,5 @@ TODO:
   - Try to add the library to [dokka](https://github.com/Kotlin/dokka)
   - Try to add the library to [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
   - See [chrome auto dark feature for android](https://developer.chrome.com/blog/new-in-chrome-98/#autodark-opt-out)
+
+</details>
