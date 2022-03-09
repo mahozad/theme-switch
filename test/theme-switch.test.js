@@ -189,6 +189,30 @@ test(`When user selected theme is auto, getInitialStateForIcon should return cor
     expect(getInitialStateForIcon()).toEqual([10, 0, 33, 0]);
 });
 
+test(`When current theme is light and new theme is dark, createEvent should create event with proper details`, () => {
+    const instance = new themeSwitchClass();
+    const result = instance.createEvent(THEME_LIGHT, THEME_DARK);
+    expect(result.detail.originId).toBe(instance.identifier);
+    expect(result.detail.oldState).toBe(THEME_LIGHT);
+    expect(result.detail.newState).toBe(THEME_DARK);
+});
+
+test(`When current theme is dark and new theme is auto, createEvent should create event with proper details`, () => {
+    const instance = new themeSwitchClass();
+    const result = instance.createEvent(THEME_DARK, THEME_AUTO);
+    expect(result.detail.originId).toBe(instance.identifier);
+    expect(result.detail.oldState).toBe(THEME_DARK);
+    expect(result.detail.newState).toBe(THEME_AUTO);
+});
+
+test(`When current theme is auto and new theme is light, createEvent should create event with proper details`, () => {
+    const instance = new themeSwitchClass();
+    const result = instance.createEvent(THEME_AUTO, THEME_LIGHT);
+    expect(result.detail.originId).toBe(instance.identifier);
+    expect(result.detail.oldState).toBe(THEME_AUTO);
+    expect(result.detail.newState).toBe(THEME_LIGHT);
+});
+
 describe("Screenshot tests", () => {
     // Increase the timeout of executing all the test suit from
     // the default 5000 to a greater value to run fine on CI

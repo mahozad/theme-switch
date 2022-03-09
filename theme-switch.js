@@ -133,16 +133,7 @@ class ThemeSwitchElement extends HTMLElement {
             this.toggleTheme(oldTheme);
             const newTheme = getUserThemeSelection();
             // See https://stackoverflow.com/a/53804106/8583692
-            const event = new CustomEvent(CUSTOM_EVENT_NAME, {
-                detail: {
-                    originId: this.identifier,
-                    oldState: oldTheme,
-                    newState: newTheme
-                },
-                bubbles: true,
-                composed: true,
-                cancelable: false
-            });
+            const event = this.createEvent(oldTheme, newTheme);
             this.dispatchEvent(event);
         });
 
@@ -158,6 +149,19 @@ class ThemeSwitchElement extends HTMLElement {
         const style = document.createElement("style");
         style.textContent = generateStyle();
         this.shadowRoot.append(style);
+    }
+
+    createEvent(oldTheme, newTheme) {
+        return new CustomEvent(CUSTOM_EVENT_NAME, {
+            detail: {
+                originId: this.identifier,
+                oldState: oldTheme,
+                newState: newTheme
+            },
+            bubbles: true,
+            composed: true,
+            cancelable: false
+        });
     }
 
     // See https://stackoverflow.com/q/48316611
