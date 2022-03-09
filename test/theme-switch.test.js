@@ -225,47 +225,47 @@ describe("Screenshot tests", () => {
     // Selenium doesn't seem to support screenshot testing feature.
     // See https://stackoverflow.com/q/22938045/8583692
     test(`When user stored theme is light, the icon should be sun`, async () => {
-        const screenshot = await takeScreenshot(() => {localStorage.setItem(THEME_KEY, THEME_LIGHT);});
+        const screenshot = await takeScreenshot(() => { localStorage.setItem(THEME_KEY, THEME_LIGHT); });
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
     test(`When user stored theme is dark, the icon should be moon`, async () => {
-        const screenshot = await takeScreenshot(() => {localStorage.setItem("theme", "dark");});
+        const screenshot = await takeScreenshot(() => { localStorage.setItem("theme", "dark"); });
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
     test(`When user stored theme is auto, the icon should be auto`, async () => {
-        const screenshot = await takeScreenshot(() => {localStorage.setItem("theme", "auto");});
+        const screenshot = await takeScreenshot(() => { localStorage.setItem("theme", "auto"); });
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
     test(`When user stored theme is light, clicking the switch should change the icon to moon`, async () => {
         const screenshot = await takeScreenshot(
-            () => {localStorage.setItem(THEME_KEY, THEME_LIGHT);},
-            (page, element) => {element.click();}
+            () => { localStorage.setItem(THEME_KEY, THEME_LIGHT); },
+            (page, element) => { element.click(); }
         );
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
     test(`When user stored theme is dark, clicking the switch should change the icon to auto`, async () => {
         const screenshot = await takeScreenshot(
-            () => {localStorage.setItem("theme", "dark");},
-            (page, element) => {element.click();}
+            () => { localStorage.setItem("theme", "dark"); },
+            (page, element) => { element.click(); }
         );
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
     test(`When user stored theme is auto, clicking the switch should change the icon to light`, async () => {
         const screenshot = await takeScreenshot(
-            () => {localStorage.setItem("theme", "auto");},
-            (page, element) => {element.click();}
+            () => { localStorage.setItem("theme", "auto"); },
+            (page, element) => { element.click(); }
         );
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
     test(`When user specifies a custom color for switch icon, the colors should be applied`, async () => {
         const screenshot = await takeScreenshot(
-            () => {localStorage.setItem(THEME_KEY, THEME_LIGHT);},
+            () => { localStorage.setItem(THEME_KEY, THEME_LIGHT); },
             (page, element) => {
                 // See https://stackoverflow.com/a/64487791/8583692
                 element.evaluate(element => {
@@ -278,7 +278,7 @@ describe("Screenshot tests", () => {
 
     test(`When user specifies a custom color for switch icon in a CSS rule with low specificity (like html{}), the colors should be applied`, async () => {
         const screenshot = await takeScreenshot(
-            () => {localStorage.setItem(THEME_KEY, THEME_LIGHT);},
+            () => { localStorage.setItem(THEME_KEY, THEME_LIGHT); },
             () => {},
             "template-2.html"
         );
@@ -368,7 +368,7 @@ describe("Screenshot tests", () => {
         }
     }, 100_000);
 
-    afterAll(() => {fileSystem.rmSync(snapshotFileName);});
+    afterAll(() => { fileSystem.rmSync(snapshotFileName); });
 });
 
 function addListener(page, eventType) {

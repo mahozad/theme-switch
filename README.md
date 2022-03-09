@@ -156,8 +156,8 @@ You can listen and react to it if you want:
 
 ```javascript
 document.addEventListener("themeToggle", event => {
-    console.log(`Old theme: ${event.detail.oldState}`);
-    console.log(`New theme: ${event.detail.newState}`);
+    console.log(`Old theme: ${ event.detail.oldState }`);
+    console.log(`New theme: ${ event.detail.newState }`);
     // More operations...
 });
 ```
