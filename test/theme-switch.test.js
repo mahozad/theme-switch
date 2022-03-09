@@ -322,11 +322,7 @@ describe("Screenshot tests", () => {
     // See https://stackoverflow.com/q/47107465/8583692
     // and https://github.com/puppeteer/puppeteer/blob/main/examples/custom-event.js
     test(`When the switch is toggled, it should trigger a "themeToggle" event`, async () => {
-        const browser = await puppeteer.launch({
-                headless: true, // If false, opens the browser UI
-                executablePath: chromiumPath
-            }
-        );
+        const browser = await launchBrowser();
         const page = await browser.newPage();
         const result = await Promise.race([new Promise(async resolve => {
             // Define a window.myListener function on the page
@@ -352,7 +348,7 @@ describe("Screenshot tests", () => {
 
     test(`When the switch is toggled, its event should contain its old and new state`, async () => {
         localStorage.setItem(THEME_KEY, THEME_LIGHT);
-        const browser = await puppeteer.launch({ headless: true, executablePath: chromiumPath });
+        const browser = await launchBrowser();
         const page = await browser.newPage();
         const result = await Promise.race([new Promise(async resolve => {
             await page.exposeFunction("myListener", event => resolve(event));
@@ -389,15 +385,7 @@ async function takeScreenshot(
     pageHTML = "template-1.html",
     targetElementSelector = ELEMENT_NAME
 ) {
-    const browser = await puppeteer.launch({
-        headless: true, // If false, opens the browser UI
-        // channel: "chrome", // this overrides executablePath
-            // Download the required version from https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64
-            // OR C:\\your_workspace\\node_modules\\puppeteer\\.local-chromium\\win64-(version)\\chrome-win\\chrome.exe
-            executablePath: chromiumPath
-        }
-    );
-
+    const browser = await launchBrowser();
     const page = await browser.newPage();
     // See https://stackoverflow.com/a/66530593/8583692
     await page.evaluateOnNewDocument(init);
@@ -417,6 +405,25 @@ async function takeScreenshot(
         //  the tests not being finished (running forever)
         await browser.close();
     }
+}
+
+/**
+ * Setting `channel: "chrome"` overrides `executablePath`.
+ * Download the required version of chrome from
+ * https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64
+ *
+ * Puppeteer seems to download chrome in this directory:
+ * C:\\your_workspace\\node_modules\\puppeteer\\.local-chromium\\win64-(version)\\chrome-win\\chrome.exe
+ *
+ * If headless is set to false, opens the browser UI.
+ *
+ * @returns {Promise<Browser>}
+ */
+function launchBrowser() {
+    return puppeteer.launch({
+        headless: true,
+        executablePath: chromiumPath
+    });
 }
 
 // See https://stackoverflow.com/a/53449595/8583692
