@@ -62,7 +62,7 @@ jobs:
     name: Publish the artifacts to GitHub Packages
     runs-on: ubuntu-latest
     environment:
-      name: npm
+      name: npm-registry
       url: https://www.npmjs.com/package/@mahozad/theme-switch
     permissions:
       contents: read
