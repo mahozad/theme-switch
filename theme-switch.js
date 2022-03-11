@@ -71,6 +71,8 @@
 
 // TODO: extract Jest configuration to a jest.config.js file
 // TODO: Add an attribute so the user can define key name stored in localstorage
+// TODO: Make the component customizable by adding custom attributes:
+//  See https://medium.com/technofunnel/creating-passing-data-to-html-custom-elements-using-attributes-bfd9aa759fd4
 
 /*
 * NOTE: To avoid name collisions if another script declares variables or functions with the same name
