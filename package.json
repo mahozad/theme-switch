@@ -35,7 +35,7 @@
     "testURL": "http://localhost/"
   },
   "name": "@mahozad/theme-switch",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Animated toggle button to switch between light/dark/system theme.",
   "main": "theme-switch.js",
   "files": [

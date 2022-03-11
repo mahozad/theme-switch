@@ -1,5 +1,11 @@
 # History of notable changes introduced in each version
 
+## v1.2.1 (2022-03-11)
+#### Other
+  - Add some code refactorings ([`0a2aab86`](https://github.com/mahozad/theme-switch/commit/0a2aab86), [`3d5573a2`](https://github.com/mahozad/theme-switch/commit/3d5573a2), [`7fc2b960`](https://github.com/mahozad/theme-switch/commit/7fc2b960))
+
+[All commits since version 1.2.0](https://github.com/mahozad/theme-switch/compare/v1.2.0...v1.2.1)
+
 ## v1.2.0 (2022-03-08)
 #### New features
   - Add previous and new theme name in the custom event ([`a34af81a`](https://github.com/mahozad/theme-switch/commit/a34af81a))
