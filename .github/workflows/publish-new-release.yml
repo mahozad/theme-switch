@@ -61,6 +61,9 @@ jobs:
     needs: [ run-tests ]
     name: Publish the artifacts to GitHub Packages
     runs-on: ubuntu-latest
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/@mahozad/theme-switch
     permissions:
       contents: read
       packages: write
@@ -77,6 +80,8 @@ jobs:
         run: |
           echo "{\"chromiumPath\": \"$(which chromium)\"}" > local.json
       # See https://sevic.dev/npm-publish-github-actions/
+      # Could also have set it with the registry-url property of the setup-node action.
+      # See https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#publish-to-npmjs-and-gpr-with-npm
       # The npm client is able to work with only one registry at a time:
       # It is not possible to simultaneously use both npmjs.com and GitHub Packages registry.
       - name: Set npm package registry to GitHub Packages
@@ -87,6 +92,19 @@ jobs:
       #   run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - name: Publish the package to GitHub Packages registry
         run: npm publish
+      - name: Resetup the node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install the package and its dependencies
+        run: npm install
+      - name: Set path to a chromium browser (needed for screenshot tests)
+        run: |
+          echo "{\"chromiumPath\": \"$(which chromium)\"}" > local.json
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   create-github-release:
     needs: [ publish-the-package ]
