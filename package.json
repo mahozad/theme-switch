@@ -28,8 +28,18 @@
     "verbose": true,
     "reporters": [
       "default",
-      ["jest-junit", {"outputName": "test-report.xml"}],
-      ["jest-html-reporter", {"pageTitle": "Test Report"}]
+      [
+        "jest-junit",
+        {
+          "outputName": "test-report.xml"
+        }
+      ],
+      [
+        "jest-html-reporter",
+        {
+          "pageTitle": "Test Report"
+        }
+      ]
     ],
     "preset": "jest-puppeteer",
     "testURL": "http://localhost/"
