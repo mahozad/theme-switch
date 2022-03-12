@@ -10,6 +10,7 @@ export default {
         {
             file: "dist/theme-switch.min.js",
             format: "iife",
+            sourcemap: true,
             name: "themeSwitch",
             plugins: [terser()]
         }
