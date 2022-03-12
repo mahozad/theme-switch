@@ -13,7 +13,9 @@
     "jest-image-snapshot": "^4.5.1",
     "jest-junit": "^13.0.0",
     "jest-puppeteer": "^6.1.0",
-    "puppeteer-core": "^13.4.0"
+    "puppeteer-core": "^13.4.0",
+    "rollup": "^2.70.0",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "scripts": {
     "test": "jest --env=node --colors test",
