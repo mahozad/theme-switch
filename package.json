@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-run": "^2.1.0",
     "babel-plugin-rewire-test-env-only": "^1.0.0",
     "clean-css": "^5.2.4",
     "eslint": "^8.10.0",
