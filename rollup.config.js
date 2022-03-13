@@ -1,4 +1,7 @@
 import { terser } from "rollup-plugin-terser";
+import replace from "@rollup/plugin-replace";
+import { minify } from "html-minifier";
+import fileSystem from "fs";
 
 export default {
     input: "theme=switch.js",
@@ -26,5 +29,21 @@ export default {
             name: "themeSwitch",
             plugins: [terser()]
         }
+    ],
+    plugins: [
+        /* Could instead use rollup-plugin-html but produced low-quality code */
+        replace({
+            "ICON_TEMPLATE": minifyFile("icon.html")
+        })
     ]
 };
+
+function minifyFile(file) {
+    const raw = fileSystem.readFileSync(file, { encoding: "utf-8" });
+    return minify(raw, {
+        removeComments: true,
+        collapseWhitespace: true,
+        conservativeCollapse: true,
+        collapseBooleanAttributes: true
+    });
+}
