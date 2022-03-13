@@ -121,4 +121,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           body_path: changelog.txt
-          files: theme-switch.min.js
+          files: dist/theme-switch.min.js

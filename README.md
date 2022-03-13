@@ -24,7 +24,7 @@ and [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle).
 
 ## Use it in your page
 
-Download the [theme-switch.min.js](theme-switch.min.js) file and reference it at the top of your HTML:
+Download the [theme-switch.min.js](dist/theme-switch.min.js) file and reference it at the top of your HTML:
 
 ```html
 <!DOCTYPE html>
@@ -119,7 +119,7 @@ In your *angular.json* file at the root of your project update the `scripts` pro
 ```json
 "scripts": [
   {
-    "input": "node_modules/@mahozad/theme-switch/theme-switch.min.js",
+    "input": "node_modules/@mahozad/theme-switch/dist/theme-switch.min.js",
     "inject": false,
     "bundleName": "theme-switch"
   }

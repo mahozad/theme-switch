@@ -26,7 +26,7 @@
     "test-continuous": "jest --env=node --colors --watch-all test",
     "test-with-coverage": "jest --env=node --colors --coverage test",
     "lint": "eslint --color theme-switch.js",
-    "lint-html": "eslint --format html --output-file lint.html theme-switch.js",
+    "lint-html": "eslint --format html --output-file lint.html dist/theme-switch.js",
     "prepublishOnly": "npm test"
   },
   "jest": {
@@ -52,14 +52,10 @@
   "name": "@mahozad/theme-switch",
   "version": "1.2.1",
   "description": "Animated toggle button to switch between light/dark/system theme.",
-  "main": "theme-switch.js",
-  "files": [
-    "theme-switch.js",
-    "theme-switch.min.js",
-    "theme-switch.min.js.map"
-  ],
-  "unpkg": "theme-switch.min.js",
-  "jsdelivr": "theme-switch.min.js",
+  "main": "dist/theme-switch.js",
+  "files": ["dist/"],
+  "unpkg": "dist/theme-switch.min.js",
+  "jsdelivr": "dist/theme-switch.min.js",
   "keywords": [
     "dark",
     "dark-mode",

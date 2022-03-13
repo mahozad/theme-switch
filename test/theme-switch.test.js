@@ -29,7 +29,7 @@ const { chromiumPath } = require("../local.json");
 
 expect.extend({ toMatchReferenceSnapshot });
 setSystemThemeTo("light");
-const main = require("../theme-switch");
+const main = require("../dist/theme-switch");
 // See documentations of one of tests about these (called rewiring)
 // (Could have instead exported the functions in theme-switch.js)
 const ELEMENT_NAME = main.__get__("ELEMENT_NAME");
