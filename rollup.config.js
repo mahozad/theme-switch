@@ -34,13 +34,13 @@ export default {
     plugins: [
         /* Could instead use rollup-plugin-html but produced low-quality code */
         replace({
-            "ICON_TEMPLATE": minifyFile("icon.html"),
-            "STYLES_TEMPLATE": readStyles()
+            "ICON_TEMPLATE": readHTML("icon.html"),
+            "STYLES_TEMPLATE": readCSS("styles.css")
         })
     ]
 };
 
-function minifyFile(file) {
+function readHTML(file) {
     const raw = fileSystem.readFileSync(file, { encoding: "utf-8" });
     return minify(raw, {
         removeComments: true,
@@ -50,7 +50,7 @@ function minifyFile(file) {
     });
 }
 
-function readStyles() {
-    const raw = fileSystem.readFileSync("styles.css", { encoding: "utf-8" });
+function readCSS(file) {
+    const raw = fileSystem.readFileSync(file, { encoding: "utf-8" });
     return new CleanCSS().minify(raw).styles;
 }
