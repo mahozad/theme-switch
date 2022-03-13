@@ -13,10 +13,10 @@ const fileSystem = require("fs");
 // See https://stackoverflow.com/a/48952855/8583692
 const { configureToMatchImageSnapshot: configureSnapshots } = require("jest-image-snapshot");
 const toMatchReferenceSnapshot = configureSnapshots({
-    customSnapshotsDir: "snapshots/",
-    customDiffDir: "snapshot-diffs/"
+    customSnapshotsDir: "test/screenshots/",
+    customDiffDir: "test/screenshots-diff/"
 });
-const snapshotFileName = "temp-snapshot-for-test.png";
+const snapshotFileName = "test/temp-screenshot.png";
 /**
  * See https://stackoverflow.com/q/7163061/8583692
  * Add a local.json file with the content like this:

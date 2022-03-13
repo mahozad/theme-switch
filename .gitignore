@@ -1,11 +1,11 @@
 node_modules/
 coverage/
 package-lock.json
-temp-snapshot-for-test.png
+test/temp-screenshot.png
 jest-screenshot-report/
 local.json
 test-report.*
 lint.html
 .idea/misc.xml
 .idea/inspectionProfiles/
-snapshot-diffs/
+test/snapshot-diffs/
