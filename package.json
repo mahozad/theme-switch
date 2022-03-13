@@ -24,7 +24,9 @@
     "prepublishOnly": "npm test"
   },
   "babel": {
-    "plugins": ["rewire-test-env-only"]
+    "plugins": [
+      "rewire-test-env-only"
+    ]
   },
   "jest": {
     "verbose": true,
