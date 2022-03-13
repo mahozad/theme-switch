@@ -213,34 +213,8 @@ function generateIcon(circleRadius, raysOpacity, eclipseCenterX, letterOffset) {
     return `ICON_TEMPLATE`;
 }
 
-// language=css
 function generateStyle() {
-    return `
-    /* :host === the host element of the shadow === <theme-switch> */
-    /* See https://developer.mozilla.org/en-US/docs/Web/CSS/:host */
-    :host {
-      display: flex;
-      width: ${ICON_SIZE}px;
-      aspect-ratio: 1 / 1;
-      /* This is for when the element has padding */
-      cursor: pointer;
-    }
-
-    :host([hidden]) { display: none; }
-
-    button {
-      padding: 0;
-      border: none;
-      background: transparent;
-      display: flex;
-      /* The host element also has its cursor set */
-      cursor: pointer;
-    }
-
-    #circle { fill: var(--theme-switch-icon-color, ${ICON_COLOR}); }
-
-    #rays { stroke: var(--theme-switch-icon-color, ${ICON_COLOR}); }
-    `;
+    return `STYLES_TEMPLATE`;
 }
 
 updateTheme();

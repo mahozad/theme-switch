@@ -1,6 +1,7 @@
 import { terser } from "rollup-plugin-terser";
 import replace from "@rollup/plugin-replace";
 import { minify } from "html-minifier";
+import CleanCSS from "clean-css";
 import fileSystem from "fs";
 
 export default {
@@ -33,7 +34,8 @@ export default {
     plugins: [
         /* Could instead use rollup-plugin-html but produced low-quality code */
         replace({
-            "ICON_TEMPLATE": minifyFile("icon.html")
+            "ICON_TEMPLATE": minifyFile("icon.html"),
+            "STYLES_TEMPLATE": readStyles()
         })
     ]
 };
@@ -46,4 +48,9 @@ function minifyFile(file) {
         conservativeCollapse: true,
         collapseBooleanAttributes: true
     });
+}
+
+function readStyles() {
+    const raw = fileSystem.readFileSync("styles.css", { encoding: "utf-8" });
+    return new CleanCSS().minify(raw).styles;
 }
