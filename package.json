@@ -25,7 +25,7 @@
     "test-changed": "jest --env=node --colors --only-changed test",
     "test-continuous": "jest --env=node --colors --watch-all test",
     "test-with-coverage": "jest --env=node --colors --coverage test",
-    "lint": "eslint --color theme-switch.js",
+    "lint": "eslint --color dist/theme-switch.js",
     "lint-html": "eslint --format html --output-file lint.html dist/theme-switch.js",
     "prepublishOnly": "npm test"
   },
