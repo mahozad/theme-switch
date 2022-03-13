@@ -1,5 +1,13 @@
 # History of notable changes introduced in each version
 
+## v1.3.0 (2022-03-13)
+#### Other
+  - Migrate from Babel to [Rollup](https://rollupjs.org/) ([`c6f0f209`](https://github.com/mahozad/theme-switch/commit/c6f0f209), [`7f02c996`](https://github.com/mahozad/theme-switch/commit/7f02c996), and others).
+    This results in a smaller minified script.
+    Note that from this version on, the files to be used are in *dist/* directory of the library.
+
+[All commits since version 1.2.1](https://github.com/mahozad/theme-switch/compare/v1.2.1...v1.3.0)
+
 ## v1.2.1 (2022-03-11)
 #### Other
   - Add some code refactorings ([`0a2aab86`](https://github.com/mahozad/theme-switch/commit/0a2aab86), [`3d5573a2`](https://github.com/mahozad/theme-switch/commit/3d5573a2), [`7fc2b960`](https://github.com/mahozad/theme-switch/commit/7fc2b960))
