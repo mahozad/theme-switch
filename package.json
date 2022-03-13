@@ -9,6 +9,7 @@
     "babel-plugin-rewire-test-env-only": "^1.0.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^8.10.0",
+    "html-minifier": "^4.0.0",
     "jest": "^27.5.1",
     "jest-html-reporter": "^3.4.2",
     "jest-image-snapshot": "^4.5.1",
