@@ -8,3 +8,4 @@ test-report.*
 lint.html
 .idea/misc.xml
 .idea/inspectionProfiles/
+snapshot-diffs/
