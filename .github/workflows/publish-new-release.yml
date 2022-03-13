@@ -59,7 +59,7 @@ jobs:
 
   publish-the-package:
     needs: [ run-tests ]
-    name: Publish the artifacts to GitHub Packages
+    name: Publish the artifacts to GitHub Packages and npm registry
     runs-on: ubuntu-latest
     environment:
       name: npm-registry
