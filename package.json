@@ -53,7 +53,9 @@
   "version": "1.2.1",
   "description": "Animated toggle button to switch between light/dark/system theme.",
   "main": "dist/theme-switch.js",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "unpkg": "dist/theme-switch.min.js",
   "jsdelivr": "dist/theme-switch.min.js",
   "keywords": [
