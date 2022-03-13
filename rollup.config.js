@@ -5,7 +5,7 @@ import CleanCSS from "clean-css";
 import fileSystem from "fs";
 
 export default {
-    input: "theme=switch.js",
+    input: "theme-switch.js",
     output: [
         {
             file: "dist/theme-switch.js",
