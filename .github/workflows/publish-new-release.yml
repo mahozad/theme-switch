@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
-      - name: Setup the Node
+      - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version: '16'
@@ -70,7 +70,7 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
-      - name: Setup the Node
+      - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version: '16'
@@ -92,7 +92,7 @@ jobs:
       #   run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - name: Publish the package to GitHub Packages registry
         run: npm publish
-      - name: Resetup the node
+      - name: Set up Node again
         uses: actions/setup-node@v3
         with:
           node-version: '16'
