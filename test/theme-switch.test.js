@@ -324,6 +324,17 @@ describe("Screenshot tests", () => {
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
+    test(`The minified version of the script should also work`, async () => {
+        const screenshot = await takeScreenshot(() => {
+            localStorage.setItem("theme", "auto");
+        }, async (page, element) => {
+            await element.click();
+            await page.waitForTimeout(600);
+            await element.click();
+        }, "template-7.html");
+        expect(screenshot).toMatchReferenceSnapshot();
+    }, 100_000);
+
     // See https://stackoverflow.com/q/47107465/8583692
     // and https://github.com/puppeteer/puppeteer/blob/main/examples/custom-event.js
     test(`When the switch is toggled, it should trigger a "themeToggle" event`, async () => {
