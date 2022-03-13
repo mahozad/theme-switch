@@ -7,7 +7,7 @@ export default {
             file: "dist/theme-switch.js",
             /* amd, cjs, es, iife, umd, system */
             format: "cjs",
-            strict: true,
+            strict: true
         },
         {
             file: "dist/theme-switch.min.js",
