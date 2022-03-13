@@ -5,7 +5,7 @@ import CleanCSS from "clean-css";
 import fileSystem from "fs";
 
 export default {
-    input: "main.js",
+    input: "src/main.js",
     output: [
         {
             file: "dist/theme-switch.js",
@@ -34,8 +34,8 @@ export default {
     plugins: [
         /* Could instead use rollup-plugin-html but produced low-quality code */
         replace({
-            "ICON_TEMPLATE": readHTML("icon.html"),
-            "STYLES_TEMPLATE": readCSS("styles.css")
+            "ICON_TEMPLATE": readHTML("src/icon.html"),
+            "STYLES_TEMPLATE": readCSS("src/styles.css")
         })
     ]
 };

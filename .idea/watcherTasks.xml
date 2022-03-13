@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectTasksOptions">
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="$FileName$ --config rollup.config.js" />
+      <option name="arguments" value="$FileDirName$/$FileName$ --config rollup.config.js" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />
@@ -16,9 +16,9 @@
       <option name="outputFromStdout" value="false" />
       <option name="program" value="$ProjectFileDir$/node_modules/.bin/rollup" />
       <option name="runOnExternalChanges" value="true" />
-      <option name="scopeName" value="The source scripts" />
+      <option name="scopeName" value="Script sources" />
       <option name="trackOnlyRoot" value="false" />
-      <option name="workingDir" value="$Projectpath$" />
+      <option name="workingDir" value="$ProjectFileDir$" />
       <envs />
     </TaskOptions>
   </component>
