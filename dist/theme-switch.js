@@ -53,11 +53,11 @@
 
 /*
 * Minify the script either through command line with babel:
-* - babel theme-switch.js --source-maps --out-file result.min.js
+* - babel main.js --source-maps --out-file result.min.js
 * or with babel-minify (also has an alias called minify) which is useful if
 * you don't already use babel (as a preset) or want to run minification standalone.
 * Note that it does not take into account babel.config.json settings.
-* - babel-minify (or minify) theme-switch.js --mangle --no-comments --out-file result.min.js`
+* - babel-minify (or minify) main.js --mangle --no-comments --out-file result.min.js`
 * Or automate it with IntelliJ file watcher
 * - babel
 *   + program: $ProjectFileDir$\node_modules\.bin\babel
