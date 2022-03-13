@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Debug demo page" type="JavascriptDebugType" uri="http://localhost:63342/theme-switch/demo/index.html" useBuiltInWebServerPort="true">
+  <configuration default="false" name="Debug demo page" type="JavascriptDebugType" uri="http://localhost:10000/theme-switch/demo/index.html" useBuiltInWebServerPort="true">
     <method v="2" />
   </configuration>
 </component>
