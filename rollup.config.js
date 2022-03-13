@@ -1,4 +1,5 @@
 import { terser } from "rollup-plugin-terser";
+/* TODO: Use html-minifier-terser instead */
 import { minify } from "html-minifier";
 import replace from "@rollup/plugin-replace";
 import CleanCSS from "clean-css";
