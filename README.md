@@ -4,7 +4,7 @@
 
 <div align="center">
 
-![Animated icon](animation.svg)
+![Animated icon](icon.svg)
 
 </div>
 
