@@ -1,6 +1,6 @@
 import { terser } from "rollup-plugin-terser";
-import replace from "@rollup/plugin-replace";
 import { minify } from "html-minifier";
+import replace from "@rollup/plugin-replace";
 import CleanCSS from "clean-css";
 import fileSystem from "fs";
 
