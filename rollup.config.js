@@ -2,6 +2,7 @@ import { terser } from "rollup-plugin-terser";
 /* TODO: Use html-minifier-terser instead */
 import { minify } from "html-minifier";
 import run from '@rollup/plugin-run';
+import strip from '@rollup/plugin-strip';
 import replace from "@rollup/plugin-replace";
 import CleanCSS from "clean-css";
 import fileSystem from "fs";
@@ -39,6 +40,8 @@ export default {
             "ICON_TEMPLATE": readHTML("src/icon.html"),
             "STYLES_TEMPLATE": readCSS("src/styles.css")
         }),
+        /* Remove console and assert statements */
+        strip(),
         run()
     ]
 };
