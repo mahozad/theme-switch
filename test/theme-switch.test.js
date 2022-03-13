@@ -319,6 +319,11 @@ describe("Screenshot tests", () => {
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
+    test(`When no size is specified for the element, it should have default size`, async () => {
+        const screenshot = await takeScreenshot(() => {}, () => {}, "template-6.html");
+        expect(screenshot).toMatchReferenceSnapshot();
+    }, 100_000);
+
     // See https://stackoverflow.com/q/47107465/8583692
     // and https://github.com/puppeteer/puppeteer/blob/main/examples/custom-event.js
     test(`When the switch is toggled, it should trigger a "themeToggle" event`, async () => {
