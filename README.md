@@ -18,15 +18,13 @@ You can style your page the way you like based on the value of that attribute.
 
 See the [demo page](https://mahozad.ir/theme-switch/) and scroll below for an [example](#styling-a-page-based-on-the-selected-theme).
 
-## Installation and usage
-
-### Regular, plain HTML pages
+## Using in regular HTML pages
 
 ```html
 <script src="https://unpkg.com/@mahozad/theme-switch"></script>
 ```
 
-### Node.js and npm
+## Using in Node.js and npm
 
 ```shell
 npm install --save @mahozad/theme-switch
@@ -36,12 +34,12 @@ npm install --save @mahozad/theme-switch
 <script src="node_modules/@mahozad/theme-switch/dist/theme-switch.min.js"></script>
 ```
 
-### Angular and more
+## Using in Angular and more
 For Angular framework and more details about each of the above installation methods see the [wiki](https://github.com/mahozad/theme-switch/wiki).
 
 ## Styling the switch element
 
-A custom element is no different from built-in elements of HTML.  
+A custom element is no different from the built-in elements of HTML.  
 Use and style it however you want just like you would use and style a regular element (e.g. a `div`):
 
 ```css
