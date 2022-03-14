@@ -18,24 +18,28 @@ You can style your page the way you like based on the value of that attribute.
 
 See the [demo page](https://mahozad.ir/theme-switch/) and scroll below for an [example](#styling-a-page-based-on-the-theme).
 
-## Using in regular HTML pages
+## Installing and using the library
+
+  - ### Regular HTML pages
+    ```html
+    <script src="https://unpkg.com/@mahozad/theme-switch"></script>
+    ```
+  - ### Node.js and npm
+    ```shell
+    npm install --save @mahozad/theme-switch
+    ```
+    ```html
+    <script src="node_modules/@mahozad/theme-switch/dist/theme-switch.min.js"></script>
+    ```
+
+  - ### Angular and more
+    For Angular framework and more details about each of the above installation methods see the [wiki](https://github.com/mahozad/theme-switch/wiki).
+
+After installing the library, use the element like this (make sure to include the end tag):
 
 ```html
-<script src="https://unpkg.com/@mahozad/theme-switch"></script>
+<theme-switch></theme-switch>
 ```
-
-## Using in Node.js and npm
-
-```shell
-npm install --save @mahozad/theme-switch
-```
-
-```html
-<script src="node_modules/@mahozad/theme-switch/dist/theme-switch.min.js"></script>
-```
-
-## Using in Angular and more
-For Angular framework and more details about each of the above installation methods see the [wiki](https://github.com/mahozad/theme-switch/wiki).
 
 ## Styling the switch element
 
