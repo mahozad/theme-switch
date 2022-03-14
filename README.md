@@ -124,6 +124,15 @@ dark/light theme for a site.
 
 ---
 
+### Similar libraries
+  - [Dark Mode Toggle](https://github.com/H0rn0chse/dark-mode-toggle)
+  - [<dark-mode-toggle>](https://github.com/GoogleChromeLabs/dark-mode-toggle)
+  - [<color-scheme-button>](https://github.com/CICCIOSGAMINO/color-scheme-button)
+  - [<theme-toggle>](https://github.com/mothepro/theme-toggle)
+  - [Binary theme switcher component](https://github.com/diegosanchezp/theme-switcher-component)
+
+---
+
 TODO:
   - See [this comprehensive GitHub repo about custom elements](https://github.com/mateusortiz/webcomponents-the-right-way)
   - Try to publish the library in https://www.webcomponents.org/
