@@ -8,66 +8,25 @@
 
 </div>
 
-# HTML light/dark/system theme animated switch button
+# HTML light/dark/system theme switch button
 
-A simple [custom HTML element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
-called `<theme-switch>`.
-This widget toggles between light theme, dark theme, and automatic theme (OS theme).
+This is an animated [custom HTML element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
+which toggles between light theme, dark theme, and automatic theme (OS theme).
+The element is called `<theme-switch>`.
 It works by adding a custom attribute named `data-theme` to the `html` element of your page.
 You can style your page the way you like based on the value of that attribute.
-See below for an [example](#styling-a-page-based-on-the-selected-theme).
 
-See the [demo page](https://mahozad.ir/theme-switch/).
+See the [demo page](https://mahozad.ir/theme-switch/) and scroll below for an [example](#styling-a-page-based-on-the-selected-theme).
 
-It was inspired by [this YouTube video](https://youtu.be/kZiS1QStIWc)
-and [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle).
+## Installation and usage
 
-## Using in plain, regular HTML pages
+### Regular, plain HTML pages
 
 ```html
 <script src="https://unpkg.com/@mahozad/theme-switch"></script>
 ```
 
-<details>
-
-<summary>Click here for more details</summary>
-
-Download the [theme-switch.min.js](dist/theme-switch.min.js) file and reference it at the top of your HTML:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>My page title</title>
-  <!-- Do not use defer or async attributes -->
-  <script src="theme-switch.min.js"></script>
-  <!-- Rest of the styles, scripts, etc. -->
-</head>
-<body>
-
-  <theme-switch></theme-switch>
-
-</body>
-```
-
-You can also use CDNs instead of downloading the script manually and hosting it yourself:
-
-  - Using the latest version:
-    ```html
-    <script src="https://unpkg.com/@mahozad/theme-switch"></script>
-    <!-- OR -->
-    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch"></script>    
-    ```
-  - Using a specific version:
-    ```html
-    <script src="https://unpkg.com/@mahozad/theme-switch@1.0.0"></script>
-    <!-- OR -->
-    <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch@1.0.0"></script>
-    ```
-</details>
-  
-## Using in Node.js and npm
+### Node.js and npm
 
 ```shell
 npm install --save @mahozad/theme-switch
@@ -77,83 +36,8 @@ npm install --save @mahozad/theme-switch
 <script src="node_modules/@mahozad/theme-switch/dist/theme-switch.min.js"></script>
 ```
 
-<details>
-
-<summary>Click here for more details</summary>
-
-Install the library from a command line with this command:
-
-```shell
-npm install --save @mahozad/theme-switch
-```
-
-Use the script in your page like this:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>My page title</title>
-  <!-- Do not use defer or async attributes -->
-  <script src="node_modules/@mahozad/theme-switch/dist/theme-switch.min.js"></script>
-  <!-- Rest of the styles, scripts, etc. -->
-</head>
-<body>
-
-  <theme-switch></theme-switch>
-
-</body>
-```
-
-</details>
-
-## Using in Angular framework
-
-<details>
-
-<summary>Click here to see details</summary>
-
-From command line, install the library:
-
-```shell
-npm install --save @mahozad/theme-switch
-```
-
-In your *angular.json* file at the root of your project update the `scripts` property like this:
-
-```json
-"scripts": [
-  {
-    "input": "node_modules/@mahozad/theme-switch/dist/theme-switch.min.js",
-    "inject": false,
-    "bundleName": "theme-switch"
-  }
-]
-```
-
-Add the following to your *app.module.ts* file to enable HTML custom elements:
-
-```typescript
-@NgModule({
-    /* ... */
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
-})
-```
-
-In `<head>` of your *index.html* file add the script just as described for other methods:
-
-```html
-<script src="theme-switch.js"></script>
-```
-
-Finally, use the element anywhere you want:
-
-```html
-<theme-switch></theme-switch>
-```
-
-</details>
+### Angular and more
+For Angular framework and more details about each of the above installation methods see the [wiki](https://github.com/mahozad/theme-switch/wiki).
 
 ## Styling the switch element
 
@@ -201,6 +85,10 @@ body {
 
 ## Misc
 
+<details>
+
+<summary>Click here to expand</summary>
+
 The switch element fires (triggers) a custom event called `themeToggle` every time it is toggled (clicked).
 You can listen and react to it if you want:
 
@@ -214,9 +102,10 @@ document.addEventListener("themeToggle", event => {
 
 ---
 
-## Other 
+This widget was inspired by [this YouTube video](https://youtu.be/kZiS1QStIWc)
+and [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle).
 
-<details>
+---
 
 See [this article](https://css-tricks.com/web-components-are-easier-than-you-think/)
 which is about creating HTML custom elements.
