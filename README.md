@@ -57,7 +57,8 @@ theme-switch {
 ## Styling a page based on the theme
 
 In your CSS stylesheet, specify your desired styles for light and dark themes.
-One way is to define [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) for your colors, sizes, etc. and redefine them (if needed) with new values for the dark theme:
+One way is to define [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+for your colors, sizes, etc. and redefine them (if needed) with new values for the other theme:
 
 ```css
 /* These are applied for the default (light) theme */
