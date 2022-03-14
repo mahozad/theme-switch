@@ -16,7 +16,7 @@ The element is called `<theme-switch>`.
 It works by adding a custom attribute named `data-theme` to the `html` element of your page.
 You can style your page the way you like based on the value of that attribute.
 
-See the [demo page](https://mahozad.ir/theme-switch/) and scroll below for an [example](#styling-a-page-based-on-the-selected-theme).
+See the [demo page](https://mahozad.ir/theme-switch/) and scroll below for an [example](#styling-a-page-based-on-the-theme).
 
 ## Using in regular HTML pages
 
