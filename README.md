@@ -49,7 +49,7 @@ theme-switch {
   background: #888;
   
   /* There is a special property called --theme-switch-icon-color
-   * which you can set, to change the color of the icon in switch */
+   * which you can set, to change the color of the icon in the switch */
   --theme-switch-icon-color: #aabbcc;
 }
 ```
