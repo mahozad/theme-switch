@@ -24,7 +24,13 @@ and [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle).
 
 ## Using in plain, regular HTML pages
 
+```html
+<script src="https://unpkg.com/@mahozad/theme-switch"></script>
+```
+
 <details>
+
+<summary>Click here for more details</summary>
 
 Download the [theme-switch.min.js](dist/theme-switch.min.js) file and reference it at the top of your HTML:
 
@@ -63,11 +69,22 @@ You can also use CDNs instead of downloading the script manually and hosting it 
   
 ## Using in Node.js and npm
 
+```shell
+npm install --save @mahozad/theme-switch
+```
+
+```html
+<script src="node_modules/@mahozad/theme-switch/dist/theme-switch.min.js"></script>
+```
+
 <details>
+
+<summary>Click here for more details</summary>
+
 Install the library from a command line with this command:
 
 ```shell
-npm install @mahozad/theme-switch
+npm install --save @mahozad/theme-switch
 ```
 
 Use the script in your page like this:
@@ -95,6 +112,8 @@ Use the script in your page like this:
 
 <details>
 
+<summary>Click here to see details</summary>
+
 From command line, install the library:
 
 ```shell
@@ -117,12 +136,12 @@ Add the following to your *app.module.ts* file to enable HTML custom elements:
 
 ```typescript
 @NgModule({
-    // ...
+    /* ... */
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 ```
 
-In `<head>` of your *index.html* file add the script just as described above:
+In `<head>` of your *index.html* file add the script just as described for other methods:
 
 ```html
 <script src="theme-switch.js"></script>
@@ -138,22 +157,22 @@ Finally, use the element anywhere you want:
 
 ## Styling the switch element
 
-A custom element is no different from HTML built-in elements.  
+A custom element is no different from built-in elements of HTML.  
 Use and style it however you want just like you would use and style a regular element (e.g. a `div`):
 
 ```css
 theme-switch {
-    width: 64px;
-    padding: 8px;
-    background: #888;
-    
-    /* There is a special property called --theme-switch-icon-color
-     * which you can set, to change the color of the icon in switch */
-    --theme-switch-icon-color: #aabbcc;
+  width: 64px;
+  padding: 8px;
+  background: #888;
+  
+  /* There is a special property called --theme-switch-icon-color
+   * which you can set, to change the color of the icon in switch */
+  --theme-switch-icon-color: #aabbcc;
 }
 ```
 
-## Styling a page based on the selected theme
+## Styling a page based on the theme
 
 In your CSS stylesheet, specify your desired styles for light and dark themes.
 One way is to define [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) for your colors, sizes, etc. and redefine them (if needed) with new values for the dark theme:
@@ -161,22 +180,22 @@ One way is to define [custom CSS properties](https://developer.mozilla.org/en-US
 ```css
 /* These are applied for the default (light) theme */
 /* (or when the toggle is auto, and the OS theme is light) */
-:root {
-    --my-page-background-color: #fff;
-    --my-icons-color: #000;
-    --my-primary-color: red;
+html {
+  --my-page-background-color: #fff;
+  --my-icons-color: #000;
+  --my-primary-color: red;
 }
 
 /* These are applied for the dark theme */
 /* (or when the toggle is auto, and the OS theme is dark) */
 /* If a property has the same value for both light and dark themes, no need to redeclare it here */
-[data-theme="dark"] {
-    --my-page-background-color: #112233;
-    --my-icons-color: #efefef;
+html[data-theme="dark"] {
+  --my-page-background-color: #112233;
+  --my-icons-color: #efefef;
 }
 
 body {
-    background: var(--my-page-background-color);
+  background: var(--my-page-background-color);
 }
 ```
 
@@ -187,9 +206,9 @@ You can listen and react to it if you want:
 
 ```javascript
 document.addEventListener("themeToggle", event => {
-    console.log(`Old theme: ${ event.detail.oldState }`);
-    console.log(`New theme: ${ event.detail.newState }`);
-    // More operations...
+  console.log(`Old theme: ${ event.detail.oldState }`);
+  console.log(`New theme: ${ event.detail.newState }`);
+  // More operations...
 });
 ```
 
