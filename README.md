@@ -4,7 +4,7 @@
 
 <div align="center">
 
-![Animated icon](icon.svg)
+![Animated icon](https://raw.githubusercontent.com/mahozad/theme-switch/main/icon.svg)
 
 </div>
 
