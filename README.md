@@ -15,14 +15,16 @@ called `<theme-switch>`.
 This widget toggles between light theme, dark theme, and automatic theme (OS theme).
 It works by adding a custom attribute named `data-theme` to the `html` element of your page.
 You can style your page the way you like based on the value of that attribute.
-See below for an example.
+See below for an [example](#styling-a-page-based-on-the-selected-theme).
 
-See the [demo](https://mahozad.ir/theme-switch/).
+See the [demo page](https://mahozad.ir/theme-switch/).
 
 It was inspired by [this YouTube video](https://youtu.be/kZiS1QStIWc)
 and [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle).
 
-## Use it in your page
+## Using in plain, regular HTML pages
+
+<details>
 
 Download the [theme-switch.min.js](dist/theme-switch.min.js) file and reference it at the top of your HTML:
 
@@ -57,56 +59,41 @@ You can also use CDNs instead of downloading the script manually and hosting it 
     <!-- OR -->
     <script src="https://cdn.jsdelivr.net/npm/@mahozad/theme-switch@1.0.0"></script>
     ```
-
-## Style the element
-
-A custom element is no different from HTML built-in elements.  
-Use and style it however you want just like you would use and style a regular element (e.g. a `div`):
-
-```css
-theme-switch {
-    width: 64px;
-    padding: 8px;
-    background: #888;
-    
-    /* There is a special property called --theme-switch-icon-color
-     * which you can set, to change the color of the icon in switch */
-    --theme-switch-icon-color: #aabbcc;
-}
-```
-
-## Example styling of a page based on the selected theme
-
-In your CSS stylesheet, specify your desired styles for light and dark themes.
-One way is to define [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) for your colors, sizes, etc. and redefine them (if needed) with new values for the dark theme:
-
-```css
-/* These are applied for the default (light) theme */
-/* (or when the toggle is auto, and the OS theme is light) */
-:root {
-    --my-page-background-color: #fff;
-    --my-icons-color: #000;
-    --my-primary-color: red;
-}
-
-/* These are applied for the dark theme */
-/* (or when the toggle is auto, and the OS theme is dark) */
-/* If a property has the same value for both light and dark themes, no need to redeclare it here */
-[data-theme="dark"] {
-    --my-page-background-color: #112233;
-    --my-icons-color: #efefef;
-}
-
-body {
-    background: var(--my-page-background-color);
-}
-```
-
-## Use it in Angular
+</details>
+  
+## Using in Node.js and npm
 
 <details>
+Install the library from a command line with this command:
 
-<summary>Click to expand</summary>
+```shell
+npm install @mahozad/theme-switch
+```
+
+Use the script in your page like this:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My page title</title>
+  <!-- Do not use defer or async attributes -->
+  <script src="node_modules/@mahozad/theme-switch/dist/theme-switch.min.js"></script>
+  <!-- Rest of the styles, scripts, etc. -->
+</head>
+<body>
+
+  <theme-switch></theme-switch>
+
+</body>
+```
+
+</details>
+
+## Using in Angular framework
+
+<details>
 
 From command line, install the library:
 
@@ -148,6 +135,50 @@ Finally, use the element anywhere you want:
 ```
 
 </details>
+
+## Styling the switch element
+
+A custom element is no different from HTML built-in elements.  
+Use and style it however you want just like you would use and style a regular element (e.g. a `div`):
+
+```css
+theme-switch {
+    width: 64px;
+    padding: 8px;
+    background: #888;
+    
+    /* There is a special property called --theme-switch-icon-color
+     * which you can set, to change the color of the icon in switch */
+    --theme-switch-icon-color: #aabbcc;
+}
+```
+
+## Styling a page based on the selected theme
+
+In your CSS stylesheet, specify your desired styles for light and dark themes.
+One way is to define [custom CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) for your colors, sizes, etc. and redefine them (if needed) with new values for the dark theme:
+
+```css
+/* These are applied for the default (light) theme */
+/* (or when the toggle is auto, and the OS theme is light) */
+:root {
+    --my-page-background-color: #fff;
+    --my-icons-color: #000;
+    --my-primary-color: red;
+}
+
+/* These are applied for the dark theme */
+/* (or when the toggle is auto, and the OS theme is dark) */
+/* If a property has the same value for both light and dark themes, no need to redeclare it here */
+[data-theme="dark"] {
+    --my-page-background-color: #112233;
+    --my-icons-color: #efefef;
+}
+
+body {
+    background: var(--my-page-background-color);
+}
+```
 
 ## Misc
 
