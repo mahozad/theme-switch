@@ -12,8 +12,7 @@
 
 This is an animated [custom HTML element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
 which toggles between light theme, dark theme, and automatic theme (OS theme).
-The element is called `<theme-switch>`.
-It works by adding a custom attribute named `data-theme` to the `html` element of your page.
+It adds a custom attribute (`data-theme`) to the `html` element of your page.
 You can style your page the way you like based on the value of that attribute.
 
 See the [demo page](https://mahozad.ir/theme-switch/) and scroll below for an [example](#styling-a-page-based-on-the-theme).
