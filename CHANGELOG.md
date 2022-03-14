@@ -1,5 +1,11 @@
 # History of notable changes introduced in each version
 
+## v1.4.0 (2022-03-14)
+#### Updates
+  - Update the animation of the "auto" icon ([`ae30ad8a`](https://github.com/mahozad/theme-switch/commit/ae30ad8a))
+
+[All commits since version 1.3.0](https://github.com/mahozad/theme-switch/compare/v1.3.0...v1.4.0)
+
 ## v1.3.0 (2022-03-13)
 #### Other
   - Migrate from Babel to [Rollup](https://rollupjs.org/) ([`c6f0f209`](https://github.com/mahozad/theme-switch/commit/c6f0f209), [`7f02c996`](https://github.com/mahozad/theme-switch/commit/7f02c996), and others).
