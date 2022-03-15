@@ -1,7 +1,7 @@
 [![Tests workflow](https://img.shields.io/github/workflow/status/mahozad/theme-switch/CI?label=Tests&logo=github)](https://github.com/mahozad/theme-switch/actions/workflows/ci.yml)
 [![Codecov](https://img.shields.io/codecov/c/gh/mahozad/theme-switch?label=Coverage&logo=codecov&logoColor=%23FF56C0&token=C4P4I1TQTF)](https://codecov.io/gh/mahozad/theme-switch)
 [![Minified size](https://img.shields.io/bundlephobia/min/@mahozad/theme-switch?label=Minified%20size)](https://unpkg.com/@mahozad/theme-switch)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-9351dc.svg)](https://www.webcomponents.org/element/owner/my-element)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-9351dc.svg)](https://www.webcomponents.org/element/@mahozad/theme-switch)
 
 <div align="center">
 
