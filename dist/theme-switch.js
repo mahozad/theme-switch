@@ -137,6 +137,14 @@ class ThemeSwitchElement extends HTMLElement {
                 this.adaptToTheme();
             }
         });
+        // If a theme switch in another page toggled, update my state too
+        // See https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event
+        window.addEventListener("storage", event => {
+            if (event.key === THEME_KEY) {
+                this.adaptToTheme();
+                updateTheme();
+            }
+        });
         // Create some CSS to apply to the shadow DOM
         // See https://css-tricks.com/styling-a-web-component/
         const style = document.createElement("style");

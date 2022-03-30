@@ -384,6 +384,46 @@ describe("Screenshot tests", () => {
         }
     }, 100_000);
 
+    // FIXME: the code is mostly duplicate of the takeScreenshot function
+    test(`When a switch in another open page is toggled, switches in this page should be updated`, async () => {
+        localStorage.setItem("theme", "light");
+        const browser = await launchBrowser();
+        const page1 = await browser.newPage();
+        const page2 = await browser.newPage();
+        await page1.goto(`file://${__dirname}\\template-1.html`);
+        await page2.goto(`file://${__dirname}\\template-4.html`);
+        const page1Switch = await page1.$(ELEMENT_NAME);
+        await page1Switch.click();
+        await page1.waitForTimeout(600);
+        const page2Switches = await page2.$("#container");
+        try {
+            const screenshot = await page2Switches.screenshot({ path: snapshotFileName });
+            expect(screenshot).toMatchReferenceSnapshot();
+        } finally {
+            await browser.close();
+        }
+    }, 100_000);
+
+    test(`When a switch in another open page is toggled, document theme attribute in this page should be updated`, async () => {
+        localStorage.setItem("theme", "light");
+        const browser = await launchBrowser();
+        const page1 = await browser.newPage();
+        const page2 = await browser.newPage();
+        await page1.goto(`file://${__dirname}\\template-1.html`);
+        await page2.goto(`file://${__dirname}\\template-4.html`);
+        const page1Switch = await page1.$(ELEMENT_NAME);
+        await page1Switch.click();
+        await page1.waitForTimeout(600);
+        try {
+            const attributeValue = await page2.evaluate(() => {
+                return document.documentElement.getAttribute("data-theme");
+            });
+            expect(attributeValue).toBe("dark");
+        } finally {
+            await browser.close();
+        }
+    });
+
     afterAll(() => { fileSystem.rmSync(snapshotFileName); });
 });
 
