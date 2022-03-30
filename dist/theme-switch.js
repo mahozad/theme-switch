@@ -76,6 +76,15 @@
 // TODO: Make the component customizable by adding custom attributes:
 //  See https://medium.com/technofunnel/creating-passing-data-to-html-custom-elements-using-attributes-bfd9aa759fd4
 
+// FIXME: If the switch is toggled too quickly, the switches in other open tabs may not update consistently.
+//  Steps to reproduce the bug:
+//  - Open two tabs
+//  - Set the theme of both tabs to "auto"
+//  - In one of the pages, click the switch three times in rapid succession so its new state is "auto" again
+//    The other tab should also show auto icon but it shows light icon.
+//  To resolve this, instead of listening for localstorage events, maybe we can pull the
+//  localstorage state for changes every 100 ms and update the switch if necessary.
+
 /*
 * NOTE: To avoid name collisions if another script declares variables or functions with the same name
 *  as ours (i.e. defining them in the global scope) and browsers complaining about identifiers
