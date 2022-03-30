@@ -33,7 +33,7 @@ See the [demo page](https://mahozad.ir/theme-switch/) and scroll below for an [e
     ```
 
   - ### Angular and more
-    For Angular framework and more details about each of the above installation methods see the [wiki](https://github.com/mahozad/theme-switch/wiki).
+    For Angular framework and more details about the above installation methods see the [wiki](https://github.com/mahozad/theme-switch/wiki).
 
 After installing the library, use the element like this (make sure to include the end tag):
 
@@ -44,7 +44,7 @@ After installing the library, use the element like this (make sure to include th
 ## Styling the switch element
 
 A custom element is no different from the built-in elements of HTML.  
-Use and style it however you want just like you would use and style a regular element (e.g. a `div`):
+Use and style it however you want just like you would use and style a regular element:
 
 ```css
 theme-switch {
