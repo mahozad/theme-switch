@@ -1,5 +1,11 @@
 # History of notable changes introduced in each version
 
+## v1.5.1 (2022-03-30)
+#### Updates
+  - Change the library main script to the minified version (in hope of fixing the bundlephobia badge) ([`0de6d2df`](https://github.com/mahozad/theme-switch/commit/0de6d2df))
+
+[All commits since version 1.5.0](https://github.com/mahozad/theme-switch/compare/v1.5.0...v1.5.1)
+
 ## v1.5.0 (2022-03-30)
 #### New features
   - Reflect updates to switches in one page to all other open pages ([`b5586f00`](https://github.com/mahozad/theme-switch/commit/b5586f00))
