@@ -1,5 +1,11 @@
 # History of notable changes introduced in each version
 
+## v1.5.0 (2022-03-30)
+#### New features
+  - Reflect updates to switches in one page to all other open pages ([`b5586f00`](https://github.com/mahozad/theme-switch/commit/b5586f00))
+
+[All commits since version 1.4.0](https://github.com/mahozad/theme-switch/compare/v1.4.0...v1.5.0)
+
 ## v1.4.0 (2022-03-14)
 #### Updates
   - Update the animation of the "auto" icon ([`ae30ad8a`](https://github.com/mahozad/theme-switch/commit/ae30ad8a))
