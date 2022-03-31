@@ -114,13 +114,16 @@ See [this article](https://css-tricks.com/web-components-are-easier-than-you-thi
 which is about creating HTML custom elements.
 
 See the icon for switching themes (located in the top right corner) on
-[Google Fonts site](https://fonts.google.com/icons). Also see [this site](https://rastikerdar.github.io/vazirmatn).
+[Google Fonts site](https://fonts.google.com/icons).  
+Also see [this site](https://rastikerdar.github.io/vazirmatn).
 
 See [this article](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web)
 for implementing dark/light theme on sites.
 
 See [this post](https://stackoverflow.com/q/56300132/8583692) for how to override
 dark/light theme for a site.
+
+See [this comprehensive GitHub repo](https://github.com/mateusortiz/webcomponents-the-right-way) about custom elements.
 
 ---
 
@@ -134,8 +137,6 @@ dark/light theme for a site.
 ---
 
 TODO:
-  - See [this comprehensive GitHub repo about custom elements](https://github.com/mateusortiz/webcomponents-the-right-way)
-  - Try to publish the library in https://www.webcomponents.org/
   - Try to add the library to [rufus site](https://github.com/pbatard/rufus-web)
   - Try to add the library to [jest site](https://github.com/facebook/jest) (probably its `docs/` directory. see [this PR](https://github.com/facebook/jest/pull/11021))
   - Try to add the library to [MDN site](https://developer.mozilla.org/en-US/)
