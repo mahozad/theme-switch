@@ -1,5 +1,11 @@
 # History of notable changes introduced in each version
 
+## v1.5.2 (2022-03-31)
+#### Updates
+  - Revert the change to the main field in package.json introduced in the previous version ([`e5c36003`](https://github.com/mahozad/theme-switch/commit/e5c36003))
+
+[All commits since version 1.5.1](https://github.com/mahozad/theme-switch/compare/v1.5.1...v1.5.2)
+
 ## v1.5.1 (2022-03-30)
 #### Updates
   - Change the library main script to the minified version (in hope of fixing the bundlephobia badge) ([`0de6d2df`](https://github.com/mahozad/theme-switch/commit/0de6d2df))
