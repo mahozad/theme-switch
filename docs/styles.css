@@ -25,6 +25,16 @@ body {
   gap: 64px;
 }
 
+#github-link {
+  position: absolute;
+  inset-block-start: 8px;
+  inset-inline-start: 8px;
+}
+
+#github-logo {
+  width: 48px;
+}
+
 theme-switch {
   --theme-switch-icon-color: #121314;
   width: 256px;
