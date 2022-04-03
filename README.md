@@ -69,8 +69,7 @@ for your colors, sizes, etc. and redefine them (if needed) with new values for t
 /* (or when the toggle is auto, and the OS theme is light) */
 html {
   --my-page-background-color: #fff;
-  --my-icons-color: #000;
-  --my-primary-color: red;
+  --my-text-color: red;
 }
 
 /* These are applied for the dark theme */
@@ -78,11 +77,11 @@ html {
 /* If a property has the same value for both light and dark themes, no need to redeclare it here */
 html[data-theme="dark"] {
   --my-page-background-color: #112233;
-  --my-icons-color: #efefef;
 }
 
-body {
+body /* or any selector you want */ {
   background: var(--my-page-background-color);
+  color: var(--my-text-color);
 }
 ```
 
