@@ -123,6 +123,8 @@ See [this post](https://stackoverflow.com/q/56300132/8583692) for how to overrid
 dark/light theme for a site.
 
 See [this comprehensive GitHub repo](https://github.com/mateusortiz/webcomponents-the-right-way) about custom elements.
+  
+See [this feature](https://chromestatus.com/feature/5452774595624960).
 
 ---
 
