@@ -127,7 +127,9 @@ const ICON_INITIAL_STATE_FOR_LIGHT = [5, 1, 33, 1];
 
 class ThemeSwitchElement extends HTMLElement {
     shadowRoot;
-    static counter = 0; // See https://stackoverflow.com/a/43116254/8583692
+    // See pages 410-415 of the book Grokking Simplicity: Taming...
+    // Also, see https://stackoverflow.com/a/43116254/8583692
+    static counter = 0;
     identifier = ThemeSwitchElement.counter++;
 
     constructor() {
