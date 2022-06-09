@@ -60,11 +60,15 @@ fun createReleaseBody() = inputFile
  * when hovering over them with mouse, a popup shows the commit/issue information.
  */
 fun String.cleanReferences() = this
-    // FIXME: Replace with the following in Kotlin 1.7 and higher:
-    //  match.groups["hash"]?.value ?: error("Regex group not found")
+    // FIXME: Replace with the following in Kotlin 1.8 and higher:
+    //  match -> match.groups["hash"]?.value ?: error("Regex group not found")
+    // See https://youtrack.jetbrains.com/issue/KT-51908/Provide-common-function-for-getting-regex-capture-group-by-name
+    //  and https://youtu.be/54WEfLKtCGk?t=1086
     .replace(commitReferenceRegex) { match -> match.groupValues[1] }
-    // FIXME: Replace with the following in Kotlin 1.7 and higher:
-    //  "#${match.groups["number"]?.value ?: error("Regex group not found")}"
+    // FIXME: Replace with the following in Kotlin 1.8 and higher:
+    //  match -> "#${match.groups["number"]?.value ?: error("Regex group not found")}"
+    // See https://youtrack.jetbrains.com/issue/KT-51908/Provide-common-function-for-getting-regex-capture-group-by-name
+    //  and https://youtu.be/54WEfLKtCGk?t=1086
     .replace(issueReferenceRegex) { match -> "#${match.groupValues[1]}" }
 
 fun String.substringBetween(start: String, end: String) = substringAfter(start).substringBefore(end)
