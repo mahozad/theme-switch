@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "{\"chromiumPath\": \"$(which chromium)\"}" > local.json
       - name: Run the tests (with coverage)
-        id: steps-test-run
+        id: run-tests
         run: ./node_modules/.bin/jest --ci --colors --coverage
       - name: Upload the test report
         if: always() # Run even if the previous steps failed
@@ -33,7 +33,7 @@ jobs:
             test-report.xml
             test-report.html
       - name: Upload the test coverage report
-        if: ${{ steps.steps-test-run.conclusion == 'success' }}
+        if: ${{ steps.run-tests.conclusion == 'success' }}
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
