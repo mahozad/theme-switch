@@ -1,0 +1,29 @@
+name: Send the code coverage
+
+on: workflow_call
+
+jobs:
+  send-code-coverage:
+    name: Send the code coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload the test coverage report
+        if: ${{ steps.run-tests.conclusion == 'success' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
+      - name: Download coverage report
+        if: ${{ steps.run-tests.conclusion == 'success' }}
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
+      - name: Send the report to Codecov
+        if: ${{ steps.run-tests.conclusion == 'success' }}
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./coverage/clover.xml
+          directory: ./coverage/
+          verbose: true
+          fail_ci_if_error: false
