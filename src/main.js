@@ -3,7 +3,7 @@
 *  ES6 modules are deferred and we don't want that because
 *  we want the user previous theme selection to be applied
 *  as soon as possible (before the page is rendered).
-* */
+*/
 
 /*
 * There are two types of modules mostly used in JavaScript.
@@ -23,31 +23,31 @@
 *
 * Example Node modules:
 *
-* my-calculator.js
+* // my-calculator.js \\
 * const PI = 3.14;
 * function calculate() {}
 * modules.exports.calculate = calculate;
 * modules.exports.PI = PI;
 *
-* main.js
+* // main.js \\
 * const calculator = require("my-calculator");
 * const perimeter = 2 * calculator.PI;
 * const result = calculator.calculate();
 *
 * Example ES6 modules:
 *
-* my-calculator.js
+* // my-calculator.js \\
 * export const PI = 3.14;
 * export function calculate() {}
 *
-* main.js
+* // main.js \\
 * import { calculate, PI } from "my-calculator.js";
 * const perimeter = 2 * PI;
 * const result = calculate();
 *
 * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 * and https://stackoverflow.com/a/9901097/8583692
-* */
+*/
 
 /*
 * Minify the script either through command line with babel:
@@ -67,7 +67,7 @@
 *
 * Babel preset-env inserts a semicolon at the start of the minified file.
 * See why: https://stackoverflow.com/q/1873983/8583692
-* */
+*/
 
 // TODO: extract Jest configuration to a jest.config.js file
 // TODO: Add an attribute so the user can define key name stored in localstorage
@@ -88,8 +88,7 @@
 *  as ours (i.e. defining them in the global scope) and browsers complaining about identifiers
 *  being redeclared, we wrap all our code in a closure or IIFE (sort of creating a namespace for it).
 *  ES6 now supports block scope as well (simply wrapping the whole code in {}).
-*  I am now using the babel-plugin-iife-wrap plugin to wrap the whole result (minified)
-*  code in an IIFE.
+*  I am now using the babel-plugin-iife-wrap plugin to wrap the whole result (minified) code in an IIFE.
 * For examples, see these libraries:
 *   - https://github.com/highlightjs/highlight.js/blob/main/src/highlight.js
 *   - https://github.com/jashkenas/underscore/blob/master/underscore.js
@@ -106,7 +105,7 @@
 *   - https://github.com/mrdoob/three.js/
 *   - https://github.com/moment/moment
 *   - https://github.com/floating-ui/floating-ui
-* */
+*/
 
 const ELEMENT_NAME = "theme-switch";
 const ICON_SIZE = 24 /* px */;
