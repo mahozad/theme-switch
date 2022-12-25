@@ -52,8 +52,12 @@ theme-switch {
   padding: 8px;
   background: #888;
   
-  /* There is a special property called --theme-switch-icon-color
-   * which you can set, to change the color of the icon in the switch */
+  /*
+   * There is a special property called --theme-switch-icon-color
+   * which you can set, to change the color of the icon (shapes) in the switch.
+   * You can even make the color change with animation (for example, on mouse hover);
+   * see https://gist.github.com/mahozad/a8114b6145cac721f7652aa7b0732cf6
+   */
   --theme-switch-icon-color: #aabbcc;
 }
 ```
@@ -74,7 +78,7 @@ html {
 
 /* These are applied for the dark theme */
 /* (or when the toggle is auto, and the OS theme is dark) */
-/* If a property has the same value for both light and dark themes, no need to redeclare it here */
+/* If a property has the same value for light and dark themes, no need to redeclare it here */
 html[data-theme="dark"] {
   --my-page-background-color: #112233;
 }
@@ -144,6 +148,7 @@ TODO:
   - Try to add the library to [docusaurus](https://github.com/facebook/docusaurus)
   - Try to add the library to [dokka](https://github.com/Kotlin/dokka)
   - Try to add the library to [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
+  - Try to add the library to [bootstrap website](https://getbootstrap.com/)
   - See [chrome auto dark feature for android](https://developer.chrome.com/blog/new-in-chrome-98/#autodark-opt-out)
 
 </details>
