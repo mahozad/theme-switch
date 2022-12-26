@@ -48,7 +48,7 @@ jobs:
           path: coverage/
       - name: Send the report to Codecov
         if: ${{ steps.run-tests.conclusion == 'success' }}
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           files: ./coverage/clover.xml
           directory: ./coverage/
