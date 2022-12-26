@@ -13,7 +13,7 @@
 }
 
 html {
-  --surface-color: #fff5;
+  --surface-color: #fff9;
   --surface-color-dark: #fffa;
   --bg-grad-color-1: #ddfd0d80;
   --bg-grad-color-2: #d6338480;
@@ -60,10 +60,11 @@ body {
   width: 36px;
   fill: var(--icons-color);
   transition: fill 100ms ease;
+  filter: drop-shadow(0px 1px 1px #000a);
 }
 
 #github-link:hover #github-logo {
-  fill: #000;
+  fill: #fff;
 }
 
 theme-switch {
