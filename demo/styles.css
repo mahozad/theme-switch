@@ -1,17 +1,60 @@
-:root {
-  --theme-switch-icon-color: #0ff;
-  --theme-switch-bg-color: #ff0;
+@property --one-icon-color {
+  syntax: '<color>';
+  initial-value: #101112;
+  inherits: true;
 }
 
-[data-theme="dark"] {
-  --theme-switch-bg-color: blue;
-  background: #141620;
+:root {
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  gap: 64px;
 }
 
 theme-switch {
-  width: 64px;
-  height: 64px;
+  --theme-switch-icon-color: var(--icons-color);
+  width: 48px;
+  height: 48px;
+}
+
+#one {
+  --one-icon-color: #101112;
+  --theme-switch-icon-color: var(--one-icon-color);
+  width: 56px;
+  height: 56px;
+  /* See https://gist.github.com/mahozad/a8114b6145cac721f7652aa7b0732cf6 */
+  transition: --one-icon-color 200ms;
+}
+
+#one:hover {
+  --one-icon-color: #f22c71;
+}
+
+#two {
+  --theme-switch-icon-color: #EECC08;
+  background: #fff;
   border-radius: 8px;
-  background: var(--theme-switch-bg-color);
+  padding: 13px;
   box-shadow: #0000002d 0 2px 4px;
+}
+
+[data-theme="dark"] #two {
+  --theme-switch-icon-color: #0883ee;
+}
+
+#three {
+  --theme-switch-icon-color: #8a6d01ee;
+  background: #c49e1410;
+  border-radius: 50%;
+  padding: 16px;
+  border: 1px solid #8a6d0180;
 }
