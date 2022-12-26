@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
       - name: Install the library and its dependencies
         run: npm install
       - name: Set path to a chromium browser (needed for screenshot tests)
