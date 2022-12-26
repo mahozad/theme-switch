@@ -6,17 +6,58 @@ on:
       - main
 
 jobs:
-  setup:
-    uses: ./.github/workflows/setup.yml
-
-  test-the-project:
-    needs: setup
-    uses: ./.github/workflows/test.yml
-
-  send-code-coverage:
-    needs: test-the-project
-    uses: ./.github/workflows/send-coverage.yml
-
-  generate-lint:
-    needs: setup
-    uses: ./.github/workflows/lint.yml
+  run-tests:
+    name: Test the project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install the library and its dependencies
+        run: npm install
+      - name: Set path to a chromium browser (needed for screenshot tests)
+        # See https://stackoverflow.com/a/57627150/8583692
+        # and https://stackoverflow.com/a/4181721/8583692
+        run: |
+          echo "{\"chromiumPath\": \"$(which chromium)\"}" > local.json
+      - name: Run the tests (with coverage)
+        id: run-tests
+        run: ./node_modules/.bin/jest --ci --colors --coverage # OR npm run test-with-coverage
+      - name: Upload the test report
+        if: always() # Run even if the previous steps failed
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: |
+            test-report.xml
+            test-report.html
+      - name: Upload the test coverage report
+        if: ${{ steps.run-tests.conclusion == 'success' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
+      - name: Download coverage report
+        if: ${{ steps.run-tests.conclusion == 'success' }}
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
+      - name: Send the report to Codecov
+        if: ${{ steps.run-tests.conclusion == 'success' }}
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./coverage/clover.xml
+          directory: ./coverage/
+          verbose: true
+          fail_ci_if_error: false
+      - name: Run lint
+        run: npm run lint-html
+      - name: Upload the lint HTML report
+        uses: actions/upload-artifact@v3
+        with:
+          name: lint-report
+          path: lint.html

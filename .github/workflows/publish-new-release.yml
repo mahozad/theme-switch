@@ -6,16 +6,45 @@ on:
       - v*
 
 jobs:
-  setup:
-    uses: ./.github/workflows/setup.yml
-
-  test-the-project:
-    needs: setup
-    uses: ./.github/workflows/test.yml
-
-  generate-lint:
-    needs: setup
-    uses: ./.github/workflows/lint.yml
+  run-tests:
+    name: Test the project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install the library and its dependencies
+        run: npm install
+      - name: Set path to a chromium browser (needed for screenshot tests)
+        run: |
+          echo "{\"chromiumPath\": \"$(which chromium)\"}" > local.json
+      - name: Run the tests (with coverage)
+        id: run-tests
+        run: ./node_modules/.bin/jest --ci --colors --coverage
+      - name: Upload the test report
+        if: always() # Run even if the previous steps failed
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: |
+            test-report.xml
+            test-report.html
+      - name: Upload the test coverage report
+        if: ${{ steps.run-tests.conclusion == 'success' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
+      - name: Run lint
+        run: npm run lint-html
+      - name: Upload the lint HTML report
+        uses: actions/upload-artifact@v3
+        with:
+          name: lint-report
+          path: lint.html
 
   merge-into-prod:
     needs: [ run-tests ]
