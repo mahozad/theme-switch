@@ -1,8 +1,12 @@
-import { terser } from "rollup-plugin-terser";
 /* TODO: Use html-minifier-terser instead */
 import { minify } from "html-minifier";
 import run from '@rollup/plugin-run';
 import strip from '@rollup/plugin-strip';
+/*
+ * FIXME: The source map is not generated properly
+ * See https://github.com/terser/terser/issues/1276#issuecomment-1365880821
+ */
+import terser from "@rollup/plugin-terser";
 import replace from "@rollup/plugin-replace";
 import CleanCSS from "clean-css";
 import fileSystem from "fs";
