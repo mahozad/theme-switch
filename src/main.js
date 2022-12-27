@@ -1,73 +1,73 @@
 /*
-* NOTE: Do not use this script as an ES6 module.
-*  ES6 modules are deferred and we don't want that because
-*  we want the user previous theme selection to be applied
-*  as soon as possible (before the page is rendered).
-*/
+ * NOTE: Do not use this script as an ES6 module.
+ *  ES6 modules are deferred and we don't want that because
+ *  we want the user previous theme selection to be applied
+ *  as soon as possible (before the page is rendered).
+ */
 
 /*
-* There are two types of modules mostly used in JavaScript.
-* One is created by Node.js and is used inside the Node environment
-* and has been available for a long time. It is called CommonJS.
-* Another is the standard native JavaScript modules introduced in ES6.
-*
-* The Node variant (CommonJS) uses `module.exports` (or simply `exports`) and
-* `require()` to export and import scripts, functions, variables, etc.
-* Browsers do not know about `exports` or `require` functions and throw error
-* because they are objects and functions created just in Node environment and set globally.
-* If you want to use this type of module in browsers, you should bundle the files
-* (merge all of them into a single JS file which eliminates the need for exports and require)
-* with tools like babel, webpack, rollup, etc.
-*
-* ES6 modules use `export` and `import` keywords for the same purpose.
-*
-* Example Node modules:
-*
-* // my-calculator.js \\
-* const PI = 3.14;
-* function calculate() {}
-* modules.exports.calculate = calculate;
-* modules.exports.PI = PI;
-*
-* // main.js \\
-* const calculator = require("my-calculator");
-* const perimeter = 2 * calculator.PI;
-* const result = calculator.calculate();
-*
-* Example ES6 modules:
-*
-* // my-calculator.js \\
-* export const PI = 3.14;
-* export function calculate() {}
-*
-* // main.js \\
-* import { calculate, PI } from "my-calculator.js";
-* const perimeter = 2 * PI;
-* const result = calculate();
-*
-* See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-* and https://stackoverflow.com/a/9901097/8583692
-*/
+ * There are two types of modules mostly used in JavaScript.
+ * One is created by Node.js and is used inside the Node environment
+ * and has been available for a long time. It is called CommonJS.
+ * Another is the standard native JavaScript modules introduced in ES6.
+ *
+ * The Node variant (CommonJS) uses `module.exports` (or simply `exports`) and
+ * `require()` to export and import scripts, functions, variables, etc.
+ * Browsers do not know about `exports` or `require` functions and throw error
+ * because they are objects and functions created just in Node environment and set globally.
+ * If you want to use this type of module in browsers, you should bundle the files
+ * (merge all of them into a single JS file which eliminates the need for exports and require)
+ * with tools like babel, webpack, rollup, etc.
+ *
+ * ES6 modules use `export` and `import` keywords for the same purpose.
+ *
+ * Example Node modules:
+ *
+ * // my-calculator.js \\
+ * const PI = 3.14;
+ * function calculate() {}
+ * modules.exports.calculate = calculate;
+ * modules.exports.PI = PI;
+ *
+ * // main.js \\
+ * const calculator = require("my-calculator");
+ * const perimeter = 2 * calculator.PI;
+ * const result = calculator.calculate();
+ *
+ * Example ES6 modules:
+ *
+ * // my-calculator.js \\
+ * export const PI = 3.14;
+ * export function calculate() {}
+ *
+ * // main.js \\
+ * import { calculate, PI } from "my-calculator.js";
+ * const perimeter = 2 * PI;
+ * const result = calculate();
+ *
+ * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+ * and https://stackoverflow.com/a/9901097/8583692
+ */
 
 /*
-* Minify the script either through command line with babel:
-* - babel main.js --source-maps --out-file result.min.js
-* or with babel-minify (also has an alias called minify) which is useful if
-* you don't already use babel (as a preset) or want to run minification standalone.
-* Note that it does not take into account babel.config.json settings.
-* - babel-minify (or minify) main.js --mangle --no-comments --out-file result.min.js`
-* Or automate it with IntelliJ file watcher
-* - babel
-*   + program: $ProjectFileDir$\node_modules\.bin\babel
-*   + arguments: $FilePathRelativeToProjectRoot$ --out-file $FileNameWithoutExtension$.min.js --source-maps
-*   Note that setting "sourceMaps": "true" in babel.config.json does not work because of
-*   this bug: https://github.com/babel/babel/issues/5261 ("sourceMaps": "inline" works, however)
-* - UglifyJS
-* - YUI compressor (seems to be deprecated and removed in newer versions of IntelliJ)
-*
-* Babel preset-env inserts a semicolon at the start of the minified file.
-* See why: https://stackoverflow.com/q/1873983/8583692
-*/
+ * Minify the script either through command line with babel:
+ * - babel main.js --source-maps --out-file result.min.js
+ * or with babel-minify (also has an alias called minify) which is useful if
+ * you don't already use babel (as a preset) or want to run minification standalone.
+ * Note that it does not take into account babel.config.json settings.
+ * - babel-minify (or minify) main.js --mangle --no-comments --out-file result.min.js`
+ * Or automate it with IntelliJ file watcher
+ * - babel
+ *   + program: $ProjectFileDir$\node_modules\.bin\babel
+ *   + arguments: $FilePathRelativeToProjectRoot$ --out-file $FileNameWithoutExtension$.min.js --source-maps
+ *   Note that setting "sourceMaps": "true" in babel.config.json does not work because of
+ *   this bug: https://github.com/babel/babel/issues/5261 ("sourceMaps": "inline" works, however)
+ * - UglifyJS
+ * - YUI compressor (seems to be deprecated and removed in newer versions of IntelliJ)
+ *
+ * Babel preset-env inserts a semicolon at the start of the minified file.
+ * See why: https://stackoverflow.com/q/1873983/8583692
+ */
 
 // TODO: extract Jest configuration to a jest.config.js file
 // TODO: Add an attribute so the user can define key name stored in localstorage
@@ -84,28 +84,28 @@
 //  localstorage state for changes every 100 ms and update the switch if necessary.
 
 /*
-* NOTE: To avoid name collisions if another script declares variables or functions with the same name
-*  as ours (i.e. defining them in the global scope) and browsers complaining about identifiers
-*  being redeclared, we wrap all our code in a closure or IIFE (sort of creating a namespace for it).
-*  ES6 now supports block scope as well (simply wrapping the whole code in {}).
-*  I am now using the babel-plugin-iife-wrap plugin to wrap the whole result (minified) code in an IIFE.
-* For examples, see these libraries:
-*   - https://github.com/highlightjs/highlight.js/blob/main/src/highlight.js
-*   - https://github.com/jashkenas/underscore/blob/master/underscore.js
-* See
-*   - https://www.w3schools.com/js/js_scope.asp
-*   - https://github.com/jhnns/rewire/issues/136#issuecomment-380829197
-*   - https://stackoverflow.com/a/32750216/8583692
-*   - https://stackoverflow.com/q/8228281/8583692
-*   - https://stackoverflow.com/q/881515/8583692
-*   - https://stackoverflow.com/q/39388777/8583692
-*   - https://stackoverflow.com/a/47207686/8583692
-* We could also do something like these libraries:
-*   - https://github.com/juliangarnier/anime/blob/master/build.js
-*   - https://github.com/mrdoob/three.js/
-*   - https://github.com/moment/moment
-*   - https://github.com/floating-ui/floating-ui
-*/
+ * NOTE: To avoid name collisions if another script declares variables or functions with the same name
+ *  as ours (i.e. defining them in the global scope) and browsers complaining about identifiers
+ *  being redeclared, we wrap all our code in a closure or IIFE (sort of creating a namespace for it).
+ *  ES6 now supports block scope as well (simply wrapping the whole code in {}).
+ *  I am now using the babel-plugin-iife-wrap plugin to wrap the whole result (minified) code in an IIFE.
+ * For examples, see these libraries:
+ *   - https://github.com/highlightjs/highlight.js/blob/main/src/highlight.js
+ *   - https://github.com/jashkenas/underscore/blob/master/underscore.js
+ * See
+ *   - https://www.w3schools.com/js/js_scope.asp
+ *   - https://github.com/jhnns/rewire/issues/136#issuecomment-380829197
+ *   - https://stackoverflow.com/a/32750216/8583692
+ *   - https://stackoverflow.com/q/8228281/8583692
+ *   - https://stackoverflow.com/q/881515/8583692
+ *   - https://stackoverflow.com/q/39388777/8583692
+ *   - https://stackoverflow.com/a/47207686/8583692
+ * We could also do something like these libraries:
+ *   - https://github.com/juliangarnier/anime/blob/master/build.js
+ *   - https://github.com/mrdoob/three.js/
+ *   - https://github.com/moment/moment
+ *   - https://github.com/floating-ui/floating-ui
+ */
 
 const ELEMENT_NAME = "theme-switch";
 const ICON_SIZE = 24 /* px */;
