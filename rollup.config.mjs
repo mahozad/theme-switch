@@ -42,7 +42,12 @@ export default {
         /* Could instead use rollup-plugin-html but produced low-quality code */
         replace({
             "ICON_TEMPLATE": readHTML("src/icon.html"),
-            "STYLES_TEMPLATE": readCSS("src/styles.css")
+            "STYLES_TEMPLATE": readCSS("src/styles.css"),
+            /*
+             * Fix a warning from the rollup replace plugin.
+             * See https://github.com/sveltejs/sapper-template/issues/302
+             */
+            preventAssignment: true
         }),
         /* Remove console and assert statements */
         strip(),
