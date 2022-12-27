@@ -1,4 +1,17 @@
 /*
+ * To set up the project, first run:
+ * npm install
+ * It will download all dependencies (including chrome for puppeteer).
+ * Chrome may require VPN to be downloaded. See:
+ * - https://stackoverflow.com/a/60843949
+ * - https://www.chromium.org/getting-involved/download-chromium/
+ * - https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html
+ * - https://download-chromium.appspot.com/
+ * To bundle the script and generate the distributable, run:
+ * ./node_modules/.bin/rollup -c rollup.config.mjs
+ */
+
+/*
  * NOTE: Do not use this script as an ES6 module.
  *  ES6 modules are deferred and we don't want that because
  *  we want the user previous theme selection to be applied
