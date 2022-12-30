@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Theme switch test 8</title>
+  <style>
+    @keyframes anim {
+      0%   { --theme-switch-icon-color: #000; }
+      100% { --theme-switch-icon-color: #f00; }
+    }
+    theme-switch {
+      width: 64px;
+      height: 64px;
+      --theme-switch-icon-color: #000;
+      transition: --theme-switch-icon-color 2s linear;
+    }
+    theme-switch:hover {
+      --theme-switch-icon-color: #f00;
+    }
+  </style>
+  <script src="../dist/theme-switch.js"></script>
+</head>
+<body>
+
+<theme-switch></theme-switch>
+
+</body>
+</html>

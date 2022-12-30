@@ -335,6 +335,16 @@ describe("Screenshot tests", () => {
         expect(screenshot).toMatchReferenceSnapshot();
     }, 100_000);
 
+    test(`The icon color should be animatable`, async () => {
+        const screenshot = await takeScreenshot(() => {
+            localStorage.setItem("theme", "auto");
+        }, async (page, element) => {
+            await element.hover();
+            await page.waitForTimeout(1_000);
+        }, "template-8.html");
+        expect(screenshot).toMatchReferenceSnapshot();
+    }, 100_000);
+
     // See https://stackoverflow.com/q/47107465/8583692
     // and https://github.com/puppeteer/puppeteer/blob/main/examples/custom-event.js
     test(`When the switch is toggled, it should trigger a "themeToggle" event`, async () => {

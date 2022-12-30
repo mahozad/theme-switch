@@ -266,6 +266,12 @@ function generateStyle() {
     return `STYLES_TEMPLATE`;
 }
 
+window.CSS.registerProperty({
+  name: '--theme-switch-icon-color',
+  syntax: '<color>',
+  inherits: false,
+  initialValue: '#000',
+});
 updateTheme();
 window.customElements.define(ELEMENT_NAME, ThemeSwitchElement);
 window
