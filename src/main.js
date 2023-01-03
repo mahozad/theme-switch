@@ -1,14 +1,32 @@
 /*
- * To set up the project, first run:
+ * To set up the project dependencies and libraries, first run:
+ * ```shell
  * npm install
+ * ```
  * It will download all dependencies (including chrome for puppeteer).
- * Chrome may require VPN to be downloaded. See:
+ * To clean install everything, see https://stackoverflow.com/a/55258699.
+ *
+ * Downloading Chrome may require VPN in restricted locations. See:
  * - https://stackoverflow.com/a/60843949
  * - https://www.chromium.org/getting-involved/download-chromium/
  * - https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html
  * - https://download-chromium.appspot.com/
+ * We can run the puppeteer installation like so to try to
+ * download the chrome again if it failed (https://stackoverflow.com/a/60843938):
+ * ```shell
+ * node ./node_modules/puppeteer/install.js
+ * ```
+ * Or, we could download the chrome manually and extract it in the directory
+ * specified and described in our tests.js script.
+ *
  * To bundle the script and generate the distributable, run:
  * ./node_modules/.bin/rollup -c rollup.config.mjs
+ *
+ * The scripts to run are defined in the package.json file.
+ * Those are mostly scripts that test the project because our project
+ * is not a runnable app or something executable so there is no "run" script.
+ * To "run" (see) the component, generate the distributable as described
+ * above and then open the demo/index.html file in a browser.
  */
 
 /*
