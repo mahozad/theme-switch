@@ -151,6 +151,7 @@ TODO:
   - Try to add the library to [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
   - Try to add the library to [bootstrap website](https://getbootstrap.com/)
   - Try to add the library to [Electron js website](https://www.electronjs.org/)
+  - Try to add the library to https://playwright.dev/
   - Try to add the library to [scoop website](https://scoop.sh/)
   - See [chrome auto dark feature for android](https://developer.chrome.com/blog/new-in-chrome-98/#autodark-opt-out)
 
