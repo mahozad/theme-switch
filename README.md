@@ -153,6 +153,7 @@ TODO:
   - Try to add the library to [Electron js website](https://www.electronjs.org/)
   - Try to add the library to https://playwright.dev/
   - Try to add the library to https://tailwindcss.com/
+  - Try to add the library to and inspire from https://next.vuetifyjs.com/
   - Try to add the library to [scoop website](https://scoop.sh/)
   - See [chrome auto dark feature for android](https://developer.chrome.com/blog/new-in-chrome-98/#autodark-opt-out)
 
