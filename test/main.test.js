@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const fileSystem = require("fs");
 // See https://stackoverflow.com/a/48952855/8583692
 const { configureToMatchImageSnapshot: configureSnapshots } = require("jest-image-snapshot");
@@ -468,7 +468,8 @@ async function takeScreenshot(
 function launchBrowser() {
     return puppeteer.launch({
         headless: true,
-        executablePath: chromiumPath
+        executablePath: require('puppeteer').executablePath()
+        // executablePath: chromiumPath
     });
 }
 

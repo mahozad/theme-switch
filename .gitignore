@@ -9,3 +9,5 @@ lint.html
 .idea/misc.xml
 .idea/inspectionProfiles/
 test/snapshot-diffs/
+.yarn/
+.pnp.*
