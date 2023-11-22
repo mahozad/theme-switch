@@ -50,6 +50,7 @@
       ]
     ],
     "preset": "jest-puppeteer",
+    "testEnvironment": "jsdom",
     "testEnvironmentOptions": {
       "url": "http://localhost/"
     }

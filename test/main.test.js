@@ -1,13 +1,3 @@
-/**
- * This docblock is required to configure jest environment to jsdom.
- * See https://jestjs.io/docs/configuration#testenvironment-string
- *
- * Another way would be to manually setting up jsdom.
- * See testing-with-jsdom git branch that does it that way.
- *
- * @jest-environment jsdom
- */
-
 const puppeteer = require("puppeteer-core");
 const fileSystem = require("fs");
 // See https://stackoverflow.com/a/48952855/8583692
