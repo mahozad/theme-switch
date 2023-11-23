@@ -1,3 +1,13 @@
+/**
+ * This docblock is required to configure jest environment to jsdom.
+ * See https://jestjs.io/docs/configuration#testenvironment-string
+ *
+ * Another way would be to manually setting up jsdom.
+ * See testing-with-jsdom git branch that does it that way.
+ *
+ * @jest-environment jsdom
+ */
+
 const puppeteer = require("puppeteer");
 const fileSystem = require("fs");
 // See https://stackoverflow.com/a/48952855/8583692
@@ -468,7 +478,7 @@ async function takeScreenshot(
 function launchBrowser() {
     return puppeteer.launch({
         headless: true,
-        executablePath: require('puppeteer').executablePath()
+        // executablePath: require('puppeteer').executablePath()
         // executablePath: chromiumPath
     });
 }
