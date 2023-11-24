@@ -24,6 +24,7 @@
     "test-with-coverage": "jest --env=node --colors --coverage test",
     "lint": "eslint --color dist/theme-switch.js",
     "lint-html": "eslint --format html --output-file lint.html dist/theme-switch.js",
+    "create-distribution": "./node_modules/.bin/rollup -c rollup.config.mjs",
     "prepublishOnly": "npm test"
   },
   "babel": {
