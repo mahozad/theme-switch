@@ -1,4 +1,3 @@
-[![Tests workflow](https://img.shields.io/github/actions/workflow/status/mahozad/theme-switch/ci.yml?label=Tests&logo=github)](https://github.com/mahozad/theme-switch/actions/workflows/ci.yml)
 [![Codecov](https://img.shields.io/codecov/c/gh/mahozad/theme-switch?label=Coverage&logo=codecov&logoColor=%23FF56C0&token=C4P4I1TQTF)](https://codecov.io/gh/mahozad/theme-switch)
 [![Minified size](https://img.shields.io/github/size/mahozad/theme-switch/dist/theme-switch.min.js?label=Minified%20size)](https://unpkg.com/@mahozad/theme-switch)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-9351dc.svg)](https://www.webcomponents.org/element/@mahozad/theme-switch)
@@ -89,11 +88,7 @@ body /* or any selector you want */ {
 }
 ```
 
-## Misc
-
-<details>
-
-<summary>Click here to expand</summary>
+## Theme change event
 
 The switch element fires (triggers) a custom event called `themeToggle` every time it is toggled (clicked).
 You can listen and react to it if you want:
@@ -106,7 +101,11 @@ document.addEventListener("themeToggle", event => {
 });
 ```
 
----
+## Misc
+
+<details>
+
+<summary>Click here to expand</summary>
 
 This widget was inspired by [this YouTube video](https://youtu.be/kZiS1QStIWc)
 and [this library](https://github.com/GoogleChromeLabs/dark-mode-toggle).
