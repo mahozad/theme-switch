@@ -4,7 +4,7 @@
 
 <div align="center">
 
-![Animated icon](https://raw.githubusercontent.com/mahozad/theme-switch/main/icon.svg)
+![Demo](https://raw.githubusercontent.com/mahozad/theme-switch/main/demo/demo.png)
 
 </div>
 
