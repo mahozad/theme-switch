@@ -132,6 +132,7 @@ See [this feature](https://chromestatus.com/feature/5452774595624960).
 ---
 
 ### Similar libraries
+  - [React Toggle Dark Mode](https://github.com/JoseRFelix/react-toggle-dark-mode)
   - [Dark Mode Toggle](https://github.com/H0rn0chse/dark-mode-toggle)
   - [\<dark-mode-toggle>](https://github.com/GoogleChromeLabs/dark-mode-toggle)
   - [\<color-scheme-button>](https://github.com/CICCIOSGAMINO/color-scheme-button)
